@@ -5,9 +5,9 @@ Implementation of Visual Studio Interactive Window.
 [//]: # (Begin current test results)
 
 ### Windows - Unit Tests
-||Debug x86|Release x86|
-|:--:|:--:|:--:|:--:|:--:|:--:|
-|**master**|[![Build Status](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_debug_unit32/badge/icon)](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_debug_unit32/)|[![Build Status](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_release_unit32/badge/icon)](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_release_unit32/)
+||Debug x86|Debug x64|Release x86|Release x64|
+|:--:|:--:|:--:|:--:|:--:|
+|**master**|[![Build Status](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_debug_unit32/badge/icon)](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_debug_unit32/)|[![Build Status](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_debug_unit64/badge/icon)](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_debug_unit64/)|[![Build Status](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_release_unit32/badge/icon)](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_release_unit32/)|[![Build Status](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_release_unit64/badge/icon)](http://dotnet-ci.cloudapp.net/job/dotnet_symreader-portable/job/master/job/windows_release_unit64/)
 
 [//]: # (End current test results)
 
