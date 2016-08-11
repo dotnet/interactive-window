@@ -9,7 +9,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.VisualStudio.InteractiveWindow.UnitTests</RootNamespace>
     <AssemblyName>Microsoft.VisualStudio.InteractiveWindow.UnitTests</AssemblyName>
-    <PlatformTarget>x86</PlatformTarget>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />

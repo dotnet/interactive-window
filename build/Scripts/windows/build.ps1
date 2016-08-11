@@ -451,5 +451,4 @@ Perform-Build
 Perform-Install-Roslyn-Vsixes
 Perform-Test-x86
 Perform-Test-x64
-Perform-Test-Core
 Perform-Test-Integration
