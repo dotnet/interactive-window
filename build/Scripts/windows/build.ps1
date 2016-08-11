@@ -199,7 +199,7 @@ function Locate-xUnitLogPath {
 function Locate-xUnitTestBinaries {
   $artifactsPath = Locate-ArtifactsPath
 
-  $binariesPath = Join-Path -path $artifactsPath -childPath "$configuration\bin\DesktopTests"
+  $binariesPath = Join-Path -path $artifactsPath -childPath "$configuration\bin"
   $testBinaries = Get-ChildItem -path $binariesPath -filter $testFilter -recurse -force
 
   $xUnitTestBinaries = @()
