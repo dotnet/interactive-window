@@ -7,13 +7,10 @@
   </ImportGroup>
 
   <ItemGroup>
-    <AssembliesToSign Include="$(OutDirBase)\Microsoft.DiaSymReader.PortablePdb\Microsoft.DiaSymReader.PortablePdb.dll">
-      <AuthenticodeCertificateName>WindowsPhone623</AuthenticodeCertificateName>
-    </AssembliesToSign>
-    <AssembliesToSign Include="$(OutDirBase)\Microsoft.DiaSymReader.Converter\Microsoft.DiaSymReader.Converter.dll">
+    <AssembliesToSign Include="$(OutDirBase)\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.dll">
       <AuthenticodeCertificateName>Microsoft402</AuthenticodeCertificateName>
     </AssembliesToSign>
-    <AssembliesToSign Include="$(OutDirBase)\Pdb2Pdb\Pdb2Pdb.exe">
+    <AssembliesToSign Include="$(OutDirBase)\Microsoft.VisualStudio.VsInteractiveWindow\Microsoft.VisualStudio.VsInteractiveWindow.dll">
       <AuthenticodeCertificateName>Microsoft402</AuthenticodeCertificateName>
     </AssembliesToSign>
   </ItemGroup>
