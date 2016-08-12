@@ -2,6 +2,8 @@
 
 Implementation of Visual Studio Interactive Window. 
 
+Pre-release builds are available on MyGet gallery: https://dotnet.myget.org/Gallery/interactive-window.
+
 [//]: # (Begin current test results)
 
 ### Windows - Unit Tests
