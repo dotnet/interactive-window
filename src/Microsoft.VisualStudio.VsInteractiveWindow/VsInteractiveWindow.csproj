@@ -21,7 +21,7 @@
     <CodeAnalysisRuleSet>VSInteractiveWindowRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InteractiveWindow\InteractiveWindow.csproj">
+    <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\InteractiveWindow.csproj">
       <Project>{01E9BD68-0339-4A13-B42F-A3CA84D164F3}</Project>
       <Name>InteractiveWindow</Name>
     </ProjectReference>
@@ -43,10 +43,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\InteractiveWindow\InternalUtilities\ExceptionUtilities.cs">
+    <Compile Include="..\Microsoft.VisualStudio.InteractiveWindow\InternalUtilities\ExceptionUtilities.cs">
       <Link>InternalUtilities\ExceptionUtilities.cs</Link>
     </Compile>
-    <Compile Include="..\InteractiveWindow\InternalUtilities\FatalError.cs">
+    <Compile Include="..\Microsoft.VisualStudio.InteractiveWindow\InternalUtilities\FatalError.cs">
       <Link>InternalUtilities\FatalError.cs</Link>
     </Compile>
     <Compile Include="ContentTypeMetadata.cs" />

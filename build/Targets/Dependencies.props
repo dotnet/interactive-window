@@ -3,5 +3,10 @@
     <MicroBuildCoreVersion>0.2.0</MicroBuildCoreVersion>
     <ToolsetCompilerPackageVersion>2.0.0-beta3-60616-03</ToolsetCompilerPackageVersion>
     <XUnitConsoleRunnerPackageVersion>2.1.0</XUnitConsoleRunnerPackageVersion>
+    <MicrosoftVisualStudioEditorVersion>14.3.25407</MicrosoftVisualStudioEditorVersion>
+    <MicrosoftVisualStudioTextLogicVersion>14.3.25407</MicrosoftVisualStudioTextLogicVersion>
+    <MicrosoftVisualStudioTextUIVersion>14.3.25407</MicrosoftVisualStudioTextUIVersion>
+    <MicrosoftVisualStudioTextUIWpfVersion>14.3.25407</MicrosoftVisualStudioTextUIWpfVersion>
+    <MicrosoftVisualStudioShell140Version>14.3.25407</MicrosoftVisualStudioShell140Version>
   </PropertyGroup>
 </Project>
