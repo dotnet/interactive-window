@@ -1684,7 +1684,7 @@ System.Console.WriteLine();",
             data.SetData(DataFormats.StringFormat, text);
             if (includeRepl)
             {
-                data.SetData(InteractiveWindow.ClipboardFormat, BufferBlock.Serialize(blocks));
+                data.SetData(InteractiveClipboardFormat.Tag, BufferBlock.Serialize(blocks));
             }
             if (isLineCopy)
             {
@@ -1703,7 +1703,7 @@ System.Console.WriteLine();",
             Assert.Equal(expectedText, data?.GetData(DataFormats.StringFormat));
             Assert.Equal(expectedText, data?.GetData(DataFormats.Text));
             Assert.Equal(expectedText, data?.GetData(DataFormats.UnicodeText));
-            Assert.Equal(expectedRepl, (string)data?.GetData(InteractiveWindow.ClipboardFormat));
+            Assert.Equal(expectedRepl, (string)data?.GetData(InteractiveClipboardFormat.Tag));
             var actualRtf = (string)data?.GetData(DataFormats.Rtf);
             if (expectedRtf == null)
             {

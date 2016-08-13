@@ -1,13 +1,10 @@
 ﻿// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
-#if COMPILERCORE
-namespace Microsoft.CodeAnalysis
-#else
-namespace Microsoft.CodeAnalysis.ErrorReporting
-#endif
+namespace Microsoft.VisualStudio.InteractiveWindow
 {
     internal static class FatalError
     {

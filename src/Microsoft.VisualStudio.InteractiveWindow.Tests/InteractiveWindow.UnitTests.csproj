@@ -30,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventListenerGuard.cs" />
+    <Compile Include="InteractiveClipboardFormatTests.cs" />
     <Compile Include="InteractiveWindowEditorsFactoryService.cs" />
     <Compile Include="InteractiveWindowTestHost.cs" />
     <Compile Include="HistoryTests.cs" />
