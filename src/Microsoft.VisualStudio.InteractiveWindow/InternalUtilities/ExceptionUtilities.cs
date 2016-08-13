@@ -3,7 +3,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Roslyn.Utilities
+namespace Microsoft.VisualStudio.InteractiveWindow
 {
     internal static class ExceptionUtilities
     {

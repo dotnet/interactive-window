@@ -8,7 +8,6 @@
     </description>
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="Microsoft.VisualStudio.Editor" version="$MicrosoftVisualStudioEditorVersion$" />
         <dependency id="Microsoft.VisualStudio.Text.Logic" version="$MicrosoftVisualStudioTextLogicVersion$" />
         <dependency id="Microsoft.VisualStudio.Text.UI" version="$MicrosoftVisualStudioTextUIVersion$" />
         <dependency id="Microsoft.VisualStudio.Text.UI.Wpf" version="$MicrosoftVisualStudioTextUIWpfVersion$" />

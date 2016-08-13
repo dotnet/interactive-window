@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferBlock.cs" />
+    <Compile Include="InteractiveClipboardFormat.cs" />
     <Compile Include="Commands\CancelExecutionCommand.cs" />
     <Compile Include="Commands\ClearScreenCommand.cs" />
     <Compile Include="Commands\CommandClassifier.cs" />

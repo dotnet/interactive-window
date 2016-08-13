@@ -6,8 +6,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.ErrorReporting;
 using Microsoft.CodeAnalysis.Utilities;
+using Microsoft.VisualStudio.InteractiveWindow;
 
 namespace Roslyn.Utilities
 {
