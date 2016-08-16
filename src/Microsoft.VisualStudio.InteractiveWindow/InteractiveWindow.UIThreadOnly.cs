@@ -1494,8 +1494,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 CurrentLanguageBuffer = buffer;
                 _window.SubmissionBufferAdded?.Invoke(_window, new SubmissionBufferAddedEventArgs(buffer));
 
-                _window.LanguageBufferCounter++;
-
                 // add the whole buffer to the projection buffer and set it up to expand to the right as text is appended
                 var promptSpan = CreatePrimaryPrompt();
                 var languageSpan = new CustomTrackingSpan(
