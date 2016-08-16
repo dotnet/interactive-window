@@ -46,8 +46,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         /// </summary>
         internal const string BoxSelectionCutCopyTag = "MSDEVColumnSelect";
 
-        internal int LanguageBufferCounter = 0;
-
         public event EventHandler<SubmissionBufferAddedEventArgs> SubmissionBufferAdded;
 
         PropertyCollection IPropertyOwner.Properties { get; } = new PropertyCollection();
