@@ -1,0 +1,12 @@
+{
+  "sign": [
+    {
+      "certificate": "Microsoft402",
+      "strongName": "MsSharedLib72",
+      "values": [
+        "Microsoft.VisualStudio.InteractiveWindow/Microsoft.VisualStudio.InteractiveWindow.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.VsInteractiveWindow.dll"
+      ]
+    }
+  ]
+}
