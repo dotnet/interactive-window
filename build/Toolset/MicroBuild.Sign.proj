@@ -6,8 +6,10 @@
 
   <ImportGroup>
     <Import Project="..\Targets\Dependencies.props"/>
-    <Import Project="..\Toolset\Layout.props" />
-    <Import Project="..\Toolset\MicroBuild.props" />
+    <Import Project="Layout.props" />
+    <Import Project="NuGet.props"/>
+    <Import Project="$(NuGetPackageRoot)\MicroBuild.Core\$(MicroBuildCoreVersion)\build\MicroBuild.Core.props" />
+    <Import Project="$(NuGetPackageRoot)\MicroBuild.Core\$(MicroBuildCoreVersion)\build\MicroBuild.Core.targets" />
   </ImportGroup>
 
   <ItemGroup>
