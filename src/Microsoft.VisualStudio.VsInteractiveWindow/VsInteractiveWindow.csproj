@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ImportGroup>
-    <Import Project="..\..\build\Targets\Settings.targets" />
-  </ImportGroup>
+  <Import Project="..\..\build\Targets\Settings.targets" />
+  <!-- VSSDK target to build VSIX -->
+  <Import Project="$(NuGetPackageRoot)\Microsoft.VSSDK.BuildTools\$(MicrosoftVSSDKBuildToolsVersion)\build\Microsoft.VsSDK.BuildTools.props" />
   <PropertyGroup>
     <ProjectGuid>{20BB6FAC-44D2-4D76-ABFE-0C1E163A1A4F}</ProjectGuid>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -14,7 +14,6 @@
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix IW /log</StartArguments>
     <MinimumVisualStudioVersion>$(VisualStudioVersion)</MinimumVisualStudioVersion>
-    <ImportVSSDKTargets>true</ImportVSSDKTargets>
     <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -97,7 +96,12 @@
     <PublicAPI Include="PublicAPI.Shipped.txt" />
     <PublicAPI Include="PublicAPI.Unshipped.txt" />
   </ItemGroup>
-  <ImportGroup>
-    <Import Project="..\..\build\Targets\Imports.targets" />
-  </ImportGroup>
+  <Import Project="..\..\build\Targets\Imports.targets" />
+  
+  <!-- VSSDK targets to build VSIX -->
+  <Import Project="$(NuGetPackageRoot)\Microsoft.VSSDK.BuildTools\$(MicrosoftVSSDKBuildToolsVersion)\build\Microsoft.VsSDK.BuildTools.targets" />
+  <Import Project="$(VSToolsPath)\vssdk\Microsoft.VsSDK.targets" />
+ 
+  <!-- Returns the current build version. Used in .vsixmanifests to substitute our build version into them -->
+  <Target Name="GetBuildVersion" Outputs="$(VsixVersion)" />
 </Project>

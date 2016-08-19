@@ -2,6 +2,7 @@
   <PropertyGroup>
     <MicroBuildCoreVersion>0.2.0</MicroBuildCoreVersion>
     <RoslynToolsMicrosoftSignToolVersion>0.2.0-beta</RoslynToolsMicrosoftSignToolVersion>
+    <MicrosoftVSSDKBuildToolsVersion>14.3.25420</MicrosoftVSSDKBuildToolsVersion>
     <ToolsetCompilerPackageVersion>2.0.0-beta3-60616-03</ToolsetCompilerPackageVersion>
     <XUnitConsoleRunnerPackageVersion>2.1.0</XUnitConsoleRunnerPackageVersion>
     <MicrosoftVisualStudioEditorVersion>14.3.25407</MicrosoftVisualStudioEditorVersion>

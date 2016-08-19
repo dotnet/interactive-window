@@ -9,6 +9,7 @@
       <PropertyGroup>
         <NuGetVersionSuffix>beta5</NuGetVersionSuffix>
         <BuildVersion>$(AssemblyVersion).0</BuildVersion>
+        <VsixVersion>$(AssemblyVersion).0000000</VsixVersion>
       </PropertyGroup>
     </When>
 
@@ -17,6 +18,7 @@
         <ShortBuildNumber>$(BUILD_BUILDNUMBER.Substring(3))</ShortBuildNumber>
         <NuGetVersionSuffix>beta5-$(ShortBuildNumber.Split('.')[0])-$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</NuGetVersionSuffix>
         <BuildVersion>$(AssemblyVersion).$(ShortBuildNumber.Split('.')[0])</BuildVersion>
+        <VsixVersion>$(AssemblyVersion).$(ShortBuildNumber.Split('.')[0])$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</VsixVersion>
       </PropertyGroup>
     </Otherwise>
   </Choose>
