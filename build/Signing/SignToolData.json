@@ -6,7 +6,7 @@
       "values": [
         "Microsoft.VisualStudio.InteractiveWindow/Microsoft.VisualStudio.InteractiveWindow.dll",
         "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.VsInteractiveWindow.dll",
-        "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.InteractiveWindow.vsix"
+        "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
       ]
     }
   ]
