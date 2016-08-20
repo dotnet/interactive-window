@@ -5,7 +5,13 @@
       "strongName": "MsSharedLib72",
       "values": [
         "Microsoft.VisualStudio.InteractiveWindow/Microsoft.VisualStudio.InteractiveWindow.dll",
-        "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.VsInteractiveWindow.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.VsInteractiveWindow.dll"
+      ]
+    },
+    {
+      "certificate": "VsixSHA2",
+      "strongName": null,
+      "values": [
         "Microsoft.VisualStudio.VsInteractiveWindow/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
       ]
     }
