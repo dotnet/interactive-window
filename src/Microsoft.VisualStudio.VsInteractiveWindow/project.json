@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
-    "RoslynDependencies.Microsoft.VisualStudio.ComponentModelHost": "14.3.25407",
+    "RoslynDependencies.Microsoft.VisualStudio.ComponentModelHost": "15.0.25604-Preview4",
     "Microsoft.VisualStudio.Designer.Interfaces": "1.1.4322",
-    "Microsoft.VisualStudio.ImageCatalog": "14.3.25407",
+    "Microsoft.VisualStudio.ImageCatalog": "15.0.25604-Preview4",
     "Microsoft.VisualStudio.OLE.Interop": "7.10.6070",
     "Microsoft.VisualStudio.Shell.Interop.10.0": "10.0.30319",
     "Microsoft.VisualStudio.Shell.Interop.11.0": "11.0.61030",
@@ -16,13 +16,13 @@
     "Microsoft.VisualStudio.Data.Core": "9.0.21022",
     "Microsoft.VisualStudio.Data.Services": "9.0.21022",
     "Microsoft.VisualStudio.Editor": {
-        "version": "14.3.25407",
-        "suppressParent": "all"
+      "version": "15.0.25604-Preview4",
+      "suppressParent": "all"
     },
-    "Microsoft.VisualStudio.Shell.14.0": {
-        "version": "14.3.25407",
-        "suppressParent": "all"
-    }    
+    "Microsoft.VisualStudio.Shell.15.0": {
+      "version": "15.0.25604-Preview4",
+      "suppressParent": "all"
+    }
   },
   "frameworks": {
     "net46": { }
