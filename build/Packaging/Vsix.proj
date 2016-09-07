@@ -15,7 +15,7 @@
   </ItemGroup>
   
   <Target Name="Build">
-    <MSBuild Projects="@(VsixProjects)" Properties="FinalizeValidate=false;ManifestPublishUrl=https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/dotnet/roslyn/master/20160729.6"  />
+    <MSBuild Projects="@(VsixProjects)" />
   </Target>
   <Target Name="Clean">
     <RemoveDir Directories="$(OutDir)" />
