@@ -12,7 +12,7 @@
   <Import Project="$(NuGetPackageRoot)\MicroBuild.Core\$(MicroBuildCoreVersion)\build\MicroBuild.Core.props" />
 
   <PropertyGroup>
-    <PackagePreprocessorDefinitions>$(PackagePreprocessorDefinitions);Version=$(VsixVersion);BuildDir=$(OutDirBase)\Microsoft.VisualStudio.VsInteractiveWindow;LicenseUri=http://www.microsoft.com</PackagePreprocessorDefinitions>
+    <PackagePreprocessorDefinitions>$(PackagePreprocessorDefinitions);Version=$(VsixVersion);BuildDir=$(OutDirBase);LicenseUri=http://www.microsoft.com</PackagePreprocessorDefinitions>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
 

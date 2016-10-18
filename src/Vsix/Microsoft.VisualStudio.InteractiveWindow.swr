@@ -4,5 +4,5 @@ package name=Microsoft.VisualStudio.InteractiveWindow
         version=$(Version)
 
 folder InstallDir:\Common7\IDE\PrivateAssemblies
-    file source=$(BuildDir)\Microsoft.VisualStudio.InteractiveWindow.dll vs.file.ngen=yes
-    file source=$(BuildDir)\Microsoft.VisualStudio.VsInteractiveWindow.dll vs.file.ngen=yes
+    file source=$(BuildDir)\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.dll vs.file.ngen=yes
+    file source=$(BuildDir)\Microsoft.VisualStudio.VsInteractiveWindow\Microsoft.VisualStudio.VsInteractiveWindow.dll vs.file.ngen=yes
