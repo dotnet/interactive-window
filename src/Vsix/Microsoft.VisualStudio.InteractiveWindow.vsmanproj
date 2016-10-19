@@ -3,9 +3,9 @@
   <Import Project="..\..\build\Targets\Settings.targets" />
 
   <PropertyGroup>
-    <FinalizeManifest>true</FinalizeManifest>
-    <FinalizeSkipLayout>true</FinalizeSkipLayout>
-    <IsPackage>true</IsPackage>
+    <OutputArchitecture>neutral</OutputArchitecture>
+    <OutputLocalized>false</OutputLocalized>
+    <OutputType>manifest</OutputType>
   </PropertyGroup>
 
   <Import Project="$(NuGetPackageRoot)\MicroBuild.Core\$(MicroBuildCoreVersion)\build\MicroBuild.Core.props" />
