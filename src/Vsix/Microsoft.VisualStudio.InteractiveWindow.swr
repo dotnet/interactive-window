@@ -2,7 +2,12 @@ use vs
 
 package name=Microsoft.VisualStudio.InteractiveWindow
         version=$(Version)
+        vs.package.type=vsix
+        vs.package.vsixId=1F42C6D0-F876-4AF0-8185-1BEB0A325BB23
+        vs.package.installSize=130000
 
-folder InstallDir:\Common7\IDE\PrivateAssemblies
-    file source=$(BuildDir)\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.dll vs.file.ngen=yes
-    file source=$(BuildDir)\Microsoft.VisualStudio.VsInteractiveWindow\Microsoft.VisualStudio.VsInteractiveWindow.dll vs.file.ngen=yes
+vs.payloads
+  vs.payload source=$(BuildDir)Microsoft.VisualStudio.VsInteractiveWindow\Microsoft.VisualStudio.VsInteractiveWindow.vsix
+
+vs.dependencies
+  vs.dependency id=Microsoft.VisualStudio.MinShell
