@@ -9,7 +9,7 @@
     <dependencies>
       <group targetFramework="net45">
         <dependency id="Microsoft.VisualStudio.InteractiveWindow" version="$version$" />
-        <dependency id="Microsoft.VisualStudio.Shell.14.0" version="$MicrosoftVisualStudioShell140Version$" />
+        <dependency id="Microsoft.VisualStudio.Shell.15.0" version="$MicrosoftVisualStudioShell150Version$" />
       </group>
     </dependencies>
     <language>en-US</language>

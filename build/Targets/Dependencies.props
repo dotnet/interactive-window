@@ -9,6 +9,6 @@
     <MicrosoftVisualStudioTextLogicVersion>15.0.25604-Preview4</MicrosoftVisualStudioTextLogicVersion>
     <MicrosoftVisualStudioTextUIVersion>15.0.25604-Preview4</MicrosoftVisualStudioTextUIVersion>
     <MicrosoftVisualStudioTextUIWpfVersion>15.0.25604-Preview4</MicrosoftVisualStudioTextUIWpfVersion>
-    <MicrosoftVisualStudioShell140Version>15.0.25604-Preview4</MicrosoftVisualStudioShell140Version>
+    <MicrosoftVisualStudioShell150Version>15.0.25604-Preview4</MicrosoftVisualStudioShell150Version>
   </PropertyGroup>
 </Project>
