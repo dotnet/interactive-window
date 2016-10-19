@@ -5,8 +5,7 @@
   <PropertyGroup>
     <OutputArchitecture>neutral</OutputArchitecture>
     <OutputLocalized>false</OutputLocalized>
-    <IsPackage>true</IsPackage>
-    <OutputType>vsix</OutputType>
+    <OutputType>manifest</OutputType>
   </PropertyGroup>
 
   <Import Project="$(NuGetPackageRoot)\MicroBuild.Core\$(MicroBuildCoreVersion)\build\MicroBuild.Core.props" />

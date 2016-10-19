@@ -3,9 +3,9 @@
   <Import Project="..\..\build\Targets\Settings.targets" />
 
   <PropertyGroup>
-    <OutputArchitecture>neutral</OutputArchitecture>
-    <OutputLocalized>false</OutputLocalized>
-    <OutputType>manifest</OutputType>
+    <FinalizeManifest>true</FinalizeManifest>
+    <FinalizeSkipLayout>true</FinalizeSkipLayout>
+    <IsPackage>true</IsPackage>
   </PropertyGroup>
 
   <Import Project="$(NuGetPackageRoot)\MicroBuild.Core\$(MicroBuildCoreVersion)\build\MicroBuild.Core.props" />
@@ -18,4 +18,6 @@
   <ItemGroup>
     <MergeManifest Include="$(OutputPath)Microsoft.VisualStudio.InteractiveWindow.json" />
   </ItemGroup>
+  
+  <Target Name="ValidateManifest" />
 </Project>

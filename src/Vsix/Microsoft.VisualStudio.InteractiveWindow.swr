@@ -7,7 +7,7 @@ package name=Microsoft.VisualStudio.InteractiveWindow
         vs.package.installSize=130000
 
 vs.payloads
-  vs.payload source=$(BuildDir)Microsoft.VisualStudio.VsInteractiveWindow\Microsoft.VisualStudio.VsInteractiveWindow.vsix
+  vs.payload source=$(BuildDir)\Microsoft.VisualStudio.VsInteractiveWindow\Microsoft.VisualStudio.VsInteractiveWindow.vsix
 
 vs.dependencies
   vs.dependency id=Microsoft.VisualStudio.MinShell
