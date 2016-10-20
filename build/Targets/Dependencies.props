@@ -2,13 +2,13 @@
   <PropertyGroup>
     <MicroBuildCoreVersion>0.2.0</MicroBuildCoreVersion>
     <RoslynToolsMicrosoftSignToolVersion>0.2.0-beta</RoslynToolsMicrosoftSignToolVersion>
-    <MicrosoftVSSDKBuildToolsVersion>14.3.25420</MicrosoftVSSDKBuildToolsVersion>
+    <MicrosoftVSSDKBuildToolsVersion>15.0.25728-Preview5</MicrosoftVSSDKBuildToolsVersion>
     <ToolsetCompilerPackageVersion>2.0.0-beta3-60616-03</ToolsetCompilerPackageVersion>
     <XUnitConsoleRunnerPackageVersion>2.1.0</XUnitConsoleRunnerPackageVersion>
-    <MicrosoftVisualStudioEditorVersion>15.0.25604-Preview4</MicrosoftVisualStudioEditorVersion>
-    <MicrosoftVisualStudioTextLogicVersion>15.0.25604-Preview4</MicrosoftVisualStudioTextLogicVersion>
-    <MicrosoftVisualStudioTextUIVersion>15.0.25604-Preview4</MicrosoftVisualStudioTextUIVersion>
-    <MicrosoftVisualStudioTextUIWpfVersion>15.0.25604-Preview4</MicrosoftVisualStudioTextUIWpfVersion>
-    <MicrosoftVisualStudioShell150Version>15.0.25604-Preview4</MicrosoftVisualStudioShell150Version>
+    <MicrosoftVisualStudioEditorVersion>15.0.25726-Preview5</MicrosoftVisualStudioEditorVersion>
+    <MicrosoftVisualStudioTextLogicVersion>15.0.25726-Preview5</MicrosoftVisualStudioTextLogicVersion>
+    <MicrosoftVisualStudioTextUIVersion>15.0.25726-Preview5</MicrosoftVisualStudioTextUIVersion>
+    <MicrosoftVisualStudioTextUIWpfVersion>15.0.25726-Preview5</MicrosoftVisualStudioTextUIWpfVersion>
+    <MicrosoftVisualStudioShell150Version>15.0.25726-Preview5</MicrosoftVisualStudioShell150Version>
   </PropertyGroup>
 </Project>

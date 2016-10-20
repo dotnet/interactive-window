@@ -1,15 +1,15 @@
 {
   "dependencies": {
-    "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Text.Logic": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Text.UI": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Text.UI.Wpf": "15.0.25604-Preview4",
-    "RoslynDependencies.Microsoft.VisualStudio.Text.Internal": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Imaging": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.ImageCatalog": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Language.StandardClassification": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime": "15.0.25604-Preview4",
-    "Microsoft.VisualStudio.Language.Intellisense": "15.0.25604-Preview4",
+    "Microsoft.VisualStudio.Text.Data": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Text.Logic": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Text.UI": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Text.UI.Wpf": "15.0.25726-Preview5",
+    "RoslynDependencies.Microsoft.VisualStudio.Text.Internal": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Imaging": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.ImageCatalog": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Language.StandardClassification": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime": "15.0.25726-Preview5",
+    "Microsoft.VisualStudio.Language.Intellisense": "15.0.25726-Preview5",
     "Microsoft.VisualStudio.Threading": "15.0.49-pre"
   },
   "frameworks": {
