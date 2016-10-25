@@ -653,7 +653,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                         throw new InvalidOperationException(InteractiveWindowResources.NotInitialized);
                     case State.Resetting:
                     case State.ResettingAndReadingStandardInput:
-                        throw new InvalidOperationException(InteractiveWindowResources.IsResettings);
+                        throw new InvalidOperationException(InteractiveWindowResources.IsResetting);
                     case State.ExecutingInput:
                         insertionIndex = sourceSpans.Count;
                         break;
