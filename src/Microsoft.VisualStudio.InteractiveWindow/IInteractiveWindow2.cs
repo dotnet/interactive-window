@@ -10,7 +10,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         /// Adds <paramref name="input"/> to the history as if it has been executed.
         /// Method doesn't execute <paramref name="input"/> and doesn't affect current user input.
         /// </summary>
-        /// <exception cref="InvalidOperationException">The interactive window has not been initialized or is resettings.</exception>
+        /// <exception cref="InvalidOperationException">The interactive window has not been initialized or is resetting.</exception>
         void AddToHistory(string input);
     }
 }

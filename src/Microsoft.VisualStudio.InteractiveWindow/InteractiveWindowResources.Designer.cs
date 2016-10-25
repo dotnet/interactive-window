@@ -304,11 +304,11 @@ namespace Microsoft.VisualStudio.InteractiveWindow {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The interactive window is resettings..
+        ///   Looks up a localized string similar to The interactive window is resetting..
         /// </summary>
-        internal static string IsResettings {
+        internal static string IsResetting {
             get {
-                return ResourceManager.GetString("IsResettings", resourceCulture);
+                return ResourceManager.GetString("IsResetting", resourceCulture);
             }
         }
         
