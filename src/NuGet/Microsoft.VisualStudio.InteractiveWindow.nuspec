@@ -17,7 +17,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <version>$version$</version>
     <authors>Microsoft</authors>
-    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=394369</licenseUrl>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=529443</licenseUrl>
     <projectUrl>https://github.com/dotnet/interactive-window</projectUrl>
     <releaseNotes>Visual Studio Interactive Window (Text Editor)</releaseNotes>
     <tags>Visual Studio Interactive Window Text Editor WPF</tags>
