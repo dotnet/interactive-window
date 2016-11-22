@@ -7,16 +7,17 @@
   <Choose>
     <When Condition="$(BUILD_BUILDNUMBER) == ''">
       <PropertyGroup>
-        <NuGetVersionSuffix>beta5</NuGetVersionSuffix>
-        <BuildVersion>$(AssemblyVersion).0</BuildVersion>
-        <VsixVersion>$(AssemblyVersion).0000000</VsixVersion>
+        <NuGetVersionSuffix>experimental</NuGetVersionSuffix>
+        <!-- When build locally use a version that's higher than any version that is build by lab and possibly installed in VS -->
+        <BuildVersion>42.42.42.42424</BuildVersion>
+        <VsixVersion>$(AssemblyVersion).9000000</VsixVersion>
       </PropertyGroup>
     </When>
 
     <Otherwise>
       <PropertyGroup>
         <ShortBuildNumber>$(BUILD_BUILDNUMBER.Substring(3))</ShortBuildNumber>
-        <NuGetVersionSuffix>beta5-$(ShortBuildNumber.Split('.')[0])-$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</NuGetVersionSuffix>
+        <NuGetVersionSuffix>rc2-$(ShortBuildNumber.Split('.')[0])-$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</NuGetVersionSuffix>
         <BuildVersion>$(AssemblyVersion).$(ShortBuildNumber.Split('.')[0])</BuildVersion>
         <VsixVersion>$(AssemblyVersion).$(ShortBuildNumber.Split('.')[0])$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</VsixVersion>
       </PropertyGroup>

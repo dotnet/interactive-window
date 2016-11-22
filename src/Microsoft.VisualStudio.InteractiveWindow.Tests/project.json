@@ -2,10 +2,10 @@
   "dependencies": {
     "System.Collections.Immutable": "1.2.0",
     "BasicUndo": "0.9.3",
-    "RoslynDependencies.Microsoft.VisualStudio.Platform.VSEditor": "15.0.25726-Preview5",
+    "RoslynDependencies.Microsoft.VisualStudio.Platform.VSEditor": "15.0.25920-RC",
     "Moq": "4.2.1402.2112",
-    "xunit": "2.1.0",
-    "xunit.runner.console": "2.2.0-beta1-build3239"
+    "xunit": "2.2.0-beta3-build3402",
+    "xunit.runner.console": "2.2.0-beta3-build3402"
   },
   "frameworks": {
     "net46": {}

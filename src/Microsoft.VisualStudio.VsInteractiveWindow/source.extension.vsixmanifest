@@ -28,4 +28,7 @@
     <Asset Type="Microsoft.VisualStudio.Assembly" Path="|%CurrentProject%;GetTargetPath|" AssemblyName="|%CurrentProject%|" />
     <Asset Type="Microsoft.VisualStudio.VsPackage" Path="Microsoft.VisualStudio.VsInteractiveWindow.pkgdef" />
   </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
 </PackageManifest>
