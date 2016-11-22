@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "MicroBuild.Core": "0.2.0",
+    "MicroBuild.Core.Sentinel": "1.0.0",
     "MicroBuild.Plugins.SwixBuild": "1.0.101",
     "Microsoft.Net.Compilers": "2.0.0-rc2-61110-03",
     "Microsoft.VSSDK.BuildTools": "15.0.25914-RC2",
