@@ -5,7 +5,8 @@
     "RoslynDependencies.Microsoft.VisualStudio.Platform.VSEditor": "15.0.25920-RC",
     "Moq": "4.2.1402.2112",
     "xunit": "2.2.0-beta3-build3402",
-    "xunit.runner.console": "2.2.0-beta3-build3402"
+    "xunit.runner.console": "2.2.0-beta3-build3402",    
+    "xunit.runner.visualstudio": "2.2.0-beta3-build1187"
   },
   "frameworks": {
     "net46": {}
