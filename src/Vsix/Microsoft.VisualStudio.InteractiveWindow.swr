@@ -11,3 +11,4 @@ vs.payloads
 
 vs.dependencies
   vs.dependency id=Microsoft.VisualStudio.MinShell
+  vs.dependency id=Microsoft.Net.PackageGroup.4.6.1.Redist
