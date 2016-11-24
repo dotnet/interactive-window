@@ -4,13 +4,11 @@
 // #define DUMP_COMMANDS
 
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
-using Microsoft.VisualStudio.InteractiveWindow.Shell;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -18,8 +16,7 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
 
-namespace Microsoft.VisualStudio.InteractiveWindow.Shell
-{
+namespace Microsoft.VisualStudio.InteractiveWindow.Shell {
     /// <summary>
     /// Default tool window for hosting interactive windows inside of Visual Studio.  This hooks up support for
     /// find in windows, forwarding commands down to the text view adapter, and providing access for setting
@@ -39,8 +36,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private readonly IComponentModel _componentModel;
         private readonly IVsEditorAdaptersFactoryService _editorAdapters;
-        private readonly IContentTypeRegistryService _contentTypeRegistryService;
-        private readonly IVsInteractiveWindowDecorator _decorator;
+         private readonly IVsInteractiveWindowDecorator _decorator;
 
         private IInteractiveWindow _window;
         private IVsFindTarget _findTarget;
@@ -62,8 +58,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
             _evaluator = evaluator;
             _decorator = decorator;
-
-            _contentTypeRegistryService = _componentModel.GetService<IContentTypeRegistryService>();
 
             // The following calls this.OnCreate:
             Guid clsId = this.ToolClsid;
