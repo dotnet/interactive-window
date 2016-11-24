@@ -1,28 +1,35 @@
 ﻿// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Threading;
-
-using Xunit.Abstractions;
-using Xunit.Sdk;
-using Roslyn.Utilities;
 using Microsoft.CodeAnalysis.Editor.Shared.Utilities;
 using Microsoft.CodeAnalysis.Utilities;
+using Roslyn.Utilities;
+using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace Roslyn.Test.Utilities
 {
     public class WpfTestCase : XunitTestCase
     {
-        private readonly SemaphoreSlim _wpfTestSerializationGate;
+        /// <summary>
+        /// A <see cref="SemaphoreSlim"/> used to ensure that only a single <see cref="WpfFactAttribute"/>-attributed test runs at once.
+        /// This requirement must be made because, currently, <see cref="WpfTestCase"/>'s logic sets various static state before a method
+        /// runs. If two tests run interleaved on the same scheduler (i.e. if one yields with an await) then all bets are off.
+        /// </summary>
+        private static readonly SemaphoreSlim s_wpfTestSerializationGate = new SemaphoreSlim(initialCount: 1);
 
-        public WpfTestCase(IMessageSink diagnosticMessageSink, TestMethodDisplay defaultMethodDisplay, ITestMethod testMethod, SemaphoreSlim wpfTestSerializationGate, object[] testMethodArguments = null)
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("Called by the de-serializer; should only be called by deriving classes for de-serialization purposes")]
+        public WpfTestCase() { }
+
+        public WpfTestCase(IMessageSink diagnosticMessageSink, TestMethodDisplay defaultMethodDisplay, ITestMethod testMethod, object[] testMethodArguments = null)
             : base(diagnosticMessageSink, defaultMethodDisplay, testMethod, testMethodArguments)
         {
-            _wpfTestSerializationGate = wpfTestSerializationGate;
         }
 
         public override Task<RunSummary> RunAsync(IMessageSink diagnosticMessageSink, IMessageBus messageBus, object[] constructorArguments, ExceptionAggregator aggregator, CancellationTokenSource cancellationTokenSource)
@@ -33,7 +40,7 @@ namespace Roslyn.Test.Utilities
                 Debug.Assert(sta.Threads.Length == 1);
                 Debug.Assert(sta.Threads[0] == Thread.CurrentThread);
 
-                using (await _wpfTestSerializationGate.DisposableWaitAsync())
+                using (await s_wpfTestSerializationGate.DisposableWaitAsync())
                 {
                     try
                     {
