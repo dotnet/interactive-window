@@ -4,11 +4,13 @@
 // #define DUMP_COMMANDS
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
+using Microsoft.VisualStudio.InteractiveWindow.Shell;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -37,6 +39,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private readonly IComponentModel _componentModel;
         private readonly IVsEditorAdaptersFactoryService _editorAdapters;
+        private readonly IContentTypeRegistryService _contentTypeRegistryService;
+        private readonly IVsInteractiveWindowDecorator _decorator;
 
         private IInteractiveWindow _window;
         private IVsFindTarget _findTarget;
@@ -44,12 +48,22 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         private IInteractiveEvaluator _evaluator;
         private IWpfTextViewHost _textViewHost;
 
-        internal VsInteractiveWindow(IComponentModel model, Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, __VSCREATETOOLWIN creationFlags)
+        internal VsInteractiveWindow(
+            IComponentModel model, 
+            Guid providerId, 
+            int instanceId, 
+            string title, 
+            IInteractiveEvaluator evaluator,
+            IVsInteractiveWindowDecorator decorator,
+            __VSCREATETOOLWIN creationFlags)
         {
             _componentModel = model;
             this.Caption = title;
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
             _evaluator = evaluator;
+            _decorator = decorator;
+
+            _contentTypeRegistryService = _componentModel.GetService<IContentTypeRegistryService>();
 
             // The following calls this.OnCreate:
             Guid clsId = this.ToolClsid;
@@ -145,7 +159,14 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             // add our toolbar which  is defined in our VSCT file
             var toolbarHost = GetToolbarHost();
             Guid guidInteractiveCmdSet = Guids.InteractiveCommandSetId;
-            ErrorHandler.ThrowOnFailure(toolbarHost.AddToolbar(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, (uint)MenuIds.InteractiveWindowToolbar));
+            uint id = (uint)MenuIds.InteractiveWindowToolbar;
+
+            if (_decorator != null)
+            {
+                _decorator.GetToolbarInfo(out guidInteractiveCmdSet, out id);
+            }
+
+            ErrorHandler.ThrowOnFailure(toolbarHost.AddToolbar(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id));
         }
 
         #endregion
