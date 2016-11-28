@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.25920.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveWindow", "src\Microsoft.VisualStudio.InteractiveWindow\InteractiveWindow.csproj", "{01E9BD68-0339-4A13-B42F-A3CA84D164F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveWindow.UnitTests", "src\Microsoft.VisualStudio.InteractiveWindow.Tests\InteractiveWindow.UnitTests.csproj", "{7F3CB45E-4993-4FA4-8D6A-C2DFFED2DFC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsInteractiveWindow", "src\Microsoft.VisualStudio.VsInteractiveWindow\VsInteractiveWindow.csproj", "{20BB6FAC-44D2-4D76-ABFE-0C1E163A1A4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBD52253-87F1-4475-895E-187127DFA498}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		NuGet.Config = NuGet.Config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

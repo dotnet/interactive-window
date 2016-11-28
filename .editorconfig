@@ -12,6 +12,13 @@ indent_style = space
 # Code files
 [*.cs,*.csx,*.vb,*.vbx]
 indent_size = 4
+dotnet_sort_system_directives_first = true
+dotnet_style_qualification_for_field = false
+dotnet_style_qualification_for_property = false
+dotnet_style_qualification_for_method = false
+dotnet_style_qualification_for_event = false
+dotnet_style_predefined_type_for_locals_parameters_members = true
+dotnet_style_predefined_type_for_member_access = true
 
 # Xml project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
@@ -24,3 +31,4 @@ indent_size = 2
 # JSON files
 [*.json]
 indent_size = 2
+
