@@ -10,19 +10,30 @@
     <UseCodebase>true</UseCodebase>
     <RootNamespace>Microsoft.VisualStudio.InteractiveWindow.Shell</RootNamespace>
     <AssemblyName>Microsoft.VisualStudio.VsInteractiveWindow</AssemblyName>
-    <StartAction>Program</StartAction>
-    <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
-    <StartArguments>/rootsuffix IW /log</StartArguments>
-    <MinimumVisualStudioVersion>$(VisualStudioVersion)</MinimumVisualStudioVersion>
-    <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>VSInteractiveWindowRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>VSInteractiveWindowRules.ruleset</CodeAnalysisRuleSet>      
+    <!-- VSIX settings --> 
+    <MinimumVisualStudioVersion>$(VisualStudioVersion)</MinimumVisualStudioVersion>
+    <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
+    <Ngen>true</Ngen>
+    <NgenApplication>vsn.exe</NgenApplication>
+    <NgenArchitecture>All</NgenArchitecture>
+    <NgenPriority>3</NgenPriority>
+    <!-- Project startup settings -->
+    <StartAction>Program</StartAction>
+    <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix $(VSSDKTargetPlatformRegRootSuffix) /log</StartArguments>    
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\InteractiveWindow.csproj">
       <Project>{01E9BD68-0339-4A13-B42F-A3CA84D164F3}</Project>
       <Name>InteractiveWindow</Name>
+      <!-- VSIX settings -->     
+      <Ngen>true</Ngen>
+      <NgenApplication>vsn.exe</NgenApplication>
+      <NgenArchitecture>All</NgenArchitecture>
+      <NgenPriority>3</NgenPriority>      
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
