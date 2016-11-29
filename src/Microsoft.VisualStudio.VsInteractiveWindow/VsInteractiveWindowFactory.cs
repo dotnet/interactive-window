@@ -28,9 +28,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             });
         }
 
-        public IVsInteractiveWindow Create(VsInteractiveWindowCreationParameters creationInfo) 
+        public IVsInteractiveWindow Create(VsInteractiveWindowCreationParameters creationParameters) 
         {
-            return new VsInteractiveWindow(_componentModel, creationInfo);
+            return new VsInteractiveWindow(_componentModel, creationParameters);
         }
     }
 }
