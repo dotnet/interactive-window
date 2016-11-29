@@ -37,7 +37,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private readonly IComponentModel _componentModel;
         private readonly IVsEditorAdaptersFactoryService _editorAdapters;
-        private readonly VsInteractiveWindowCreationParameters _creationInfo;
+        private readonly VsInteractiveWindowCreationParameters _creationParameters;
 
         private IInteractiveWindow _window;
         private IVsFindTarget _findTarget;
@@ -45,18 +45,18 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         private IInteractiveEvaluator _evaluator;
         private IWpfTextViewHost _textViewHost;
 
-        internal VsInteractiveWindow(IComponentModel model, VsInteractiveWindowCreationParameters creationInfo)
+        internal VsInteractiveWindow(IComponentModel model, VsInteractiveWindowCreationParameters creationParameters)
         {
             _componentModel = model;
-            this.Caption = creationInfo.Title;
+            this.Caption = creationParameters.Title;
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
-            _evaluator = creationInfo.Evaluator;
-            _creationInfo = creationInfo;
+            _evaluator = creationParameters.Evaluator;
+            _creationParameters = creationParameters;
 
             // The following calls this.OnCreate:
             Guid clsId = this.ToolClsid;
             Guid empty = Guid.Empty;
-            Guid typeId = creationInfo.ProviderId;
+            Guid typeId = creationParameters.ProviderId;
             IVsWindowFrame frame;
             var vsShell = (IVsUIShell)ServiceProvider.GlobalProvider.GetService(typeof(SVsUIShell));
 
@@ -65,14 +65,14 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
             ErrorHandler.ThrowOnFailure(
                 vsShell.CreateToolWindow(
-                    (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationInfo.CreationFlags),
-                    (uint)creationInfo.InstanceId,
+                    (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationParameters.CreationFlags),
+                    (uint)creationParameters.InstanceId,
                     this.GetIVsWindowPane(),
                     ref clsId,
                     ref typeId,
                     ref empty,
                     null,
-                    creationInfo.Title,
+                    creationParameters.Title,
                     null,
                     out frame
                 )
@@ -149,16 +149,16 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             Guid guidInteractiveCmdSet = Guids.InteractiveCommandSetId;
             uint id = (uint)MenuIds.InteractiveWindowToolbar;
 
-            if(_creationInfo.ToolbarCommandSet != Guid.Empty)
+            if(_creationParameters.ToolbarCommandSet != Guid.Empty)
             {
-                guidInteractiveCmdSet = _creationInfo.ToolbarCommandSet;
-                id = _creationInfo.ToolbarId;
+                guidInteractiveCmdSet = _creationParameters.ToolbarCommandSet;
+                id = _creationParameters.ToolbarId;
             }
 
-            if (_creationInfo.ToolbarCommandTarget != null)
+            if (_creationParameters.ToolbarCommandTarget != null)
             {
                 IVsToolWindowToolbarHost3 tbh3 = (IVsToolWindowToolbarHost3)toolbarHost;
-                ErrorHandler.ThrowOnFailure(tbh3.AddToolbar3(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id, null, _creationInfo.ToolbarCommandTarget));
+                ErrorHandler.ThrowOnFailure(tbh3.AddToolbar3(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id, null, _creationParameters.ToolbarCommandTarget));
             }
             else
             {

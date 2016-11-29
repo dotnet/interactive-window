@@ -4,6 +4,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 {
     public interface IVsInteractiveWindowFactory2: IVsInteractiveWindowFactory 
     {
-        IVsInteractiveWindow Create(VsInteractiveWindowCreationParameters creationInfo);
+        IVsInteractiveWindow Create(VsInteractiveWindowCreationParameters creationParameters);
     }
 }
