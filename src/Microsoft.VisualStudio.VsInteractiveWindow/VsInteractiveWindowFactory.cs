@@ -5,8 +5,6 @@ using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.InteractiveWindow;
-using System.Collections.Generic;
 
 namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 {
@@ -24,11 +22,15 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public IVsInteractiveWindow Create(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, __VSCREATETOOLWIN creationFlags)
         {
-            return Create(providerId, instanceId, title, evaluator, null, creationFlags);
+            return Create(new VsInteractiveWindowCreationParameters(providerId, instanceId, title, evaluator) 
+            {
+                CreationFlags = creationFlags
+            });
         }
-        public IVsInteractiveWindow Create(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, IVsInteractiveWindowDecorator decorator, __VSCREATETOOLWIN creationFlags) 
+
+        public IVsInteractiveWindow Create(VsInteractiveWindowCreationParameters creationInfo) 
         {
-            return new VsInteractiveWindow(_componentModel, providerId, instanceId, title, evaluator, decorator, creationFlags);
+            return new VsInteractiveWindow(_componentModel, creationInfo);
         }
     }
 }

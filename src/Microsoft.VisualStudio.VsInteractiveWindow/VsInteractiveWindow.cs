@@ -16,7 +16,8 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
 
-namespace Microsoft.VisualStudio.InteractiveWindow.Shell {
+namespace Microsoft.VisualStudio.InteractiveWindow.Shell
+{
     /// <summary>
     /// Default tool window for hosting interactive windows inside of Visual Studio.  This hooks up support for
     /// find in windows, forwarding commands down to the text view adapter, and providing access for setting
@@ -36,7 +37,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell {
 
         private readonly IComponentModel _componentModel;
         private readonly IVsEditorAdaptersFactoryService _editorAdapters;
-         private readonly IVsInteractiveWindowDecorator _decorator;
+        private readonly VsInteractiveWindowCreationParameters _creationInfo;
 
         private IInteractiveWindow _window;
         private IVsFindTarget _findTarget;
@@ -44,25 +45,18 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell {
         private IInteractiveEvaluator _evaluator;
         private IWpfTextViewHost _textViewHost;
 
-        internal VsInteractiveWindow(
-            IComponentModel model, 
-            Guid providerId, 
-            int instanceId, 
-            string title, 
-            IInteractiveEvaluator evaluator,
-            IVsInteractiveWindowDecorator decorator,
-            __VSCREATETOOLWIN creationFlags)
+        internal VsInteractiveWindow(IComponentModel model, VsInteractiveWindowCreationParameters creationInfo)
         {
             _componentModel = model;
-            this.Caption = title;
+            this.Caption = creationInfo.Title;
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
-            _evaluator = evaluator;
-            _decorator = decorator;
+            _evaluator = creationInfo.Evaluator;
+            _creationInfo = creationInfo;
 
             // The following calls this.OnCreate:
             Guid clsId = this.ToolClsid;
             Guid empty = Guid.Empty;
-            Guid typeId = providerId;
+            Guid typeId = creationInfo.ProviderId;
             IVsWindowFrame frame;
             var vsShell = (IVsUIShell)ServiceProvider.GlobalProvider.GetService(typeof(SVsUIShell));
 
@@ -71,14 +65,14 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell {
 
             ErrorHandler.ThrowOnFailure(
                 vsShell.CreateToolWindow(
-                    (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationFlags),
-                    (uint)instanceId,
+                    (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationInfo.CreationFlags),
+                    (uint)creationInfo.InstanceId,
                     this.GetIVsWindowPane(),
                     ref clsId,
                     ref typeId,
                     ref empty,
                     null,
-                    title,
+                    creationInfo.Title,
                     null,
                     out frame
                 )
@@ -155,12 +149,21 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell {
             Guid guidInteractiveCmdSet = Guids.InteractiveCommandSetId;
             uint id = (uint)MenuIds.InteractiveWindowToolbar;
 
-            if (_decorator != null)
+            if(_creationInfo.ToolbarCommandSet != Guid.Empty)
             {
-                _decorator.GetToolbarInfo(out guidInteractiveCmdSet, out id);
+                guidInteractiveCmdSet = _creationInfo.ToolbarCommandSet;
+                id = _creationInfo.ToolbarId;
             }
 
-            ErrorHandler.ThrowOnFailure(toolbarHost.AddToolbar(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id));
+            if (_creationInfo.ToolbarCommandTarget != null)
+            {
+                IVsToolWindowToolbarHost3 tbh3 = (IVsToolWindowToolbarHost3)toolbarHost;
+                ErrorHandler.ThrowOnFailure(tbh3.AddToolbar3(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id, null, _creationInfo.ToolbarCommandTarget));
+            }
+            else
+            {
+                ErrorHandler.ThrowOnFailure(toolbarHost.AddToolbar(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id));
+            }
         }
 
         #endregion
