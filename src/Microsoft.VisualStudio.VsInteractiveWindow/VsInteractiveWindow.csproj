@@ -49,7 +49,6 @@
       <Link>InternalUtilities\FatalError.cs</Link>
     </Compile>
     <Compile Include="ContentTypeMetadata.cs" />
-    <Compile Include="VsInteractiveWindowCreationParameters.cs" />
     <Compile Include="IVsInteractiveWindowFactory2.cs" />
     <Compile Include="ProvideBindingRedirection.cs" />
     <Compile Include="AssemblyRedirects.cs" />

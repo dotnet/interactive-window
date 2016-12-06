@@ -47,21 +47,30 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         private IInteractiveEvaluator _evaluator;
         private IWpfTextViewHost _textViewHost;
 
-        internal VsInteractiveWindow(IComponentModel model, VsInteractiveWindowCreationParameters creationParameters)
+        internal VsInteractiveWindow(
+            IComponentModel model,
+            Guid providerId,
+            int instanceId,
+            string title,
+            IInteractiveEvaluator evaluator,
+            Guid toolbarCommandSet,
+            uint toolbarId,
+            IOleCommandTarget toolbarCommandTarget,
+            __VSCREATETOOLWIN creationFlags)
         {
             _componentModel = model;
-            this.Caption = creationParameters.Title;
+            this.Caption = title;
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
-            _evaluator = creationParameters.Evaluator;
+            _evaluator = evaluator;
 
-            _toolbarCommandSet = creationParameters.ToolbarCommandSet;
-            _toolbarCommandTarget = creationParameters.ToolbarCommandTarget;
-            _toolbarId = creationParameters.ToolbarId;
+            _toolbarCommandSet = toolbarCommandSet;
+            _toolbarCommandTarget = toolbarCommandTarget;
+            _toolbarId = toolbarId;
 
             // The following calls this.OnCreate:
             Guid clsId = this.ToolClsid;
             Guid empty = Guid.Empty;
-            Guid typeId = creationParameters.ProviderId;
+            Guid typeId = providerId;
             IVsWindowFrame frame;
             var vsShell = (IVsUIShell)ServiceProvider.GlobalProvider.GetService(typeof(SVsUIShell));
 
@@ -70,14 +79,14 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
             ErrorHandler.ThrowOnFailure(
                 vsShell.CreateToolWindow(
-                    (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationParameters.CreationFlags),
-                    (uint)creationParameters.InstanceId,
+                    (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationFlags),
+                    (uint)instanceId,
                     this.GetIVsWindowPane(),
                     ref clsId,
                     ref typeId,
                     ref empty,
                     null,
-                    creationParameters.Title,
+                    title,
                     null,
                     out frame
                 )

@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.OLE.Interop;
 
 namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 {
@@ -22,15 +23,20 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public IVsInteractiveWindow Create(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, __VSCREATETOOLWIN creationFlags)
         {
-            return Create(new VsInteractiveWindowCreationParameters(providerId, instanceId, title, evaluator, Guid.Empty, 0, null) 
-            {
-                CreationFlags = creationFlags
-            });
+            return Create(providerId, instanceId, title, evaluator, Guid.Empty, 0, null, creationFlags);
         }
 
-        public IVsInteractiveWindow Create(VsInteractiveWindowCreationParameters creationParameters) 
+        public IVsInteractiveWindow Create(
+            Guid providerId, 
+            int instanceId, 
+            string title, 
+            IInteractiveEvaluator evaluator,
+            Guid toolbarCommandSet,
+            uint toolbarId, 
+            IOleCommandTarget toolbarCommandTarget, 
+            __VSCREATETOOLWIN creationFlags) 
         {
-            return new VsInteractiveWindow(_componentModel, creationParameters);
+            return new VsInteractiveWindow(_componentModel, providerId, instanceId, title, evaluator, toolbarCommandSet, toolbarId, toolbarCommandTarget, creationFlags);
         }
     }
 }
