@@ -23,7 +23,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public IVsInteractiveWindow Create(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, __VSCREATETOOLWIN creationFlags)
         {
-            return Create(providerId, instanceId, title, evaluator, Guid.Empty, 0, null, creationFlags);
+            return Create(providerId, instanceId, title, evaluator, creationFlags, Guid.Empty, 0, null);
         }
 
         public IVsInteractiveWindow Create(
@@ -31,12 +31,12 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             int instanceId, 
             string title, 
             IInteractiveEvaluator evaluator,
+            __VSCREATETOOLWIN creationFlags,
             Guid toolbarCommandSet,
             uint toolbarId, 
-            IOleCommandTarget toolbarCommandTarget, 
-            __VSCREATETOOLWIN creationFlags) 
+            IOleCommandTarget toolbarCommandTarget) 
         {
-            return new VsInteractiveWindow(_componentModel, providerId, instanceId, title, evaluator, toolbarCommandSet, toolbarId, toolbarCommandTarget, creationFlags);
+            return new VsInteractiveWindow(_componentModel, providerId, instanceId, title, evaluator, creationFlags, toolbarCommandSet, toolbarId, toolbarCommandTarget);
         }
     }
 }

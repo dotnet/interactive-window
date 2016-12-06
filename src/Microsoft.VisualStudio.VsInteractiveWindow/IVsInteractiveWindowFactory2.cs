@@ -13,9 +13,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             int instanceId, 
             string title, 
             IInteractiveEvaluator evaluator,
+            __VSCREATETOOLWIN creationFlags,
             Guid toolbarCommandSet,
             uint toolbarId,
-            IOleCommandTarget toolbarCommandTarget,
-            __VSCREATETOOLWIN creationFlags);
+            IOleCommandTarget toolbarCommandTarget);
     }
 }
