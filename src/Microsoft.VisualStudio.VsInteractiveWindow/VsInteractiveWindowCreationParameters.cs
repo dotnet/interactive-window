@@ -44,21 +44,28 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         /// the provided toolbar by its command set and id. The toolbar must be specified
         /// in VSCT file.
         /// </summary>
-        public Guid ToolbarCommandSet { get; set; }
+        public Guid ToolbarCommandSet { get; }
 
         /// <summary>
         /// Custom toolbar id. <see cref="VsInteractiveWindowCreationParameters.ToolbarCommandSet"/>
         /// </summary>
-        public uint ToolbarId { get; set; }
+        public uint ToolbarId { get; }
 
         /// <summary>
         /// Toolbar command target. If supplied, the interactive window will call 
         /// <see cref="IVsToolWindowToolbarHost3.AddToolbar3(VSTWT_LOCATION, ref Guid, uint, IDropTarget, IOleCommandTarget)"/>
-        /// instead of the defailt <see cref="IVsToolWindowToolbarHost.AddToolbar(VSTWT_LOCATION, ref Guid, uint)"/>
+        /// instead of the default <see cref="IVsToolWindowToolbarHost.AddToolbar(VSTWT_LOCATION, ref Guid, uint)"/>
         /// </summary>
-        public IOleCommandTarget ToolbarCommandTarget { get; set; }
+        public IOleCommandTarget ToolbarCommandTarget { get; }
 
-        public VsInteractiveWindowCreationParameters(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator) 
+        public VsInteractiveWindowCreationParameters(
+            Guid providerId, 
+            int instanceId, 
+            string title,
+            IInteractiveEvaluator evaluator,
+            Guid toolbarCommandSet,
+            uint toolbarId,
+            IOleCommandTarget toolbarCommandTarget) 
         {
             if (providerId == Guid.Empty) 
             {
@@ -69,6 +76,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             InstanceId = instanceId;
             Title = title;
             Evaluator = evaluator ?? throw new ArgumentNullException(nameof(evaluator));
+
+            ToolbarCommandSet = toolbarCommandSet;
+            ToolbarId = toolbarId;
+            ToolbarCommandTarget = toolbarCommandTarget;
         }
     }
 }

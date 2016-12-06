@@ -22,7 +22,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public IVsInteractiveWindow Create(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, __VSCREATETOOLWIN creationFlags)
         {
-            return Create(new VsInteractiveWindowCreationParameters(providerId, instanceId, title, evaluator) 
+            return Create(new VsInteractiveWindowCreationParameters(providerId, instanceId, title, evaluator, Guid.Empty, 0, null) 
             {
                 CreationFlags = creationFlags
             });

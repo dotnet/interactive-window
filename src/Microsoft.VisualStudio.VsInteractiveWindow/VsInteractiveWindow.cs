@@ -37,7 +37,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private readonly IComponentModel _componentModel;
         private readonly IVsEditorAdaptersFactoryService _editorAdapters;
-        private readonly VsInteractiveWindowCreationParameters _creationParameters;
+        private readonly Guid _toolbarCommandSet;
+        private readonly uint _toolbarId;
+        private readonly IOleCommandTarget _toolbarCommandTarget;
 
         private IInteractiveWindow _window;
         private IVsFindTarget _findTarget;
@@ -51,7 +53,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             this.Caption = creationParameters.Title;
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
             _evaluator = creationParameters.Evaluator;
-            _creationParameters = creationParameters;
+
+            _toolbarCommandSet = creationParameters.ToolbarCommandSet;
+            _toolbarCommandTarget = creationParameters.ToolbarCommandTarget;
+            _toolbarId = creationParameters.ToolbarId;
 
             // The following calls this.OnCreate:
             Guid clsId = this.ToolClsid;
@@ -149,16 +154,16 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             Guid guidInteractiveCmdSet = Guids.InteractiveCommandSetId;
             uint id = (uint)MenuIds.InteractiveWindowToolbar;
 
-            if(_creationParameters.ToolbarCommandSet != Guid.Empty)
+            if(_toolbarCommandSet != Guid.Empty)
             {
-                guidInteractiveCmdSet = _creationParameters.ToolbarCommandSet;
-                id = _creationParameters.ToolbarId;
+                guidInteractiveCmdSet = _toolbarCommandSet;
+                id = _toolbarId;
             }
 
-            if (_creationParameters.ToolbarCommandTarget != null)
+            if (_toolbarCommandTarget != null)
             {
                 IVsToolWindowToolbarHost3 tbh3 = (IVsToolWindowToolbarHost3)toolbarHost;
-                ErrorHandler.ThrowOnFailure(tbh3.AddToolbar3(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id, null, _creationParameters.ToolbarCommandTarget));
+                ErrorHandler.ThrowOnFailure(tbh3.AddToolbar3(VSTWT_LOCATION.VSTWT_TOP, ref guidInteractiveCmdSet, id, null, _toolbarCommandTarget));
             }
             else
             {
