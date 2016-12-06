@@ -60,6 +60,7 @@
       <Link>InternalUtilities\FatalError.cs</Link>
     </Compile>
     <Compile Include="ContentTypeMetadata.cs" />
+    <Compile Include="IVsInteractiveWindowFactory2.cs" />
     <Compile Include="ProvideBindingRedirection.cs" />
     <Compile Include="AssemblyRedirects.cs" />
     <Compile Include="CommandIds.cs" />
@@ -108,11 +109,9 @@
     <PublicAPI Include="PublicAPI.Unshipped.txt" />
   </ItemGroup>
   <Import Project="..\..\build\Targets\Imports.targets" />
-  
   <!-- VSSDK targets to build VSIX -->
   <Import Project="$(NuGetPackageRoot)\Microsoft.VSSDK.BuildTools\$(MicrosoftVSSDKBuildToolsVersion)\build\Microsoft.VsSDK.BuildTools.targets" />
   <Import Project="$(VSToolsPath)\vssdk\Microsoft.VsSDK.targets" />
- 
   <!-- Returns the current build version. Used in .vsixmanifests to substitute our build version into them -->
   <Target Name="GetBuildVersion" Outputs="$(VsixVersion)" />
 </Project>

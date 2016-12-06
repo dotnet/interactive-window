@@ -5,12 +5,13 @@ using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.InteractiveWindow;
+using Microsoft.VisualStudio.OLE.Interop;
 
 namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 {
     [Export(typeof(IVsInteractiveWindowFactory))]
-    internal sealed class VsInteractiveWindowFactory : IVsInteractiveWindowFactory
+    [Export(typeof(IVsInteractiveWindowFactory2))]
+    internal sealed class VsInteractiveWindowFactory : IVsInteractiveWindowFactory2
     {
         private readonly IComponentModel _componentModel;
 
@@ -22,7 +23,20 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public IVsInteractiveWindow Create(Guid providerId, int instanceId, string title, IInteractiveEvaluator evaluator, __VSCREATETOOLWIN creationFlags)
         {
-            return new VsInteractiveWindow(_componentModel, providerId, instanceId, title, evaluator, creationFlags);
+            return Create(providerId, instanceId, title, evaluator, creationFlags, Guid.Empty, 0, null);
+        }
+
+        public IVsInteractiveWindow Create(
+            Guid providerId, 
+            int instanceId, 
+            string title, 
+            IInteractiveEvaluator evaluator,
+            __VSCREATETOOLWIN creationFlags,
+            Guid toolbarCommandSet,
+            uint toolbarId, 
+            IOleCommandTarget toolbarCommandTarget) 
+        {
+            return new VsInteractiveWindow(_componentModel, providerId, instanceId, title, evaluator, creationFlags, toolbarCommandSet, toolbarId, toolbarCommandTarget);
         }
     }
 }
