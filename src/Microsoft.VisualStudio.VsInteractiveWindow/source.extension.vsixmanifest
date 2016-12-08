@@ -4,23 +4,14 @@
     <Identity Id="1F42C6D0-F876-4AF0-8185-1BEB0A325BB2" Version="|%CurrentProject%;GetBuildVersion|" Language="en-US" Publisher="Microsoft" />
     <DisplayName>VisualStudio Interactive Window</DisplayName>
     <Description>Interactive components for Visual Studio.</Description>
-    <ShortcutPath>..\CommonExtensions\Microsoft\VisualStudioInteractiveWindow</ShortcutPath>
+    <PackageId>Microsoft.VisualStudio.InteractiveWindow</PackageId>
   </Metadata>
   <Installation Experimental="true">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0,]" />
-    <InstallationTarget Version="[14.0,]" Id="Microsoft.VisualStudio.VSWinDesktopExpress" />
-    <InstallationTarget Version="[14.0,]" Id="Microsoft.VisualStudio.VWDExpress" />
-    <InstallationTarget Version="[14.0,]" Id="Microsoft.VisualStudio.VSWinExpress" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,]" />
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.VSWinDesktopExpress" />
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.VWDExpress" />
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.VSWinExpress" />
   </Installation>
-  <Installer>
-    <Actions>
-      <Action Type="Ngen" Path="Microsoft.VisualStudio.InteractiveWindow.dll" />
-      <Action Type="Ngen" Path="Microsoft.VisualStudio.VsInteractiveWindow.dll" />
-    </Actions>
-  </Installer>
-  <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-  </Dependencies>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.MefComponent" Path="|InteractiveWindow;GetTargetPath|" />
     <Asset Type="Microsoft.VisualStudio.MefComponent" Path="|%CurrentProject%;GetTargetPath|" />
@@ -29,6 +20,7 @@
     <Asset Type="Microsoft.VisualStudio.VsPackage" Path="Microsoft.VisualStudio.VsInteractiveWindow.pkgdef" />
   </Assets>
   <Prerequisites>
+    <Prerequisite Id="Microsoft.Net.PackageGroup.4.6.Redist" Version="[15.0,16.0)" DisplayName=".NET Framework 4.6" />
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
   </Prerequisites>
 </PackageManifest>

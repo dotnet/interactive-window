@@ -14,6 +14,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>VSInteractiveWindowRules.ruleset</CodeAnalysisRuleSet>      
     <!-- VSIX settings --> 
+    <IsProductComponent>true</IsProductComponent>
+    <ExtensionInstallationRoot>CommonExtensions</ExtensionInstallationRoot> 
+    <ExtensionInstallationFolder>Microsoft\InteractiveWindow</ExtensionInstallationFolder> 
     <MinimumVisualStudioVersion>$(VisualStudioVersion)</MinimumVisualStudioVersion>
     <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
     <Ngen>true</Ngen>
