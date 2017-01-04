@@ -1,40 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <AssemblyVersion>2.0.0</AssemblyVersion>
-    <IsReleaseVersion>false</IsReleaseVersion>
+    <NuGetMoniker>rc3</NuGetMoniker>
   </PropertyGroup>
-
-  <Choose>
-    <When Condition="$(BUILD_BUILDNUMBER) == ''">
-      <PropertyGroup>
-        <NuGetVersionSuffix>experimental</NuGetVersionSuffix>
-        <!-- When build locally use a version that's higher than any version that is build by lab and possibly installed in VS -->
-        <BuildVersion>42.42.42.42424</BuildVersion>
-        <VsixVersion>$(AssemblyVersion).9000000</VsixVersion>
-      </PropertyGroup>
-    </When>
-
-    <Otherwise>
-      <PropertyGroup>
-        <ShortBuildNumber>$(BUILD_BUILDNUMBER.Substring(3))</ShortBuildNumber>
-        <NuGetVersionSuffix>rc2-$(ShortBuildNumber.Split('.')[0])-$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</NuGetVersionSuffix>
-        <BuildVersion>$(AssemblyVersion).$(ShortBuildNumber.Split('.')[0])</BuildVersion>
-        <VsixVersion>$(AssemblyVersion).$(ShortBuildNumber.Split('.')[0])$(ShortBuildNumber.Split('.')[1].PadLeft(2,'0'))</VsixVersion>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-  
-  <Choose>
-    <When Condition="'$(IsReleaseVersion)' == 'true'" >
-      <PropertyGroup>
-        <NuGetVersion>$(AssemblyVersion)</NuGetVersion>
-      </PropertyGroup>
-    </When>
-    
-    <Otherwise>
-      <PropertyGroup>
-        <NuGetVersion>$(AssemblyVersion)-$(NuGetVersionSuffix)</NuGetVersion>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
+  <Import Project="..\Toolset\Version.props"/>
 </Project>
