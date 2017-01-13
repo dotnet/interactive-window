@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="pt-BR" original="src/Microsoft.VisualStudio.VsInteractiveWindow/InteractiveWindow.vsct">
+    <body>
+      <group id="src/Microsoft.VisualStudio.VsInteractiveWindow/InteractiveWindow.vsct" />
+      <trans-unit id="menuIdInteractiveContextMenu|ButtonText">
+        <source>Interactive Console</source>
+        <target state="new">Interactive Console</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="menuIdInteractiveContextMenu|CommandName">
+        <source>Interactive Console</source>
+        <target state="new">Interactive Console</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="menuIdInteractiveToolbar|ButtonText">
+        <source>Interactive Window</source>
+        <target state="new">Interactive Window</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="menuIdInteractiveToolbar|CommandName">
+        <source>Interactive Window</source>
+        <target state="new">Interactive Window</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidReset|ButtonText">
+        <source>Reset</source>
+        <target state="new">Reset</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidReset|LocCanonicalName">
+        <source>.InteractiveConsole.Reset</source>
+        <target state="new">.InteractiveConsole.Reset</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidSmartExecute|ButtonText">
+        <source>Execute or Paste Input</source>
+        <target state="new">Execute or Paste Input</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidSmartExecute|LocCanonicalName">
+        <source>.InteractiveConsole.ExecuteOrPasteInput</source>
+        <target state="new">.InteractiveConsole.ExecuteOrPasteInput</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidHistoryPrevious|ButtonText">
+        <source>History Previous</source>
+        <target state="new">History Previous</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidHistoryPrevious|LocCanonicalName">
+        <source>.InteractiveConsole.HistoryPrevious</source>
+        <target state="new">.InteractiveConsole.HistoryPrevious</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidHistoryNext|ButtonText">
+        <source>History Next</source>
+        <target state="new">History Next</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidHistoryNext|LocCanonicalName">
+        <source>.InteractiveConsole.HistoryNext</source>
+        <target state="new">.InteractiveConsole.HistoryNext</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidSearchHistoryNext|ButtonText">
+        <source>Search History Next</source>
+        <target state="new">Search History Next</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidSearchHistoryNext|LocCanonicalName">
+        <source>.InteractiveConsole.SearchHistoryNext</source>
+        <target state="new">.InteractiveConsole.SearchHistoryNext</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidSearchHistoryPrevious|ButtonText">
+        <source>Search History Previous</source>
+        <target state="new">Search History Previous</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidSearchHistoryPrevious|LocCanonicalName">
+        <source>.InteractiveConsole.SearchHistoryPrevious</source>
+        <target state="new">.InteractiveConsole.SearchHistoryPrevious</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidClearScreen|ButtonText">
+        <source>Clear Screen</source>
+        <target state="new">Clear Screen</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidClearScreen|LocCanonicalName">
+        <source>.InteractiveConsole.ClearScreen</source>
+        <target state="new">.InteractiveConsole.ClearScreen</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidBreakLine|ButtonText">
+        <source>Break Line</source>
+        <target state="new">Break Line</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidBreakLine|LocCanonicalName">
+        <source>.InteractiveConsole.BreakLine</source>
+        <target state="new">.InteractiveConsole.BreakLine</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidCopyCode|ButtonText">
+        <source>Copy Code</source>
+        <target state="new">Copy Code</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidCopyCode|LocCanonicalName">
+        <source>.InteractiveConsole.CopyCode</source>
+        <target state="new">.InteractiveConsole.CopyCode</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidExecuteInInteractiveWindow|ButtonText">
+        <source>Execute in Interactive</source>
+        <target state="new">Execute in Interactive</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidExecuteInInteractiveWindow|LocCanonicalName">
+        <source>.InteractiveConsole.ExecuteInInteractive</source>
+        <target state="new">.InteractiveConsole.ExecuteInInteractive</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidCopyToInteractiveWindow|ButtonText">
+        <source>Copy to Interactive</source>
+        <target state="new">Copy to Interactive</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="cmdidCopyToInteractiveWindow|LocCanonicalName">
+        <source>.InteractiveConsole.CopyToInteractive</source>
+        <target state="new">.InteractiveConsole.CopyToInteractive</target>
+        <note></note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

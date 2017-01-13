@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="ja" original="src/Microsoft.VisualStudio.VsInteractiveWindow/VSPackage.resx">
+    <body>
+      <group id="src/Microsoft.VisualStudio.VsInteractiveWindow/VSPackage.resx" />
+      <trans-unit id="110">
+        <source>Microsoft Visual Studio Interactive Window</source>
+        <target state="new">Microsoft Visual Studio Interactive Window</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="112">
+        <source>Microsoft Visual Studio Interactive Window</source>
+        <target state="new">Microsoft Visual Studio Interactive Window</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="200">
+        <source>Interactive Window</source>
+        <target state="new">Interactive Window</target>
+        <note></note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
