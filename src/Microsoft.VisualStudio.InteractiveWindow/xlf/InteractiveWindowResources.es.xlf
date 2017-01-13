@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="es" original="src/Microsoft.VisualStudio.InteractiveWindow/InteractiveWindowResources.resx">
+    <body>
+      <group id="src/Microsoft.VisualStudio.InteractiveWindow/InteractiveWindowResources.resx" />
+      <trans-unit id="AlreadyInitialized">
+        <source>The interactive window has already been initialized.</source>
+        <target state="new">The interactive window has already been initialized.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="AltDownArrowHelp">
+        <source>Replace the current submission with a subsequent submission (after having previously navigated backwards).</source>
+        <target state="new">Replace the current submission with a subsequent submission (after having previously navigated backwards).</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="AltUpArrowHelp">
+        <source>Replace the current submission with a previous submission.</source>
+        <target state="new">Replace the current submission with a previous submission.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="ClearScreenCommandDescription">
+        <source>Clears the contents of the editor window, leaving history and execution context intact.</source>
+        <target state="new">Clears the contents of the editor window, leaving history and execution context intact.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CommandFailed">
+        <source>Command '{0}' failed: {1}</source>
+        <target state="new">Command '{0}' failed: {1}</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CommandNamePlaceholder">
+        <source>[command-name]</source>
+        <target state="new">[command-name]</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlAHelp">
+        <source>First press, select the submission containing the cursor.  Second press, select all text in the window.</source>
+        <target state="new">First press, select the submission containing the cursor.  Second press, select all text in the window.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlAltDownArrowHelp">
+        <source>Replace the current submission with a subsequent submission beginning with the same text (after having previously navigated backwards).</source>
+        <target state="new">Replace the current submission with a subsequent submission beginning with the same text (after having previously navigated backwards).</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlAltUpArrowHelp">
+        <source>Replace the current submission with a previous submission beginning with the same text.</source>
+        <target state="new">Replace the current submission with a previous submission beginning with the same text.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlECtrlEnterHelp">
+        <source>Paste and execute the selection before any pending input in the interactive buffer.</source>
+        <target state="new">Paste and execute the selection before any pending input in the interactive buffer.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlEnterHelp1">
+        <source>Within the current submission, evaluate the current submission.</source>
+        <target state="new">Within the current submission, evaluate the current submission.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlEnterHelp2">
+        <source>Within a previous submission, append the previous submission to the current submission.</source>
+        <target state="new">Within a previous submission, append the previous submission to the current submission.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CtrlKCtrlEnterHelp">
+        <source>Paste the selection at the end of interactive buffer, leave caret at the end of input.</source>
+        <target state="new">Paste the selection at the end of interactive buffer, leave caret at the end of input.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="DownArrowHelp1">
+        <source>At the end of the current submission, replace the current submission with a subsequent submission (after having previously navigated backwards).</source>
+        <target state="new">At the end of the current submission, replace the current submission with a subsequent submission (after having previously navigated backwards).</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="DownArrowHelp2">
+        <source>Elsewhere, move the cursor down one line.</source>
+        <target state="new">Elsewhere, move the cursor down one line.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="DuplicateCommand">
+        <source>A command with the name '{0}' has already been registered.</source>
+        <target state="new">A command with the name '{0}' has already been registered.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="EnterHelp">
+        <source>If the current submission appears to be complete, evaluate it.  Otherwise, insert a new line.</source>
+        <target state="new">If the current submission appears to be complete, evaluate it.  Otherwise, insert a new line.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="EscapeHelp">
+        <source>Clear the current submission.</source>
+        <target state="new">Clear the current submission.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="HelpCommandDescription">
+        <source>Display help on specified command, or all available commands and key bindings if none specified.</source>
+        <target state="new">Display help on specified command, or all available commands and key bindings if none specified.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="InternalError">
+        <source>An internal error has occurred in the Interactive window.  Please restart Visual Studio.</source>
+        <target state="new">An internal error has occurred in the Interactive window.  Please restart Visual Studio.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="KeyboardShortcuts">
+        <source>Keyboard shortcuts:</source>
+        <target state="new">Keyboard shortcuts:</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="MissingCommandName">
+        <source>The command of type '{0}' has no command names.</source>
+        <target state="new">The command of type '{0}' has no command names.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="NotInitialized">
+        <source>The interactive window has not yet been initialized.</source>
+        <target state="new">The interactive window has not yet been initialized.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="IsResetting">
+        <source>The interactive window is resetting.</source>
+        <target state="new">The interactive window is resetting.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="Parameters">
+        <source>Parameters:</source>
+        <target state="new">Parameters:</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="ReplCommands">
+        <source>REPL commands:</source>
+        <target state="new">REPL commands:</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="RequireNonUIThread">
+        <source>This method may not be called on the UI thread (to avoid hangs).</source>
+        <target state="new">This method may not be called on the UI thread (to avoid hangs).</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="RequireUIThread">
+        <source>This method may only be called on the UI thread.</source>
+        <target state="new">This method may only be called on the UI thread.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="ResetCommandDescription">
+        <source>Reset the execution environment to the initial state, keep history.</source>
+        <target state="new">Reset the execution environment to the initial state, keep history.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="ResetCommandParametersDescription">
+        <source>Reset to a clean environment (only mscorlib referenced), do not run initialization script.</source>
+        <target state="new">Reset to a clean environment (only mscorlib referenced), do not run initialization script.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="ShiftEnterHelp">
+        <source>Insert a new line.</source>
+        <target state="new">Insert a new line.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="UnknownCommand">
+        <source>Unknown command '{0}'</source>
+        <target state="new">Unknown command '{0}'</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="UpArrowHelp1">
+        <source>At the end of the current submission, replace the current submission with a previous submission.</source>
+        <target state="new">At the end of the current submission, replace the current submission with a previous submission.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="UpArrowHelp2">
+        <source>Elsewhere, move the cursor up one line.</source>
+        <target state="new">Elsewhere, move the cursor up one line.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="Usage">
+        <source>Usage:</source>
+        <target state="new">Usage:</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="WaitTitle">
+        <source>Copy</source>
+        <target state="new">Copy</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="WaitMessage">
+        <source>Generating Rich Text Format representation from selection.</source>
+        <target state="new">Generating Rich Text Format representation from selection.</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="Backspace">
+        <source>Delete Character To Left</source>
+        <target state="new">Delete Character To Left</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="BreakLine">
+        <source>Insert New Line</source>
+        <target state="new">Insert New Line</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="Paste">
+        <source>Paste</source>
+        <target state="new">Paste</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="Cut">
+        <source>Cut Selection</source>
+        <target state="new">Cut Selection</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="Delete">
+        <source>Delete Text</source>
+        <target state="new">Delete Text</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CutLine">
+        <source>Cut Line</source>
+        <target state="new">Cut Line</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="DeleteLine">
+        <source>Delete Line</source>
+        <target state="new">Delete Line</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="TypeChar">
+        <source>Insert Text</source>
+        <target state="new">Insert Text</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="CSVBScriptDirectives">
+        <source>Script directives:</source>
+        <target state="new">Script directives:</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="RefHelp">
+        <source>Add a metadata reference to specified assembly and all its dependencies, e.g. #r "myLib.dll".</source>
+        <target state="new">Add a metadata reference to specified assembly and all its dependencies, e.g. #r "myLib.dll".</target>
+        <note></note>
+      </trans-unit>
+      <trans-unit id="LoadHelp">
+        <source>Load specified script file and execute it, e.g. #load "myScript.csx".</source>
+        <target state="new">Load specified script file and execute it, e.g. #load "myScript.csx".</target>
+        <note></note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
