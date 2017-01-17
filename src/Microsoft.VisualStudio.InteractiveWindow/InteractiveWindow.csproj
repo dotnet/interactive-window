@@ -104,6 +104,9 @@
       <LastGenOutput>InteractiveWindowResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="InteractiveWindowResources.*.resx">
+      <DependentUpon>InteractiveWindowResources.resx</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
