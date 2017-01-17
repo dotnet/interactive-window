@@ -5,133 +5,133 @@
       <group id="src/Microsoft.VisualStudio.VsInteractiveWindow/InteractiveWindow.vsct" />
       <trans-unit id="menuIdInteractiveContextMenu|ButtonText">
         <source>Interactive Console</source>
-        <target state="new">Interactive Console</target>
-        <note></note>
+        <target state="translated">Etkileşimli Konsol</target>
+        <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveContextMenu|CommandName">
         <source>Interactive Console</source>
-        <target state="new">Interactive Console</target>
-        <note></note>
+        <target state="translated">Etkileşimli Konsol</target>
+        <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveToolbar|ButtonText">
         <source>Interactive Window</source>
-        <target state="new">Interactive Window</target>
-        <note></note>
+        <target state="translated">Etkileşimli Pencere</target>
+        <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveToolbar|CommandName">
         <source>Interactive Window</source>
-        <target state="new">Interactive Window</target>
-        <note></note>
+        <target state="translated">Etkileşimli Pencere</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidReset|ButtonText">
         <source>Reset</source>
-        <target state="new">Reset</target>
-        <note></note>
+        <target state="translated">Sıfırla</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidReset|LocCanonicalName">
         <source>.InteractiveConsole.Reset</source>
-        <target state="new">.InteractiveConsole.Reset</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.Reset</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSmartExecute|ButtonText">
         <source>Execute or Paste Input</source>
-        <target state="new">Execute or Paste Input</target>
-        <note></note>
+        <target state="translated">Girişi Yürüt veya Yapıştır</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSmartExecute|LocCanonicalName">
         <source>.InteractiveConsole.ExecuteOrPasteInput</source>
-        <target state="new">.InteractiveConsole.ExecuteOrPasteInput</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.ExecuteOrPasteInput</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryPrevious|ButtonText">
         <source>History Previous</source>
-        <target state="new">History Previous</target>
-        <note></note>
+        <target state="translated">Önceki Geçmiş</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryPrevious|LocCanonicalName">
         <source>.InteractiveConsole.HistoryPrevious</source>
-        <target state="new">.InteractiveConsole.HistoryPrevious</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.HistoryPrevious</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryNext|ButtonText">
         <source>History Next</source>
-        <target state="new">History Next</target>
-        <note></note>
+        <target state="translated">Sonraki Geçmiş</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryNext|LocCanonicalName">
         <source>.InteractiveConsole.HistoryNext</source>
-        <target state="new">.InteractiveConsole.HistoryNext</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.HistoryNext</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryNext|ButtonText">
         <source>Search History Next</source>
-        <target state="new">Search History Next</target>
-        <note></note>
+        <target state="translated">Sonraki Geçmişi Ara</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryNext|LocCanonicalName">
         <source>.InteractiveConsole.SearchHistoryNext</source>
-        <target state="new">.InteractiveConsole.SearchHistoryNext</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.SearchHistoryNext</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryPrevious|ButtonText">
         <source>Search History Previous</source>
-        <target state="new">Search History Previous</target>
-        <note></note>
+        <target state="translated">Önceki Geçmişi Ara</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryPrevious|LocCanonicalName">
         <source>.InteractiveConsole.SearchHistoryPrevious</source>
-        <target state="new">.InteractiveConsole.SearchHistoryPrevious</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.SearchHistoryPrevious</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidClearScreen|ButtonText">
         <source>Clear Screen</source>
-        <target state="new">Clear Screen</target>
-        <note></note>
+        <target state="translated">Ekranı Temizle</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidClearScreen|LocCanonicalName">
         <source>.InteractiveConsole.ClearScreen</source>
-        <target state="new">.InteractiveConsole.ClearScreen</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.ClearScreen</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidBreakLine|ButtonText">
         <source>Break Line</source>
-        <target state="new">Break Line</target>
-        <note></note>
+        <target state="translated">Satır Sonu</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidBreakLine|LocCanonicalName">
         <source>.InteractiveConsole.BreakLine</source>
-        <target state="new">.InteractiveConsole.BreakLine</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.BreakLine</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyCode|ButtonText">
         <source>Copy Code</source>
-        <target state="new">Copy Code</target>
-        <note></note>
+        <target state="translated">Kodu Kopyala</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyCode|LocCanonicalName">
         <source>.InteractiveConsole.CopyCode</source>
-        <target state="new">.InteractiveConsole.CopyCode</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.CopyCode</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidExecuteInInteractiveWindow|ButtonText">
         <source>Execute in Interactive</source>
-        <target state="new">Execute in Interactive</target>
-        <note></note>
+        <target state="translated">Etkileşimli içinde Yürüt</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidExecuteInInteractiveWindow|LocCanonicalName">
         <source>.InteractiveConsole.ExecuteInInteractive</source>
-        <target state="new">.InteractiveConsole.ExecuteInInteractive</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.ExecuteInInteractive</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyToInteractiveWindow|ButtonText">
         <source>Copy to Interactive</source>
-        <target state="new">Copy to Interactive</target>
-        <note></note>
+        <target state="translated">Etkileşimli Kopyala</target>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyToInteractiveWindow|LocCanonicalName">
         <source>.InteractiveConsole.CopyToInteractive</source>
-        <target state="new">.InteractiveConsole.CopyToInteractive</target>
-        <note></note>
+        <target state="translated">.InteractiveConsole.CopyToInteractive</target>
+        <note />
       </trans-unit>
     </body>
   </file>
