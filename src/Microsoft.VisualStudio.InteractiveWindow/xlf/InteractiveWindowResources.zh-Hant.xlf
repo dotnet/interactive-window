@@ -5,243 +5,243 @@
       <group id="src/Microsoft.VisualStudio.InteractiveWindow/InteractiveWindowResources.resx" />
       <trans-unit id="AlreadyInitialized">
         <source>The interactive window has already been initialized.</source>
-        <target state="new">The interactive window has already been initialized.</target>
-        <note></note>
+        <target state="translated">已經初始化此互動式視窗。</target>
+        <note />
       </trans-unit>
       <trans-unit id="AltDownArrowHelp">
         <source>Replace the current submission with a subsequent submission (after having previously navigated backwards).</source>
-        <target state="new">Replace the current submission with a subsequent submission (after having previously navigated backwards).</target>
-        <note></note>
+        <target state="translated">以下一個提交取代目前提交 (向後巡覽之後)。</target>
+        <note />
       </trans-unit>
       <trans-unit id="AltUpArrowHelp">
         <source>Replace the current submission with a previous submission.</source>
-        <target state="new">Replace the current submission with a previous submission.</target>
-        <note></note>
+        <target state="translated">以上一個提交取代目前提交。</target>
+        <note />
       </trans-unit>
       <trans-unit id="ClearScreenCommandDescription">
         <source>Clears the contents of the editor window, leaving history and execution context intact.</source>
-        <target state="new">Clears the contents of the editor window, leaving history and execution context intact.</target>
-        <note></note>
+        <target state="translated">清除編輯器視窗的內容，保持記錄及執行內容不變。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CommandFailed">
         <source>Command '{0}' failed: {1}</source>
-        <target state="new">Command '{0}' failed: {1}</target>
-        <note></note>
+        <target state="translated">命令 '{0}' 失敗: {1}</target>
+        <note />
       </trans-unit>
       <trans-unit id="CommandNamePlaceholder">
         <source>[command-name]</source>
-        <target state="new">[command-name]</target>
-        <note></note>
+        <target state="translated">[命令名稱]</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlAHelp">
         <source>First press, select the submission containing the cursor.  Second press, select all text in the window.</source>
-        <target state="new">First press, select the submission containing the cursor.  Second press, select all text in the window.</target>
-        <note></note>
+        <target state="translated">首先選取包含資料指標的提交。接著選取視窗中所有文字。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlAltDownArrowHelp">
         <source>Replace the current submission with a subsequent submission beginning with the same text (after having previously navigated backwards).</source>
-        <target state="new">Replace the current submission with a subsequent submission beginning with the same text (after having previously navigated backwards).</target>
-        <note></note>
+        <target state="translated">以開頭文字相同的下一個提交取代目前提交 (向後巡覽之後)。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlAltUpArrowHelp">
         <source>Replace the current submission with a previous submission beginning with the same text.</source>
-        <target state="new">Replace the current submission with a previous submission beginning with the same text.</target>
-        <note></note>
+        <target state="translated">以開頭文字相同的上一個提交取代目前提交。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlECtrlEnterHelp">
         <source>Paste and execute the selection before any pending input in the interactive buffer.</source>
-        <target state="new">Paste and execute the selection before any pending input in the interactive buffer.</target>
-        <note></note>
+        <target state="translated">在互動式緩衝區中任一暫止輸入之前貼上選取項目，並加以執行。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlEnterHelp1">
         <source>Within the current submission, evaluate the current submission.</source>
-        <target state="new">Within the current submission, evaluate the current submission.</target>
-        <note></note>
+        <target state="translated">在目前提交中，評估目前提交。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlEnterHelp2">
         <source>Within a previous submission, append the previous submission to the current submission.</source>
-        <target state="new">Within a previous submission, append the previous submission to the current submission.</target>
-        <note></note>
+        <target state="translated">在上一個提交中，將上一個提交附加至目前提交。</target>
+        <note />
       </trans-unit>
       <trans-unit id="CtrlKCtrlEnterHelp">
         <source>Paste the selection at the end of interactive buffer, leave caret at the end of input.</source>
-        <target state="new">Paste the selection at the end of interactive buffer, leave caret at the end of input.</target>
-        <note></note>
+        <target state="translated">在互動式緩衝區的結尾貼上選取項目，將插入號保留在輸入的結尾。</target>
+        <note />
       </trans-unit>
       <trans-unit id="DownArrowHelp1">
         <source>At the end of the current submission, replace the current submission with a subsequent submission (after having previously navigated backwards).</source>
-        <target state="new">At the end of the current submission, replace the current submission with a subsequent submission (after having previously navigated backwards).</target>
-        <note></note>
+        <target state="translated">在目前提交的結尾，以下一個提交取代目前提交 (向後巡覽之後)。</target>
+        <note />
       </trans-unit>
       <trans-unit id="DownArrowHelp2">
         <source>Elsewhere, move the cursor down one line.</source>
-        <target state="new">Elsewhere, move the cursor down one line.</target>
-        <note></note>
+        <target state="translated">在其他地方，將資料指標向下移動一行。</target>
+        <note />
       </trans-unit>
       <trans-unit id="DuplicateCommand">
         <source>A command with the name '{0}' has already been registered.</source>
-        <target state="new">A command with the name '{0}' has already been registered.</target>
-        <note></note>
+        <target state="translated">已有名為 '{0}' 的命令註冊。</target>
+        <note />
       </trans-unit>
       <trans-unit id="EnterHelp">
         <source>If the current submission appears to be complete, evaluate it.  Otherwise, insert a new line.</source>
-        <target state="new">If the current submission appears to be complete, evaluate it.  Otherwise, insert a new line.</target>
-        <note></note>
+        <target state="translated">如果目前提交似乎已完成，會加以評估。否則會插入新行。</target>
+        <note />
       </trans-unit>
       <trans-unit id="EscapeHelp">
         <source>Clear the current submission.</source>
-        <target state="new">Clear the current submission.</target>
-        <note></note>
+        <target state="translated">清除目前提交。</target>
+        <note />
       </trans-unit>
       <trans-unit id="HelpCommandDescription">
         <source>Display help on specified command, or all available commands and key bindings if none specified.</source>
-        <target state="new">Display help on specified command, or all available commands and key bindings if none specified.</target>
-        <note></note>
+        <target state="translated">顯示指定命令的說明，若未指定則顯示所有可用命令與索引鍵繫結。</target>
+        <note />
       </trans-unit>
       <trans-unit id="InternalError">
         <source>An internal error has occurred in the Interactive window.  Please restart Visual Studio.</source>
-        <target state="new">An internal error has occurred in the Interactive window.  Please restart Visual Studio.</target>
-        <note></note>
+        <target state="translated">Interactive 視窗中發生內部錯誤。  請重新啟動 Visual Studio。</target>
+        <note />
       </trans-unit>
       <trans-unit id="KeyboardShortcuts">
         <source>Keyboard shortcuts:</source>
-        <target state="new">Keyboard shortcuts:</target>
-        <note></note>
+        <target state="translated">鍵盤快速鍵:</target>
+        <note />
       </trans-unit>
       <trans-unit id="MissingCommandName">
         <source>The command of type '{0}' has no command names.</source>
-        <target state="new">The command of type '{0}' has no command names.</target>
-        <note></note>
+        <target state="translated">類型為 '{0}' 的命令沒有命令名稱。</target>
+        <note />
       </trans-unit>
       <trans-unit id="NotInitialized">
         <source>The interactive window has not yet been initialized.</source>
-        <target state="new">The interactive window has not yet been initialized.</target>
-        <note></note>
+        <target state="translated">尚未初始化此互動式視窗。</target>
+        <note />
       </trans-unit>
       <trans-unit id="IsResetting">
         <source>The interactive window is resetting.</source>
-        <target state="new">The interactive window is resetting.</target>
-        <note></note>
+        <target state="translated">正在重設互動式視窗。</target>
+        <note />
       </trans-unit>
       <trans-unit id="Parameters">
         <source>Parameters:</source>
-        <target state="new">Parameters:</target>
-        <note></note>
+        <target state="translated">參數:</target>
+        <note />
       </trans-unit>
       <trans-unit id="ReplCommands">
         <source>REPL commands:</source>
-        <target state="new">REPL commands:</target>
-        <note></note>
+        <target state="translated">REPL 命令:</target>
+        <note />
       </trans-unit>
       <trans-unit id="RequireNonUIThread">
         <source>This method may not be called on the UI thread (to avoid hangs).</source>
-        <target state="new">This method may not be called on the UI thread (to avoid hangs).</target>
-        <note></note>
+        <target state="translated">此方法不能在 UI 執行緒上呼叫 (以免停止回應)。</target>
+        <note />
       </trans-unit>
       <trans-unit id="RequireUIThread">
         <source>This method may only be called on the UI thread.</source>
-        <target state="new">This method may only be called on the UI thread.</target>
-        <note></note>
+        <target state="translated">此方法只能在 UI 執行緒上呼叫。</target>
+        <note />
       </trans-unit>
       <trans-unit id="ResetCommandDescription">
         <source>Reset the execution environment to the initial state, keep history.</source>
-        <target state="new">Reset the execution environment to the initial state, keep history.</target>
-        <note></note>
+        <target state="translated">將執行環境重設為初始狀態，但保留記錄。</target>
+        <note />
       </trans-unit>
       <trans-unit id="ResetCommandParametersDescription">
         <source>Reset to a clean environment (only mscorlib referenced), do not run initialization script.</source>
-        <target state="new">Reset to a clean environment (only mscorlib referenced), do not run initialization script.</target>
-        <note></note>
+        <target state="translated">重設為初始環境 (僅參考 mscorlib)，不要執行初始化指令碼。</target>
+        <note />
       </trans-unit>
       <trans-unit id="ShiftEnterHelp">
         <source>Insert a new line.</source>
-        <target state="new">Insert a new line.</target>
-        <note></note>
+        <target state="translated">插入新行。</target>
+        <note />
       </trans-unit>
       <trans-unit id="UnknownCommand">
         <source>Unknown command '{0}'</source>
-        <target state="new">Unknown command '{0}'</target>
-        <note></note>
+        <target state="translated">未知的命令 '{0}'</target>
+        <note />
       </trans-unit>
       <trans-unit id="UpArrowHelp1">
         <source>At the end of the current submission, replace the current submission with a previous submission.</source>
-        <target state="new">At the end of the current submission, replace the current submission with a previous submission.</target>
-        <note></note>
+        <target state="translated">在目前提交的結尾，以上一個提交取代目前提交。</target>
+        <note />
       </trans-unit>
       <trans-unit id="UpArrowHelp2">
         <source>Elsewhere, move the cursor up one line.</source>
-        <target state="new">Elsewhere, move the cursor up one line.</target>
-        <note></note>
+        <target state="translated">在其他地方，將資料指標向上移動一行。</target>
+        <note />
       </trans-unit>
       <trans-unit id="Usage">
         <source>Usage:</source>
-        <target state="new">Usage:</target>
-        <note></note>
+        <target state="translated">使用方式:</target>
+        <note />
       </trans-unit>
       <trans-unit id="WaitTitle">
         <source>Copy</source>
-        <target state="new">Copy</target>
-        <note></note>
+        <target state="translated">複製</target>
+        <note />
       </trans-unit>
       <trans-unit id="WaitMessage">
         <source>Generating Rich Text Format representation from selection.</source>
-        <target state="new">Generating Rich Text Format representation from selection.</target>
-        <note></note>
+        <target state="translated">從選取項目產生 RTF 格式表示法。</target>
+        <note />
       </trans-unit>
       <trans-unit id="Backspace">
         <source>Delete Character To Left</source>
-        <target state="new">Delete Character To Left</target>
-        <note></note>
+        <target state="translated">刪除左邊的字元</target>
+        <note />
       </trans-unit>
       <trans-unit id="BreakLine">
         <source>Insert New Line</source>
-        <target state="new">Insert New Line</target>
-        <note></note>
+        <target state="translated">插入新行</target>
+        <note />
       </trans-unit>
       <trans-unit id="Paste">
         <source>Paste</source>
-        <target state="new">Paste</target>
-        <note></note>
+        <target state="translated">貼上</target>
+        <note />
       </trans-unit>
       <trans-unit id="Cut">
         <source>Cut Selection</source>
-        <target state="new">Cut Selection</target>
-        <note></note>
+        <target state="translated">剪下選取範圍</target>
+        <note />
       </trans-unit>
       <trans-unit id="Delete">
         <source>Delete Text</source>
-        <target state="new">Delete Text</target>
-        <note></note>
+        <target state="translated">刪除文字</target>
+        <note />
       </trans-unit>
       <trans-unit id="CutLine">
         <source>Cut Line</source>
-        <target state="new">Cut Line</target>
-        <note></note>
+        <target state="translated">剪下行</target>
+        <note />
       </trans-unit>
       <trans-unit id="DeleteLine">
         <source>Delete Line</source>
-        <target state="new">Delete Line</target>
-        <note></note>
+        <target state="translated">刪除行</target>
+        <note />
       </trans-unit>
       <trans-unit id="TypeChar">
         <source>Insert Text</source>
-        <target state="new">Insert Text</target>
-        <note></note>
+        <target state="translated">插入文字</target>
+        <note />
       </trans-unit>
       <trans-unit id="CSVBScriptDirectives">
         <source>Script directives:</source>
-        <target state="new">Script directives:</target>
-        <note></note>
+        <target state="translated">指令碼指示詞:</target>
+        <note />
       </trans-unit>
       <trans-unit id="RefHelp">
         <source>Add a metadata reference to specified assembly and all its dependencies, e.g. #r "myLib.dll".</source>
-        <target state="new">Add a metadata reference to specified assembly and all its dependencies, e.g. #r "myLib.dll".</target>
-        <note></note>
+        <target state="translated">將中繼資料參考加入指定的組件及其所有相依性，例如 #r "myLib.dll"。</target>
+        <note />
       </trans-unit>
       <trans-unit id="LoadHelp">
         <source>Load specified script file and execute it, e.g. #load "myScript.csx".</source>
-        <target state="new">Load specified script file and execute it, e.g. #load "myScript.csx".</target>
-        <note></note>
+        <target state="translated">載入指定的指示碼檔案並加以執行，例如 #load "myScript.csx"。</target>
+        <note />
       </trans-unit>
     </body>
   </file>

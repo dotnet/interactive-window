@@ -5,18 +5,18 @@
       <group id="src/Microsoft.VisualStudio.VsInteractiveWindow/VSPackage.resx" />
       <trans-unit id="110">
         <source>Microsoft Visual Studio Interactive Window</source>
-        <target state="new">Microsoft Visual Studio Interactive Window</target>
-        <note></note>
+        <target state="translated">Microsoft Visual Studio 交互窗口</target>
+        <note />
       </trans-unit>
       <trans-unit id="112">
         <source>Microsoft Visual Studio Interactive Window</source>
-        <target state="new">Microsoft Visual Studio Interactive Window</target>
-        <note></note>
+        <target state="translated">Microsoft Visual Studio 交互窗口</target>
+        <note />
       </trans-unit>
       <trans-unit id="200">
         <source>Interactive Window</source>
-        <target state="new">Interactive Window</target>
-        <note></note>
+        <target state="translated">交互窗口</target>
+        <note />
       </trans-unit>
     </body>
   </file>
