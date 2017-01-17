@@ -5,107 +5,107 @@
       <group id="src/Microsoft.VisualStudio.VsInteractiveWindow/InteractiveWindow.vsct" />
       <trans-unit id="menuIdInteractiveContextMenu|ButtonText">
         <source>Interactive Console</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveContextMenu|CommandName">
         <source>Interactive Console</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveToolbar|ButtonText">
         <source>Interactive Window</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveToolbar|CommandName">
         <source>Interactive Window</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidReset|ButtonText">
         <source>Reset</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidReset|LocCanonicalName">
         <source>.InteractiveConsole.Reset</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSmartExecute|ButtonText">
         <source>Execute or Paste Input</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSmartExecute|LocCanonicalName">
         <source>.InteractiveConsole.ExecuteOrPasteInput</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryPrevious|ButtonText">
         <source>History Previous</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryPrevious|LocCanonicalName">
         <source>.InteractiveConsole.HistoryPrevious</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryNext|ButtonText">
         <source>History Next</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidHistoryNext|LocCanonicalName">
         <source>.InteractiveConsole.HistoryNext</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryNext|ButtonText">
         <source>Search History Next</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryNext|LocCanonicalName">
         <source>.InteractiveConsole.SearchHistoryNext</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryPrevious|ButtonText">
         <source>Search History Previous</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryPrevious|LocCanonicalName">
         <source>.InteractiveConsole.SearchHistoryPrevious</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidClearScreen|ButtonText">
         <source>Clear Screen</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidClearScreen|LocCanonicalName">
         <source>.InteractiveConsole.ClearScreen</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidBreakLine|ButtonText">
         <source>Break Line</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidBreakLine|LocCanonicalName">
         <source>.InteractiveConsole.BreakLine</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyCode|ButtonText">
         <source>Copy Code</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyCode|LocCanonicalName">
         <source>.InteractiveConsole.CopyCode</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidExecuteInInteractiveWindow|ButtonText">
         <source>Execute in Interactive</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidExecuteInInteractiveWindow|LocCanonicalName">
         <source>.InteractiveConsole.ExecuteInInteractive</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyToInteractiveWindow|ButtonText">
         <source>Copy to Interactive</source>
-        <note></note>
+        <note />
       </trans-unit>
       <trans-unit id="cmdidCopyToInteractiveWindow|LocCanonicalName">
         <source>.InteractiveConsole.CopyToInteractive</source>
-        <note></note>
+        <note />
       </trans-unit>
     </body>
   </file>
