@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyInitialized" xml:space="preserve">
+    <value>A janela interativa já foi inicializada.</value>
+  </data>
+  <data name="AltDownArrowHelp" xml:space="preserve">
+    <value>Substitua o envio atual por um envio subsequente (após ter anteriormente navegado para trás).</value>
+  </data>
+  <data name="AltUpArrowHelp" xml:space="preserve">
+    <value>Substitua o envio atual por um envio anterior.</value>
+  </data>
+  <data name="ClearScreenCommandDescription" xml:space="preserve">
+    <value>Limpa o conteúdo da janela do editor, deixando intactos o contexto de execução e o histórico.</value>
+  </data>
+  <data name="CommandFailed" xml:space="preserve">
+    <value>Falha no comando '{0}': {1}</value>
+  </data>
+  <data name="CommandNamePlaceholder" xml:space="preserve">
+    <value>[command-name]</value>
+  </data>
+  <data name="CtrlAHelp" xml:space="preserve">
+    <value>Ao pressionar pela primeira vez, selecione o envio que contém o cursor. Ao pressionar pela segunda vez, selecione todo o texto na janela.</value>
+  </data>
+  <data name="CtrlAltDownArrowHelp" xml:space="preserve">
+    <value>Substitua o envio atual por um envio subsequente começando com o mesmo texto (após ter anteriormente navegado para trás).</value>
+  </data>
+  <data name="CtrlAltUpArrowHelp" xml:space="preserve">
+    <value>Substitua o envio atual por um envio anterior começando com o mesmo texto.</value>
+  </data>
+  <data name="CtrlECtrlEnterHelp" xml:space="preserve">
+    <value>Cole e execute a seleção antes de qualquer entrada pendente no buffer interativo.</value>
+  </data>
+  <data name="CtrlEnterHelp1" xml:space="preserve">
+    <value>Dentro do envio atual, avalie esse envio.</value>
+  </data>
+  <data name="CtrlEnterHelp2" xml:space="preserve">
+    <value>Em um envio anterior, acrescente o envio anterior ao envio atual.</value>
+  </data>
+  <data name="CtrlKCtrlEnterHelp" xml:space="preserve">
+    <value>Cole a seleção no final do buffer interativo, deixe um sinal de interpolação no final da entrada.</value>
+  </data>
+  <data name="DownArrowHelp1" xml:space="preserve">
+    <value>No final do envio atual, substitua o envio atual por um envio subsequente (após ter anteriormente navegado para trás).</value>
+  </data>
+  <data name="DownArrowHelp2" xml:space="preserve">
+    <value>Em outro lugar, mova o cursor uma linha para baixo.</value>
+  </data>
+  <data name="DuplicateCommand" xml:space="preserve">
+    <value>Um comando com o nome "{0}" já foi registrado.</value>
+  </data>
+  <data name="EnterHelp" xml:space="preserve">
+    <value>Se o envio atual parece estar completo, avalie-o.  Caso contrário, insira uma nova linha.</value>
+  </data>
+  <data name="EscapeHelp" xml:space="preserve">
+    <value>Limpe o envio atual.</value>
+  </data>
+  <data name="HelpCommandDescription" xml:space="preserve">
+    <value>Exiba a ajuda sobre o comando especificado, ou todas as associações de tecla e comandos disponíveis, se não houver nenhum especificado.</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Erro interno na janela interativa. Reinicie o Visual Studio.</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>Atalhos de teclado:</value>
+  </data>
+  <data name="MissingCommandName" xml:space="preserve">
+    <value>O comando do tipo "{0}" não tem nomes de comando.</value>
+  </data>
+  <data name="NotInitialized" xml:space="preserve">
+    <value>A janela interativa ainda não foi inicializada.</value>
+  </data>
+  <data name="IsResetting" xml:space="preserve">
+    <value>A janela interativa está reiniciando.</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parâmetros:</value>
+  </data>
+  <data name="ReplCommands" xml:space="preserve">
+    <value>Comandos REPL:</value>
+  </data>
+  <data name="RequireNonUIThread" xml:space="preserve">
+    <value>Esse método pode não ser chamado no thread da interface do usuário (para evitar travamentos).</value>
+  </data>
+  <data name="RequireUIThread" xml:space="preserve">
+    <value>Esse método só pode ser chamado no thread da interface do usuário.</value>
+  </data>
+  <data name="ResetCommandDescription" xml:space="preserve">
+    <value>Redefina o ambiente de execução para o estado inicial e mantenha o histórico.</value>
+  </data>
+  <data name="ResetCommandParametersDescription" xml:space="preserve">
+    <value>Redefina para um ambiente limpo (apenas mscorlib referenciado) e não execute o script de inicialização.</value>
+  </data>
+  <data name="ShiftEnterHelp" xml:space="preserve">
+    <value>Insira uma nova linha.</value>
+  </data>
+  <data name="UnknownCommand" xml:space="preserve">
+    <value>Comando desconhecido '{0}'</value>
+  </data>
+  <data name="UpArrowHelp1" xml:space="preserve">
+    <value>No final do envio atual, substitua o envio atual por um envio anterior.</value>
+  </data>
+  <data name="UpArrowHelp2" xml:space="preserve">
+    <value>Em outro lugar, mova o cursor uma linha para cima.</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Uso:</value>
+  </data>
+  <data name="WaitTitle" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Gerando representação de Formato Rich Text de uma seleção.</value>
+  </data>
+  <data name="Backspace" xml:space="preserve">
+    <value>Excluir Caractere para Esquerda</value>
+  </data>
+  <data name="BreakLine" xml:space="preserve">
+    <value>Inserir Nova Linha</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Colar</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cortar Seleção</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Excluir Texto</value>
+  </data>
+  <data name="CutLine" xml:space="preserve">
+    <value>Recortar Linha</value>
+  </data>
+  <data name="DeleteLine" xml:space="preserve">
+    <value>Excluir Linha</value>
+  </data>
+  <data name="TypeChar" xml:space="preserve">
+    <value>Inserir Texto</value>
+  </data>
+  <data name="CSVBScriptDirectives" xml:space="preserve">
+    <value>Diretivas de script:</value>
+  </data>
+  <data name="RefHelp" xml:space="preserve">
+    <value>Adicione uma referência de metadados para o assembly especificado a todas as suas dependências, por ex., #r "myLib.dll".</value>
+  </data>
+  <data name="LoadHelp" xml:space="preserve">
+    <value>Carregue um arquivo de script especificado e execute-o, por ex. #load "myScript.csx".</value>
+  </data>
+</root>

@@ -91,16 +91,28 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>VSInteractiveWindowResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="VSInteractiveWindowResources.*.resx">
+      <DependentUpon>VSInteractiveWindowResources.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VSPackage.*.resx">
+      <MergeWithCTO>true</MergeWithCTO>
+      <ManifestResourceName>%(Filename)</ManifestResourceName>
+      <DependentUpon>VSPackage.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="InteractiveWindow.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
       <SubType>Designer</SubType>
+    </VSCTCompile>
+    <VSCTCompile Include="InteractiveWindow.*.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+      <DependentUpon>InteractiveWindow.vsct</DependentUpon>
     </VSCTCompile>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>

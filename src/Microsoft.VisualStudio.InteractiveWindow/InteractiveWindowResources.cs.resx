@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyInitialized" xml:space="preserve">
+    <value>Interaktivní okno už je inicializované.</value>
+  </data>
+  <data name="AltDownArrowHelp" xml:space="preserve">
+    <value>Nahradí aktuální odeslání následujícím odesláním (po předchozí navigaci směrem zpět).</value>
+  </data>
+  <data name="AltUpArrowHelp" xml:space="preserve">
+    <value>Nahradí aktuální odeslání předchozím odesláním.</value>
+  </data>
+  <data name="ClearScreenCommandDescription" xml:space="preserve">
+    <value>Vymaže obsah okna editoru, ale historii a kontext provádění ponechá beze změny.</value>
+  </data>
+  <data name="CommandFailed" xml:space="preserve">
+    <value>Neúspěšný příkaz {0}: {1}</value>
+  </data>
+  <data name="CommandNamePlaceholder" xml:space="preserve">
+    <value>[název-příkazu]</value>
+  </data>
+  <data name="CtrlAHelp" xml:space="preserve">
+    <value>Prvním stisknutím vyberete odeslání obsahující kurzor. Druhým stisknutím vyberete veškerý text v okně.</value>
+  </data>
+  <data name="CtrlAltDownArrowHelp" xml:space="preserve">
+    <value>Nahradí aktuální odeslání následujícím odesláním, které začíná stejným textem (po předchozí navigaci směrem zpět).</value>
+  </data>
+  <data name="CtrlAltUpArrowHelp" xml:space="preserve">
+    <value>Nahradí aktuální odeslání předchozím odesláním, které začíná stejným textem.</value>
+  </data>
+  <data name="CtrlECtrlEnterHelp" xml:space="preserve">
+    <value>Vloží a provede výběr před jakýmkoli čekajícím vstupem v interaktivní vyrovnávací paměti.</value>
+  </data>
+  <data name="CtrlEnterHelp1" xml:space="preserve">
+    <value>Vyhodnotí aktuální odeslání v rámci tohoto odeslání.</value>
+  </data>
+  <data name="CtrlEnterHelp2" xml:space="preserve">
+    <value>Připojí předchozí odeslání k aktuálnímu odeslání v rámci předchozího odeslání.</value>
+  </data>
+  <data name="CtrlKCtrlEnterHelp" xml:space="preserve">
+    <value>Vloží výběr na konec interaktivní vyrovnávací paměti, ponechá stříšku na konci vstupu.</value>
+  </data>
+  <data name="DownArrowHelp1" xml:space="preserve">
+    <value>Na konci aktuálního odeslání nahradí aktuální odeslání následujícím odesláním (po předchozí navigaci směrem zpět).</value>
+  </data>
+  <data name="DownArrowHelp2" xml:space="preserve">
+    <value>Jinde přesune kurzor o jeden řádek dolů.</value>
+  </data>
+  <data name="DuplicateCommand" xml:space="preserve">
+    <value>Příkaz s názvem {0} už je zaregistrovaný.</value>
+  </data>
+  <data name="EnterHelp" xml:space="preserve">
+    <value>Pokud se aktuální odeslání jeví jako kompletní, vyhodnotí ho. Jinak vloží nový řádek.</value>
+  </data>
+  <data name="EscapeHelp" xml:space="preserve">
+    <value>Vymaže aktuální odeslání.</value>
+  </data>
+  <data name="HelpCommandDescription" xml:space="preserve">
+    <value>Zobrazí nápovědu pro zadaný příkaz nebo (pokud není žádný zadaný) pro všechny dostupné příkazy a klíčové vazby.</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>V okně Interactive došlo k vnitřní chybě.  Restartujte prosím sadu Visual Studio.</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>Klávesové zkratky:</value>
+  </data>
+  <data name="MissingCommandName" xml:space="preserve">
+    <value>Příkaz typu {0} nemá žádný název příkazu.</value>
+  </data>
+  <data name="NotInitialized" xml:space="preserve">
+    <value>Interaktivní okno se zatím neinicializovalo.</value>
+  </data>
+  <data name="IsResetting" xml:space="preserve">
+    <value>Interaktivní okno se přenastavuje.</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parametry:</value>
+  </data>
+  <data name="ReplCommands" xml:space="preserve">
+    <value>Příkazy REPL:</value>
+  </data>
+  <data name="RequireNonUIThread" xml:space="preserve">
+    <value>Tato metoda se nedá volat ve vlákně uživatelského rozhraní (aby nedošlo k zablokování).</value>
+  </data>
+  <data name="RequireUIThread" xml:space="preserve">
+    <value>Tato metoda se dá volat jenom ve vlákně uživatelského rozhraní.</value>
+  </data>
+  <data name="ResetCommandDescription" xml:space="preserve">
+    <value>Obnoví původní stav spouštěcího prostředí, zachová historii.</value>
+  </data>
+  <data name="ResetCommandParametersDescription" xml:space="preserve">
+    <value>Obnoví čisté prostředí (jenom s odkazem na mscorlib), nespustí inicializační skript.</value>
+  </data>
+  <data name="ShiftEnterHelp" xml:space="preserve">
+    <value>Vloží nový řádek.</value>
+  </data>
+  <data name="UnknownCommand" xml:space="preserve">
+    <value>Neznámý příkaz {0}</value>
+  </data>
+  <data name="UpArrowHelp1" xml:space="preserve">
+    <value>Na konci aktuálního odeslání nahradí aktuální odeslání předchozím odesláním.</value>
+  </data>
+  <data name="UpArrowHelp2" xml:space="preserve">
+    <value>Jinde přesune kurzor o jeden řádek nahoru.</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Použití:</value>
+  </data>
+  <data name="WaitTitle" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Generuje se znázornění výběru ve formátu RTF.</value>
+  </data>
+  <data name="Backspace" xml:space="preserve">
+    <value>Odstranit znak nalevo</value>
+  </data>
+  <data name="BreakLine" xml:space="preserve">
+    <value>Vložit nový řádek</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Vložit</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Vyjmout výběr</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Odstranit text</value>
+  </data>
+  <data name="CutLine" xml:space="preserve">
+    <value>Vyjmout řádek</value>
+  </data>
+  <data name="DeleteLine" xml:space="preserve">
+    <value>Odstranit řádek</value>
+  </data>
+  <data name="TypeChar" xml:space="preserve">
+    <value>Vložit text</value>
+  </data>
+  <data name="CSVBScriptDirectives" xml:space="preserve">
+    <value>Direktivy skriptu:</value>
+  </data>
+  <data name="RefHelp" xml:space="preserve">
+    <value>Přidá odkazy metadat k určenému sestavení a všem jeho závislostem, třeba #r "myLib.dll".</value>
+  </data>
+  <data name="LoadHelp" xml:space="preserve">
+    <value>Načte zadaný soubor skriptu a spustí ho, třeba #load "myScript.csx".</value>
+  </data>
+</root>

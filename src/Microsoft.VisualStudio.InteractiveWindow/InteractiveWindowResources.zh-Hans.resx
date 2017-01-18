@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyInitialized" xml:space="preserve">
+    <value>交互窗口已经初始化。</value>
+  </data>
+  <data name="AltDownArrowHelp" xml:space="preserve">
+    <value>将当前提交替换为后一个提交(在之前已向后导航之后)。</value>
+  </data>
+  <data name="AltUpArrowHelp" xml:space="preserve">
+    <value>将当前提交替换为前一个提交。</value>
+  </data>
+  <data name="ClearScreenCommandDescription" xml:space="preserve">
+    <value>清除编辑器窗口中的内容，保留历史记录和执行上下文不变。</value>
+  </data>
+  <data name="CommandFailed" xml:space="preserve">
+    <value>命令“{0}”失败: {1}</value>
+  </data>
+  <data name="CommandNamePlaceholder" xml:space="preserve">
+    <value>[command-name]</value>
+  </data>
+  <data name="CtrlAHelp" xml:space="preserve">
+    <value>第一次按下时，选择包含光标的提交，第二次按下时，选择窗口中的所有文本。</value>
+  </data>
+  <data name="CtrlAltDownArrowHelp" xml:space="preserve">
+    <value>将当前提交替换为以相同文本开头的后一个提交(在之前已向后导航之后)。</value>
+  </data>
+  <data name="CtrlAltUpArrowHelp" xml:space="preserve">
+    <value>将当前提交替换为以相同文本开头的前一个提交。</value>
+  </data>
+  <data name="CtrlECtrlEnterHelp" xml:space="preserve">
+    <value>粘贴选定内容，并在交互式缓冲中任何挂起的输入之前执行。</value>
+  </data>
+  <data name="CtrlEnterHelp1" xml:space="preserve">
+    <value>在当前提交内，对当前提交求值。</value>
+  </data>
+  <data name="CtrlEnterHelp2" xml:space="preserve">
+    <value>在前一个提交内，将前一个提交追加到当前提交。</value>
+  </data>
+  <data name="CtrlKCtrlEnterHelp" xml:space="preserve">
+    <value>在交互式缓冲区末尾粘贴选定内容，将插入点置于输入末尾。</value>
+  </data>
+  <data name="DownArrowHelp1" xml:space="preserve">
+    <value>在当前提交结束时，将当前提交替换为后一个提交(在之前已向后导航之后)。</value>
+  </data>
+  <data name="DownArrowHelp2" xml:space="preserve">
+    <value>在其他位置，将光标移到下一行。</value>
+  </data>
+  <data name="DuplicateCommand" xml:space="preserve">
+    <value>名为“{0}”的命令已经注册。</value>
+  </data>
+  <data name="EnterHelp" xml:space="preserve">
+    <value>如果显示当前提交完成，则对其进行求值。否则，插入新行。</value>
+  </data>
+  <data name="EscapeHelp" xml:space="preserve">
+    <value>清除当前提交。</value>
+  </data>
+  <data name="HelpCommandDescription" xml:space="preserve">
+    <value>显示有关指定命令的帮助，如果未指定，则显示有关所有可用命令和密钥绑定的帮助。</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>交互窗口中发生内部错误。请重启 Visual Studio。</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>键盘快捷方式:</value>
+  </data>
+  <data name="MissingCommandName" xml:space="preserve">
+    <value>“{0}”类型的命令没有命令名称。</value>
+  </data>
+  <data name="NotInitialized" xml:space="preserve">
+    <value>交互窗口尚未初始化。</value>
+  </data>
+  <data name="IsResetting" xml:space="preserve">
+    <value>正在重置交互式窗口。</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>参数:</value>
+  </data>
+  <data name="ReplCommands" xml:space="preserve">
+    <value>REPL 命令:</value>
+  </data>
+  <data name="RequireNonUIThread" xml:space="preserve">
+    <value>不可以在此 UI 线程上调用此方法 (以避免挂起)。</value>
+  </data>
+  <data name="RequireUIThread" xml:space="preserve">
+    <value>只能在此 UI 线程上调用此方法。</value>
+  </data>
+  <data name="ResetCommandDescription" xml:space="preserve">
+    <value>将执行环境重置为初始状态，保留历史记录。</value>
+  </data>
+  <data name="ResetCommandParametersDescription" xml:space="preserve">
+    <value>重置为干净环境(仅引用 mscorlib)，不要运行初始化脚本。</value>
+  </data>
+  <data name="ShiftEnterHelp" xml:space="preserve">
+    <value>插入新行。</value>
+  </data>
+  <data name="UnknownCommand" xml:space="preserve">
+    <value>未知命令“{0}”</value>
+  </data>
+  <data name="UpArrowHelp1" xml:space="preserve">
+    <value>在当前提交结束时，将当前提交替换为前一个提交。</value>
+  </data>
+  <data name="UpArrowHelp2" xml:space="preserve">
+    <value>在其他位置，将光标移到上一行。</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>使用情况:</value>
+  </data>
+  <data name="WaitTitle" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>基于选定内容生成 RTF 格式表示形式。</value>
+  </data>
+  <data name="Backspace" xml:space="preserve">
+    <value>删除左侧字符</value>
+  </data>
+  <data name="BreakLine" xml:space="preserve">
+    <value>插入新行</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>粘贴</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>剪切选定内容</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除文本</value>
+  </data>
+  <data name="CutLine" xml:space="preserve">
+    <value>剪切行</value>
+  </data>
+  <data name="DeleteLine" xml:space="preserve">
+    <value>删除行</value>
+  </data>
+  <data name="TypeChar" xml:space="preserve">
+    <value>插入文本</value>
+  </data>
+  <data name="CSVBScriptDirectives" xml:space="preserve">
+    <value>脚本指令:</value>
+  </data>
+  <data name="RefHelp" xml:space="preserve">
+    <value>添加对指定程序集及其所有依赖项的元数据引用，例如 #r "myLib.dll"。</value>
+  </data>
+  <data name="LoadHelp" xml:space="preserve">
+    <value>加载指定的脚本文件并执行，例如 #load "myScript.csx"。</value>
+  </data>
+</root>
