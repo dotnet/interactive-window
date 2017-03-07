@@ -14,14 +14,8 @@
     "Microsoft.VisualStudio.WCFReference.Interop": "9.0.30729",
     "Microsoft.VisualStudio.Data.Core": "9.0.21022",
     "Microsoft.VisualStudio.Data.Services": "9.0.21022",
-    "Microsoft.VisualStudio.Editor": {
-      "version": "15.0.25824-RC",
-      "suppressParent": "all"
-    },
-    "Microsoft.VisualStudio.Shell.15.0": {
-      "version": "15.0.25824-RC",
-      "suppressParent": "all"
-    }
+    "Microsoft.VisualStudio.Editor": "15.0.25824-RC",
+    "Microsoft.VisualStudio.Shell.15.0": "15.0.25824-RC"
   },
   "frameworks": {
     "net46": { }
