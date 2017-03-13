@@ -62,7 +62,7 @@ function Build {
   $errorLog = Join-Path $LogDir "Build.err"
 
   Create-Directory($logDir)
-  
+
   & $msbuildExe $BuildProj /p:Configuration=$configuration /p:SolutionPath=$solution /p:Restore=$restore /p:Build=$build /p:Test=$test /p:Sign=$sign /p:Pack=$pack /p:CIBuild=$ci /v:$verbosity /flp1:Summary`;Verbosity=diagnostic`;Encoding=UTF-8`;LogFile=$summaryLog /flp2:WarningsOnly`;Verbosity=diagnostic`;Encoding=UTF-8`;LogFile=$warningLog /flp3:ErrorsOnly`;Verbosity=diagnostic`;Encoding=UTF-8`;LogFile=$errorLog
 
   if ($lastExitCode -ne 0) {
