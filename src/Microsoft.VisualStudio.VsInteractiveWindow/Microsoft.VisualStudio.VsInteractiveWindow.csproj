@@ -96,7 +96,6 @@
       <ResourceName>Menus.ctmenu</ResourceName>
       <DependentUpon>InteractiveWindow.vsct</DependentUpon>
     </VSCTCompile>
-    <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
     <PublicAPI Include="PublicAPI.Shipped.txt" />

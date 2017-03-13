@@ -36,9 +36,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\ReplToolBarImages.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="InteractiveWindowResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>InteractiveWindowResources.Designer.cs</LastGenOutput>
