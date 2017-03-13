@@ -12,7 +12,7 @@
     <PackageReference Include="MicroBuild.Core" Version="$(MicroBuildCoreVersion)" />
     <PackageReference Include="MicroBuild.Core.Sentinel" Version="1.0.0" />
     <PackageReference Include="MicroBuild.Plugins.SwixBuild" Version="$(MicroBuildPluginsSwixBuildVersion)" />
-    <PackageReference Include="Microsoft.Net.Compilers" Version="$(ToolsetCompilerPackageVersion)" />
+    <PackageReference Include="Microsoft.Net.Compilers" Version="$(MicrosoftNetCompilersVersion)" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="$(MicrosoftVSSDKBuildToolsVersion)"/>
     <PackageReference Include="xunit.runner.console" Version="$(XUnitRunnerConsoleVersion)" />
   </ItemGroup>
