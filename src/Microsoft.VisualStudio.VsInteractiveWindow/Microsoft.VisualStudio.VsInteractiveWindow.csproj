@@ -1,0 +1,105 @@
+﻿<!-- Copyright (c)  Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsPackable>true</IsPackable>
+    <Description>Visual Studio Interactive Window (Shell Package)</Description>
+    <PackageReleaseNotes>Visual Studio Interactive Window (Shell Package)</PackageReleaseNotes>
+    <PackageTags>Visual Studio Interactive Window</PackageTags>
+    <CodeAnalysisRuleSet>VSInteractiveWindowRules.ruleset</CodeAnalysisRuleSet>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    
+    <!-- VSIX -->
+    <ExtensionInstallationRoot>CommonExtensions</ExtensionInstallationRoot>
+    <ExtensionInstallationFolder>Microsoft\InteractiveWindow</ExtensionInstallationFolder>
+    <VsixPackageId>Microsoft.VisualStudio.InteractiveWindow</VsixPackageId>
+    <VisualStudioSetupComponent>InteractiveWindow</VisualStudioSetupComponent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RoslynDependencies.Microsoft.VisualStudio.ComponentModelHost" Version="15.0.25920-RC" />
+    <PackageReference Include="Microsoft.VisualStudio.Designer.Interfaces" Version="1.1.4322" />
+    <PackageReference Include="Microsoft.VisualStudio.ImageCatalog" Version="15.0.25824-RC" />
+    <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="7.10.6070" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.10.0" Version="10.0.30319" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.11.0" Version="11.0.61030" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.12.1.DesignTime" Version="12.1.30328" />
+    <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.10.0" Version="10.0.30319" />
+    <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.0" Version="12.0.30110" />
+    <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.1.DesignTime" Version="12.1.30328" />
+    <PackageReference Include="Microsoft.VisualStudio.ManagedInterfaces" Version="8.0.50727" />
+    <PackageReference Include="Microsoft.VisualStudio.WCFReference.Interop" Version="9.0.30729" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="9.0.21022" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="9.0.21022" />
+    <PackageReference Include="Microsoft.VisualStudio.Editor" Version="15.0.25824-RC" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0 " Version="15.0.25824-RC" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.csproj">
+      <!-- Name of the dependency used in vsixmanifest -->
+      <Name>InteractiveWindow</Name>
+      <!-- NGEN settings -->
+      <Ngen>true</Ngen>
+      <NgenArchitecture>All</NgenArchitecture>
+      <NgenPriority>3</NgenPriority>      
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Microsoft.VisualStudio.InteractiveWindow\InternalUtilities\ExceptionUtilities.cs">
+      <Link>InternalUtilities\ExceptionUtilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Microsoft.VisualStudio.InteractiveWindow\InternalUtilities\FatalError.cs">
+      <Link>InternalUtilities\FatalError.cs</Link>
+    </Compile>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VSInteractiveWindowResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VSInteractiveWindowResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VSInteractiveWindowResources.*.resx">
+      <DependentUpon>VSInteractiveWindowResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VSPackage.resx">
+      <MergeWithCTO>true</MergeWithCTO>
+      <ManifestResourceName>VSPackage</ManifestResourceName>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VSPackage.*.resx">
+      <MergeWithCTO>true</MergeWithCTO>
+      <ManifestResourceName>%(Filename)</ManifestResourceName>
+      <DependentUpon>VSPackage.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <VSCTCompile Include="InteractiveWindow.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+      <SubType>Designer</SubType>
+    </VSCTCompile>
+    <VSCTCompile Include="InteractiveWindow.*.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+      <DependentUpon>InteractiveWindow.vsct</DependentUpon>
+    </VSCTCompile>
+    <Content Include="Resources\Package.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublicAPI Include="PublicAPI.Shipped.txt" />
+    <PublicAPI Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+</Project>

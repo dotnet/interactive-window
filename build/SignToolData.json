@@ -1,0 +1,45 @@
+{
+  "sign": [
+    {
+      "certificate": "Microsoft402",
+      "strongName": "MsSharedLib72",
+      "values": [
+        "Microsoft.VisualStudio.InteractiveWindow/net46/Microsoft.VisualStudio.InteractiveWindow.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/cs/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/de/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/es/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/fr/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/it/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/ja/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/ko/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/pl/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/pt-BR/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/ru/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/tr/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/zh-Hans/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.InteractiveWindow/net46/zh-Hant/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/Microsoft.VisualStudio.VsInteractiveWindow.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/cs/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/de/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/es/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/fr/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/it/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/ja/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/ko/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/pl/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/pt-BR/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/ru/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/tr/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/zh-Hans/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/zh-Hant/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll"
+      ]
+    },
+    {
+      "certificate": "VsixSHA2",
+      "strongName": null,
+      "values": [
+        "Microsoft.VisualStudio.VsInteractiveWindow/net46/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
+      ]
+    }
+  ]
+}
