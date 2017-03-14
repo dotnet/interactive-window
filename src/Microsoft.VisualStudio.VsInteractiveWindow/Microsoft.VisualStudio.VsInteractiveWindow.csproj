@@ -31,9 +31,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="9.0.21022" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="9.0.21022" />
     <PackageReference Include="Microsoft.VisualStudio.Designer.Interfaces" Version="1.1.4322" />
+    <PackageReference Include="Microsoft.VisualStudio.Editor" Version="15.0.26201-alpha" />
     <PackageReference Include="Microsoft.VisualStudio.ImageCatalog" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.ManagedInterfaces" Version="8.0.50727" />
     <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="7.10.6070" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="15.0.26201-alpha" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.9.0" Version="9.0.30729" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.10.0" Version="10.0.30319" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.11.0" Version="11.0.61030" />
@@ -41,13 +47,8 @@
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.10.0" Version="10.0.30319" />
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.0" Version="12.0.30110" />
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.1.DesignTime" Version="12.1.30328" />
-    <PackageReference Include="Microsoft.VisualStudio.ManagedInterfaces" Version="8.0.50727" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="15.0.26201-alpha" />
     <PackageReference Include="Microsoft.VisualStudio.WCFReference.Interop" Version="9.0.30729" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="9.0.21022" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="9.0.21022" />
-    <PackageReference Include="Microsoft.VisualStudio.Editor" Version="15.0.26201-alpha" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.0.26201-alpha" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="15.0.26201-alpha" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.csproj">
