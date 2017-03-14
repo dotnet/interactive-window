@@ -13,16 +13,17 @@
     <InternalsVisibleTo Include="Microsoft.VisualStudio.InteractiveWindow.UnitTests" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Text.Data" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Text.Logic" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Text.UI" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="15.0.25824-RC" />
-    <PackageReference Include="RoslynDependencies.Microsoft.VisualStudio.Text.Internal" Version="15.0.25920-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.ImageCatalog" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Language.StandardClassification" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Language.Intellisense" Version="15.0.25824-RC" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="15.0.109-pre" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.Data" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.Logic" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.UI" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.Internal" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.ImageCatalog" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Language.StandardClassification" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Language.Intellisense" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.CoreUtility" Version="15.0.26201-alpha" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -34,9 +35,6 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.XML" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\ReplToolBarImages.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="InteractiveWindowResources.resx">

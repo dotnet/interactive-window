@@ -8,7 +8,8 @@ Param(
   [switch] $test,
   [switch] $sign,
   [switch] $pack,
-  [switch] $ci
+  [switch] $ci,
+  [switch] $clearCaches
 )
 
 set-strictmode -version 2.0
@@ -74,6 +75,11 @@ if ($ci) {
   Create-Directory $TempDir
   $env:TEMP = $TempDir
   $env:TMP = $TempDir
+}
+
+if ($clearCaches) {
+  # clean nuget packages -- necessary to avoid mismatching versions of swix microbuild build plugin and VSSDK on Jenkins
+  Remove-Item (Join-Path $env:USERPROFILE ".nuget\packages") -Recurse -Force
 }
 
 Build
