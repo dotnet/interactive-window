@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="System.Collections.Immutable" Version="$(SystemCollectionsImmutableVersion)" />
     <PackageReference Include="BasicUndo" Version="$(BasicUndoVersion)" />
-    <PackageReference Include="RoslynDependencies.Microsoft.VisualStudio.Platform.VSEditor" Version="15.0.25920-RC" />
+    <PackageReference Include="Microsoft.VisualStudio.Platform.VSEditor" Version="15.0.26201-alpha" />
     <PackageReference Include="Moq" Version="$(MoqVersion)" />
   </ItemGroup>
   <ItemGroup>
