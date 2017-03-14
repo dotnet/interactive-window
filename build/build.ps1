@@ -23,6 +23,9 @@ $ArtifactsDir = Join-Path $RepoRoot "artifacts"
 $LogDir = Join-Path $ArtifactsDir "log"
 $TempDir = Join-Path (Join-Path $ArtifactsDir $configuration) "tmp"
 
+# clean nuget packages -- necessary to avoid mismatching versions of swix microbuild build plugin and VSSDK on Jenkins
+$nugetRoot = (Join-Path $env:USERPROFILE ".nuget\packages")
+
 function Create-Directory([string[]] $path) {
   if (!(Test-Path -path $path)) {
     New-Item -path $path -force -itemType "Directory" | Out-Null
@@ -66,6 +69,13 @@ function Build {
 
   & $msbuildExe $BuildProj /p:Configuration=$configuration /p:SolutionPath=$solution /p:Restore=$restore /p:Build=$build /p:Test=$test /p:Sign=$sign /p:Pack=$pack /p:CIBuild=$ci /v:$verbosity /flp1:Summary`;Verbosity=diagnostic`;Encoding=UTF-8`;LogFile=$summaryLog /flp2:WarningsOnly`;Verbosity=diagnostic`;Encoding=UTF-8`;LogFile=$warningLog /flp3:ErrorsOnly`;Verbosity=diagnostic`;Encoding=UTF-8`;LogFile=$errorLog
 
+  Copy-Item $nugetRoot $TempDir -recurse
+
+  $dirOutput = "$TempDir\dir_C_Microsoft.VisualStudio.Setup.Engine.log"
+  get-childitem C:\ -rec -filter Microsoft.VisualStudio.Setup.Engine.dll > $dirOutput
+  $dirOutput = "$TempDir\dir_D_Microsoft.VisualStudio.Setup.Engine.log"
+  get-childitem D:\ -rec -filter Microsoft.VisualStudio.Setup.Engine.dll > $dirOutput
+
   if ($lastExitCode -ne 0) {
     throw "Build failed (exit code '$lastExitCode')."
   }
@@ -77,9 +87,13 @@ if ($ci) {
   $env:TMP = $TempDir
 }
 
+  
 if ($clearCaches) {
-  # clean nuget packages -- necessary to avoid mismatching versions of swix microbuild build plugin and VSSDK on Jenkins
-  Remove-Item (Join-Path $env:USERPROFILE ".nuget\packages") -Recurse -Force
+  if (Test-Path $nugetRoot) {
+    Remove-Item $nugetRoot -Recurse -Force
+  }
 }
 
 Build
+
+
