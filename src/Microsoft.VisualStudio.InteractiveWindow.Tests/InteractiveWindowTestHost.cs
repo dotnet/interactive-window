@@ -3,7 +3,9 @@
 using System;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
+using System.Reflection;
 using Microsoft.VisualStudio.Utilities;
+using Xunit;
 
 namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
 {
@@ -21,15 +23,26 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
 
         internal InteractiveWindowTestHost(Action<InteractiveWindow.State> stateChangedHandler = null)
         {
-            ExportProvider = new CompositionContainer(
-                s_lazyCatalog.Value,
-                CompositionOptions.DisableSilentRejection | CompositionOptions.IsThreadSafe);
+            try
+            {
+                ExportProvider = new CompositionContainer(
+                    s_lazyCatalog.Value,
+                    CompositionOptions.DisableSilentRejection | CompositionOptions.IsThreadSafe);
 
-            var contentTypeRegistryService = ExportProvider.GetExport<IContentTypeRegistryService>().Value;
-            Evaluator = new TestInteractiveEngine(contentTypeRegistryService);
-            Window = ExportProvider.GetExport<IInteractiveWindowFactoryService>().Value.CreateWindow(Evaluator);
-            ((InteractiveWindow)Window).StateChanged += stateChangedHandler;
-            Window.InitializeAsync().Wait();
+                var contentTypeRegistryService = ExportProvider.GetExport<IContentTypeRegistryService>().Value;
+                Evaluator = new TestInteractiveEngine(contentTypeRegistryService);
+                Window = ExportProvider.GetExport<IInteractiveWindowFactoryService>().Value.CreateWindow(Evaluator);
+                ((InteractiveWindow)Window).StateChanged += stateChangedHandler;
+                Window.InitializeAsync().Wait();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                Assert.False(true, 
+                    e.Message + 
+                    "Types: " + 
+                    Environment.NewLine + 
+                    string.Join(Environment.NewLine, e.Types.Select(t => t.AssemblyQualifiedName)));
+            }
         }
 
         public static Type[] GetVisualStudioTypes()
