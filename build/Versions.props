@@ -13,7 +13,7 @@
     <MicroBuildCoreVersion>0.2.0</MicroBuildCoreVersion>
     <MicroBuildPluginsSwixBuildVersion>1.0.101</MicroBuildPluginsSwixBuildVersion>
     <MicrosoftNetCompilersVersion>2.0.1</MicrosoftNetCompilersVersion>
-    <MicrosoftVSSDKBuildToolsVersion>15.0.25929-RC2</MicrosoftVSSDKBuildToolsVersion>
+    <MicrosoftVSSDKBuildToolsVersion>15.0.26124-RC3</MicrosoftVSSDKBuildToolsVersion>
 
     <!-- Tests -->
     <MicrosoftNETTestSdkVersion>15.0.0-preview-20170125-04</MicrosoftNETTestSdkVersion>
