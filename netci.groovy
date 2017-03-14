@@ -47,7 +47,7 @@ static addBuildSteps(def job, def projectName, def opsysName, def configName, de
 
       def branchName = GithubBranchName
 
-      def filesToArchive = "**/artifacts/${configName}/**"
+      def filesToArchive = "**/artifacts/**"
       def filesToExclude = "**/artifacts/${configName}/obj/**"
 
       def jobName = getJobName(opsysName, configName)
