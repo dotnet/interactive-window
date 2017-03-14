@@ -277,6 +277,15 @@ namespace Microsoft.VisualStudio.InteractiveWindow {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interactive Window Error Output.
+        /// </summary>
+        internal static string ErrorOutputFormatDefinitionDisplayName {
+            get {
+                return ResourceManager.GetString("ErrorOutputFormatDefinitionDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear the current submission..
         /// </summary>
         internal static string EscapeHelp {
