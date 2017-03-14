@@ -35,7 +35,7 @@ static addBuildSteps(def job, def projectName, def opsysName, def configName, de
 
   job.with {
     steps {
-      batchFile(""".\\CIBuild.cmd -configuration ${configName}""")
+      batchFile(""".\\CIBuild.cmd -configuration ${configName} -clearCaches""")
     }
   }
 }
