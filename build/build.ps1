@@ -71,11 +71,10 @@ function Build {
 
   Copy-Item $nugetRoot $TempDir -recurse
 
-  $dirOutput = "$TempDir\dir_Microsoft.VisualStudio.Setup.Engine.log"
-
-  pushd C:\
-  dir /s Microsoft.VisualStudio.Setup.Engine.dll > $dirOutput
-  popd 
+  $dirOutput = "$TempDir\dir_C_Microsoft.VisualStudio.Setup.Engine.log"
+  get-childitem C:\ -rec -filter Microsoft.VisualStudio.Setup.Engine.dll > $dirOutput
+  $dirOutput = "$TempDir\dir_D_Microsoft.VisualStudio.Setup.Engine.log"
+  get-childitem D:\ -rec -filter Microsoft.VisualStudio.Setup.Engine.dll > $dirOutput
 
   if ($lastExitCode -ne 0) {
     throw "Build failed (exit code '$lastExitCode')."
