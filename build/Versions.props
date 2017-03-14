@@ -11,7 +11,7 @@
     <RoslynToolsMicrosoftSignToolVersion>0.3.2-beta</RoslynToolsMicrosoftSignToolVersion>
     <VSWhereVersion>1.0.47</VSWhereVersion>
     <MicroBuildCoreVersion>0.2.0</MicroBuildCoreVersion>
-    <MicroBuildPluginsSwixBuildVersion>1.1.0-g0701ee829f</MicroBuildPluginsSwixBuildVersion>
+    <MicroBuildPluginsSwixBuildVersion>1.0.115</MicroBuildPluginsSwixBuildVersion>
     <MicrosoftNetCompilersVersion>2.0.1</MicrosoftNetCompilersVersion>
     <MicrosoftVSSDKBuildToolsVersion>15.0.26124-RC3</MicrosoftVSSDKBuildToolsVersion>
 
