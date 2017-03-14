@@ -41,7 +41,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
                     e.Message + 
                     "Types: " + 
                     Environment.NewLine + 
-                    string.Join(Environment.NewLine, e.Types.Select(t => t.AssemblyQualifiedName)));
+                    string.Join(Environment.NewLine, e.Types.Where(t => t != null).Select(t => t.AssemblyQualifiedName)));
             }
         }
 
