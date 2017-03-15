@@ -6,10 +6,9 @@ Pre-release builds are available on MyGet gallery: https://dotnet.myget.org/Gall
 
 [//]: # (Begin current test results)
 
-### Windows - Unit Tests
-||Debug x86|Debug x64|Release x86|Release x64|
-|:--:|:--:|:--:|:--:|:--:|
-|**master**|[![Build Status](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug_unit32/badge/icon)](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug_unit32/)|[![Build Status](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug_unit64/badge/icon)](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug_unit64/)|[![Build Status](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_release_unit32/badge/icon)](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_release_unit32/)|[![Build Status](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_release_unit64/badge/icon)](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_release_unit64/)
+||Windows Debug|Windows Release|
+|:--:|:--:|:--:|
+|**master**|[![Build Status](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug/badge/icon)](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug/)|[![Build Status](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_release/badge/icon)](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_release/)|
 
 [//]: # (End current test results)
 
