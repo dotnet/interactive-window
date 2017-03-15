@@ -8,7 +8,7 @@ Pre-release builds are available on MyGet gallery: https://dotnet.myget.org/Gall
 
 |          |Windows Debug|Windows Release|
 |:--------:|:-----------:|:-------------:|
-|**master**|[![Build Status](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug/badge/icon)](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug/)|[![Build Status](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_release/badge/icon)](https://ci2.dot.net/job/dotnet_interactive-window/job/master/job/windows_release/)|
+|**master**|[![Build Status](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug/badge/icon)](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_debug/)|[![Build Status](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_release/badge/icon)](https://ci.dot.net/job/dotnet_interactive-window/job/master/job/windows_release/)|
 
 [//]: # (End current test results)
 
