@@ -77,9 +77,10 @@ if ($ci) {
   $env:TMP = $TempDir
 }
 
-if ($clearCaches) {
-  # clean nuget packages -- necessary to avoid mismatching versions of swix microbuild build plugin and VSSDK on Jenkins
-  Remove-Item (Join-Path $env:USERPROFILE ".nuget\packages") -Recurse -Force
+# clean nuget packages -- necessary to avoid mismatching versions of swix microbuild build plugin and VSSDK on Jenkins
+$nugetRoot = (Join-Path $env:USERPROFILE ".nuget\packages")
+if ($clearCaches -and (Test-Path $nugetRoot)) {
+  Remove-Item $nugetRoot -Recurse -Force
 }
 
 Build
