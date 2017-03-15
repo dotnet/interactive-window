@@ -261,4 +261,7 @@
   <data name="LoadHelp" xml:space="preserve">
     <value>Load specified script file and execute it, e.g. #load "myScript.csx".</value>
   </data>
+  <data name="ErrorOutputFormatDefinitionDisplayName" xml:space="preserve">
+    <value>Interactive Window Error Output</value>
+  </data>
 </root>

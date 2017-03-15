@@ -86,7 +86,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow
             [Export(typeof(EditorFormatDefinition))]
             [ClassificationType(ClassificationTypeNames = Name)]
             [Name(Name)]
-            [DisplayName(Name)]
             [UserVisible(true)]
             internal sealed class ErrorOutput : ClassificationFormatDefinition
             {
@@ -99,7 +98,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
                 public ErrorOutput()
                 {
-                    this.ForegroundColor = Color.FromRgb(0xff, 0, 0);
+                    ForegroundColor = Color.FromRgb(0xff, 0, 0);
+                    DisplayName = InteractiveWindowResources.ErrorOutputFormatDefinitionDisplayName;
                 }
             }
         }
