@@ -1,7 +1,7 @@
 {
   "sign": [
     {
-      "certificate": "Microsoft402",
+      "certificate": "MicrosoftSHA2",
       "strongName": "MsSharedLib72",
       "values": [
         "Microsoft.VisualStudio.InteractiveWindow/net46/Microsoft.VisualStudio.InteractiveWindow.dll",
