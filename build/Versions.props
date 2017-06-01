@@ -6,13 +6,13 @@
     <SystemCollectionsImmutableVersion>1.3.1</SystemCollectionsImmutableVersion>
 
     <!-- Toolset -->
-    <RoslynToolsMicrosoftRepoToolsetVersion>1.0.0-alpha14</RoslynToolsMicrosoftRepoToolsetVersion>
+    <RoslynToolsMicrosoftRepoToolsetVersion>1.0.0-alpha11</RoslynToolsMicrosoftRepoToolsetVersion>
     <RoslynToolsMicrosoftXUnitLoggerVersion>1.0.0-alpha1</RoslynToolsMicrosoftXUnitLoggerVersion>
     <RoslynToolsMicrosoftSignToolVersion>0.3.2-beta</RoslynToolsMicrosoftSignToolVersion>
     <VSWhereVersion>1.0.47</VSWhereVersion>
     <MicroBuildCoreVersion>0.2.0</MicroBuildCoreVersion>
     <MicroBuildPluginsSwixBuildVersion>1.0.115</MicroBuildPluginsSwixBuildVersion>
-    <MicrosoftNetCompilersVersion>2.2.0</MicrosoftNetCompilersVersion>
+    <MicrosoftNetCompilersVersion>2.0.1</MicrosoftNetCompilersVersion>
     <MicrosoftVSSDKBuildToolsVersion>15.0.26124-RC3</MicrosoftVSSDKBuildToolsVersion>
 
     <!-- Tests -->
