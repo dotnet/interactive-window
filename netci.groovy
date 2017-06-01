@@ -65,7 +65,7 @@ static addBuildSteps(def job, def projectName, def opsysName, def configName, de
       addArchival(myJob, filesToArchive, filesToExclude)
       addXUnitDotNETResults(myJob, configName)
 
-      Utilities.setMachineAffinity(myJob, 'Windows_NT', 'latest-or-auto-dev15-0')
+      Utilities.setMachineAffinity(myJob, 'Windows_NT', 'latest-dev15-3-preview1')
 
       addBuildSteps(myJob, projectName, opsysName, configName, isPR)
     }
