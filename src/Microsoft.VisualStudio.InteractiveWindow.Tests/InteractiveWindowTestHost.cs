@@ -39,9 +39,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
             {
                 Assert.False(true, 
                     e.Message + 
-                    "Types: " + 
+                    "LoaderExceptions: " + 
                     Environment.NewLine + 
-                    string.Join(Environment.NewLine, e.Types.Where(t => t != null).Select(t => t.AssemblyQualifiedName)));
+                    string.Join(Environment.NewLine, e.LoaderExceptions.Select(l => l.Message)));
             }
         }
 
