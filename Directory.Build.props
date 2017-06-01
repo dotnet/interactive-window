@@ -15,5 +15,9 @@
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
 
     <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
+
+    <!-- SourceLink: Generate source link when building in microbuild. -->
+    <SourceLinkCreate Condition="'$(BUILD_BUILDNUMBER)' != ''">true</SourceLinkCreate>
+    <SourceLinkRepo>$(RepoRoot)</SourceLinkRepo>
   </PropertyGroup>
 </Project>
