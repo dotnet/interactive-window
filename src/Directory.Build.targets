@@ -2,4 +2,7 @@
 <Project>
   <Import Project="$(RepoToolsetDir)Imports.targets" />  
   <Import Project="$(RepoToolsetDir)VisualStudio.targets" Condition="'$(IsVsixProject)' == 'true'"/>
+  
+  <!-- Source link -->
+  <Import Project="$(NuGetPackageRoot)SourceLink.Create.CommandLine\$(SourceLinkCreateCommandLineVersion)\build\SourceLink.Create.CommandLine.targets" />
 </Project>

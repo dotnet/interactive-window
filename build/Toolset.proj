@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.Net.Compilers" Version="$(MicrosoftNetCompilersVersion)" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="$(MicrosoftVSSDKBuildToolsVersion)"/>
     <PackageReference Include="xunit.runner.console" Version="$(XUnitRunnerConsoleVersion)" />
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="$(SourceLinkCreateCommandLineVersion)" PrivateAssets="all" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 </Project>
