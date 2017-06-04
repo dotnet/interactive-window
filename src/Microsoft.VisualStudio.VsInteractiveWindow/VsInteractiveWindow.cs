@@ -4,10 +4,8 @@
 // #define DUMP_COMMANDS
 
 using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Input;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
@@ -114,9 +112,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             _textViewHost = _window.GetTextViewHost();
             var textView = _textViewHost.TextView;
             textView.Options.SetOptionValue(EnableFindOptionName, true);
-            AutomationProperties.SetName(textView.VisualElement, Caption);
-            ((INotifyPropertyChanged)Frame).PropertyChanged += OnFramePropertyChanged;
-
             var viewAdapter = _editorAdapters.GetViewAdapter(textView);
             _findTarget = viewAdapter as IVsFindTarget;
             _commandTarget = viewAdapter as IOleCommandTarget;
@@ -125,13 +120,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         private void SubmissionBufferAdded(object sender, SubmissionBufferAddedEventArgs e)
         {
             GetToolbarHost().ForceUpdateUI();
-        }
-
-        private void OnFramePropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
-        {
-            if (eventArgs.PropertyName.Equals("Title", StringComparison.OrdinalIgnoreCase)) {
-                AutomationProperties.SetName(_textViewHost.TextView.VisualElement, Caption);
-            }
         }
 
         protected override void OnClose()
