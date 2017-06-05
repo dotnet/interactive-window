@@ -115,7 +115,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             var textView = _textViewHost.TextView;
             textView.Options.SetOptionValue(EnableFindOptionName, true);
             AutomationProperties.SetName(textView.VisualElement, Caption);
-            ((INotifyPropertyChanged)Frame).PropertyChanged += OnFramePropertyChanged;
 
             var viewAdapter = _editorAdapters.GetViewAdapter(textView);
             _findTarget = viewAdapter as IVsFindTarget;
@@ -129,7 +128,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private void OnFramePropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
         {
-            if (eventArgs.PropertyName.Equals("Title", StringComparison.OrdinalIgnoreCase)) {
+            if (eventArgs.PropertyName.Equals("Title", StringComparison.OrdinalIgnoreCase) && _textViewHost != null) {
                 AutomationProperties.SetName(_textViewHost.TextView.VisualElement, Caption);
             }
         }
@@ -167,6 +166,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         {
             Guid commandUiGuid = VSConstants.GUID_TextEditorFactory;
             ((IVsWindowFrame)Frame).SetGuidProperty((int)__VSFPROPID.VSFPROPID_InheritKeyBindings, ref commandUiGuid);
+            ((INotifyPropertyChanged)Frame).PropertyChanged += OnFramePropertyChanged;
 
             base.OnToolWindowCreated();
 
