@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en" target-language="cs" original="src/Microsoft.VisualStudio.InteractiveWindow/InteractiveWindowResources.resx">
+  <file datatype="xml" source-language="en" target-language="cs" original="../InteractiveWindowResources.resx">
     <body>
-      <group id="src/Microsoft.VisualStudio.InteractiveWindow/InteractiveWindowResources.resx" />
       <trans-unit id="AlreadyInitialized">
         <source>The interactive window has already been initialized.</source>
         <target state="translated">Interaktivní okno už je inicializované.</target>
@@ -241,6 +240,11 @@
       <trans-unit id="LoadHelp">
         <source>Load specified script file and execute it, e.g. #load "myScript.csx".</source>
         <target state="translated">Načte zadaný soubor skriptu a spustí ho, třeba #load "myScript.csx".</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="ErrorOutputFormatDefinitionDisplayName">
+        <source>Interactive Window Error Output</source>
+        <target state="new">Interactive Window Error Output</target>
         <note />
       </trans-unit>
     </body>
