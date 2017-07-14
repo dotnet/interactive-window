@@ -37,14 +37,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InteractiveWindowResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>InteractiveWindowResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InteractiveWindowResources.*.resx">
-      <DependentUpon>InteractiveWindowResources.resx</DependentUpon>
-    </EmbeddedResource>
+    <None Include="xlf\*" />
+    <EmbeddedResource Include="InteractiveWindowResources.resx" GenerateSource="true" />
   </ItemGroup>
   <ItemGroup>
     <PublicAPI Include="PublicAPI.Unshipped.txt" />

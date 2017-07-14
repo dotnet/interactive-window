@@ -14,8 +14,7 @@
     <!-- VSIX -->
     <ExtensionInstallationRoot>CommonExtensions</ExtensionInstallationRoot>
     <ExtensionInstallationFolder>Microsoft\InteractiveWindow</ExtensionInstallationFolder>
-    <VsixPackageId>Microsoft.VisualStudio.InteractiveWindow</VsixPackageId>
-    <VisualStudioSetupComponent>InteractiveWindow</VisualStudioSetupComponent>
+    <VisualStudioInsertionComponent>Microsoft.VisualStudio.InteractiveWindow</VisualStudioInsertionComponent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -72,32 +71,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="VSInteractiveWindowResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VSInteractiveWindowResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VSInteractiveWindowResources.*.resx">
-      <DependentUpon>VSInteractiveWindowResources.resx</DependentUpon>
-    </EmbeddedResource>
+    <None Include="xlf\*" />
+    <EmbeddedResource Include="VSInteractiveWindowResources.resx" GenerateSource="true" />
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VSPackage.*.resx">
-      <MergeWithCTO>true</MergeWithCTO>
-      <ManifestResourceName>%(Filename)</ManifestResourceName>
-      <DependentUpon>VSPackage.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="InteractiveWindow.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
       <SubType>Designer</SubType>
-    </VSCTCompile>
-    <VSCTCompile Include="InteractiveWindow.*.vsct">
-      <ResourceName>Menus.ctmenu</ResourceName>
-      <DependentUpon>InteractiveWindow.vsct</DependentUpon>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>

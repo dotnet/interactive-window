@@ -157,7 +157,7 @@ namespace Roslyn.Test.Utilities
             var allValues = _equalityUnits.SelectMany(x => x.AllValues);
             foreach (var value in allValues)
             {
-                Assert.NotNull(value);
+                Assert.True(value != null);
             }
         }
 
