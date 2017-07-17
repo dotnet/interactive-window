@@ -65,12 +65,17 @@ function Build {
   
   if ($ci) {
     Create-Directory($logDir)
-    $binlog = "/bl:" + (Join-Path $LogDir "Build.binlog")
+    # Microbuild is on 15.1 which doesn't support binary log
+    if ($env:BUILD_BUILDNUMBER -eq "") {
+      $log = "/bl:" + (Join-Path $LogDir "Build.binlog")
+    } else {
+      $log = "/flp1:Summary;Verbosity=diagnostic;Encoding=UTF-8;LogFile=" + (Join-Path $LogDir "Build.log")
+    }
   } else {
-    $binlog = ""
+    $log = ""
   }
 
-  & $msbuildExe $BuildProj /m /v:$verbosity $binlog /p:Configuration=$configuration /p:SolutionPath=$solution /p:Restore=$restore /p:DeployDeps=$deployDeps /p:Build=$build /p:Rebuild=$rebuild /p:Deploy=$deploy /p:Test=$test /p:IntegrationTest=$integrationTest /p:Sign=$sign /p:Pack=$pack /p:CIBuild=$ci $properties
+  & $msbuildExe $BuildProj /m /v:$verbosity $log /p:Configuration=$configuration /p:SolutionPath=$solution /p:Restore=$restore /p:DeployDeps=$deployDeps /p:Build=$build /p:Rebuild=$rebuild /p:Deploy=$deploy /p:Test=$test /p:IntegrationTest=$integrationTest /p:Sign=$sign /p:Pack=$pack /p:CIBuild=$ci $properties
 
   if ($lastExitCode -ne 0) {
     throw "Build failed (exit code '$lastExitCode')."
