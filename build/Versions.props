@@ -12,8 +12,6 @@
     <RoslynToolsMicrosoftRepoToolsetVersion>1.0.0-alpha26</RoslynToolsMicrosoftRepoToolsetVersion>
     <VSWhereVersion>1.0.47</VSWhereVersion>
     <MicrosoftVSSDKVersion>15.0.26201-alpha</MicrosoftVSSDKVersion>
-    <MicroBuildPluginsSwixBuildVersion>1.0.115</MicroBuildPluginsSwixBuildVersion>
-    <MicrosoftVSSDKBuildToolsVersion>15.0.26124-RC3</MicrosoftVSSDKBuildToolsVersion>
 
     <!-- Tests -->
     <MoqVersion>4.2.1402.2112</MoqVersion>
