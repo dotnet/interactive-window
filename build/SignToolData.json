@@ -4,17 +4,17 @@
       "certificate": "MicrosoftSHA2",
       "strongName": "MsSharedLib72",
       "values": [
-        "Microsoft.VisualStudio.InteractiveWindow/net46/Microsoft.VisualStudio.InteractiveWindow.dll",
-        "Microsoft.VisualStudio.InteractiveWindow/net46/*/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
-        "Microsoft.VisualStudio.VsInteractiveWindow/net46/Microsoft.VisualStudio.VsInteractiveWindow.dll",
-        "Microsoft.VisualStudio.VsInteractiveWindow/net46/*/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll",
+        "bin/Microsoft.VisualStudio.InteractiveWindow/net46/Microsoft.VisualStudio.InteractiveWindow.dll",
+        "bin/Microsoft.VisualStudio.InteractiveWindow/net46/*/Microsoft.VisualStudio.InteractiveWindow.resources.dll",
+        "bin/Microsoft.VisualStudio.VsInteractiveWindow/net46/Microsoft.VisualStudio.VsInteractiveWindow.dll",
+        "bin/Microsoft.VisualStudio.VsInteractiveWindow/net46/*/Microsoft.VisualStudio.VsInteractiveWindow.resources.dll"
       ]
     },
     {
       "certificate": "VsixSHA2",
       "strongName": null,
       "values": [
-        "../VSSetup/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
+        "VSSetup/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
       ]
     }
   ]
