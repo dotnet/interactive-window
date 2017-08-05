@@ -2,24 +2,30 @@
 // Jenkins DSL: https://github.com/jenkinsci/job-dsl-plugin/wiki
 
 import jobs.generation.Utilities;
+import jobs.generation.ArchivalSettings;
 
-static getJobName(def opsysName, def configName) {
-  return "${opsysName}_${configName}"
+static addArchival(def job, def configName) {
+  def archivalSettings = new ArchivalSettings()
+  archivalSettings.addFiles("**/artifacts/**")
+  archivalSettings.excludeFiles("**/artifacts/${configName}/obj/**")
+  archivalSettings.excludeFiles("**/artifacts/${configName}/tmp/**")
+  archivalSettings.excludeFiles("**/artifacts/${configName}/VSSetup.obj/**")
+  archivalSettings.setFailIfNothingArchived()
+  archivalSettings.setArchiveOnFailure()
+
+  Utilities.addArchival(job, archivalSettings)
 }
 
-static addArchival(def job, def filesToArchive, def filesToExclude) {
-  def doNotFailIfNothingArchived = false
-  def archiveOnlyIfSuccessful = false
+static addGithubTrigger(def job, def isPR, def branchName, def jobName) {
+  if (isPR) {
+    def prContext = "prtest/${jobName.replace('_', '/')}"
+    def triggerPhrase = "(?i)^\\s*(@?dotnet-bot\\s+)?(re)?test\\s+(${prContext})(\\s+please)?\\s*\$"
+    def triggerOnPhraseOnly = false
 
-  Utilities.addArchival(job, filesToArchive, filesToExclude, doNotFailIfNothingArchived, archiveOnlyIfSuccessful)
-}
-
-static addGithubPRTriggerForBranch(def job, def branchName, def jobName) {
-  def prContext = "prtest/${jobName.replace('_', '/')}"
-  def triggerPhrase = "(?i)^\\s*(@?dotnet-bot\\s+)?(re)?test\\s+(${prContext})(\\s+please)?\\s*\$"
-  def triggerOnPhraseOnly = false
-
-  Utilities.addGithubPRTriggerForBranch(job, branchName, prContext, triggerPhrase, triggerOnPhraseOnly)
+    Utilities.addGithubPRTriggerForBranch(job, branchName, prContext, triggerPhrase, triggerOnPhraseOnly)
+  } else {
+    Utilities.addGithubPushTrigger(job)
+  }
 }
 
 static addXUnitDotNETResults(def job, def configName) {
@@ -29,45 +35,33 @@ static addXUnitDotNETResults(def job, def configName) {
   Utilities.addXUnitDotNETResults(job, resultFilePattern, skipIfNoTestFiles)
 }
 
-static addBuildSteps(def job, def projectName, def opsysName, def configName, def isPR) {
-  def buildJobName = getJobName(opsysName, configName)
-  def buildFullJobName = Utilities.getFullJobName(projectName, buildJobName, isPR)
+def createJob(def platform, def configName, def isPR) {
+  def projectName = GithubProject
+  def branchName = GithubBranchName  
+  def jobName = "${platform}_${configName}"
+  def newJob = job(Utilities.getFullJobName(projectName, jobName, isPR))
 
-  job.with {
-    steps {
-      batchFile(""".\\CIBuild.cmd -configuration ${configName} -clearCaches""")
-    }
-  }
+  Utilities.standardJobSetup(newJob, projectName, isPR, "*/${branchName}")
+
+  addGithubTrigger(newJob, isPR, branchName, jobName)
+  addArchival(newJob, configName)
+  addXUnitDotNETResults(newJob, configName)
+
+  return newJob
 }
 
 [true, false].each { isPR ->
-  ['windows'].each { opsysName ->
+  ['windows'].each { platform ->
     ['debug', 'release'].each { configName ->
-      def projectName = GithubProject
+      def newJob = createJob(platform, configName, isPR)
 
-      def branchName = GithubBranchName
+      Utilities.setMachineAffinity(newJob, 'Windows_NT', 'latest-dev15-3-preview6')
 
-      def filesToArchive = "**/artifacts/**"
-      def filesToExclude = "**/artifacts/${configName}/obj/**"
-
-      def jobName = getJobName(opsysName, configName)
-      def fullJobName = Utilities.getFullJobName(projectName, jobName, isPR)
-      def myJob = job(fullJobName)
-
-      Utilities.standardJobSetup(myJob, projectName, isPR, "*/${branchName}")
-
-      if (isPR) {
-        addGithubPRTriggerForBranch(myJob, branchName, jobName)
-      } else {
-        Utilities.addGithubPushTrigger(myJob)
+      newJob.with {
+        steps {
+          batchFile(".\\build\\CIBuild.cmd -configuration ${configName} -prepareMachine")
+        }
       }
-      
-      addArchival(myJob, filesToArchive, filesToExclude)
-      addXUnitDotNETResults(myJob, configName)
-
-      Utilities.setMachineAffinity(myJob, 'Windows_NT', 'latest-dev15-3-preview1')
-
-      addBuildSteps(myJob, projectName, opsysName, configName, isPR)
     }
   }
 }
