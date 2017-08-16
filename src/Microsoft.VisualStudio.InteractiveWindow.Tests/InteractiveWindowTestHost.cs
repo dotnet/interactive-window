@@ -1,9 +1,11 @@
 // Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
+using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
 using Xunit;
 
@@ -47,10 +49,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
 
         public static Type[] GetVisualStudioTypes()
         {
-            var types = new[]
+            return new[]
             {
-                // EDITOR
-
                 // Microsoft.VisualStudio.Platform.VSEditor.dll:
                 typeof(Microsoft.VisualStudio.Platform.VSEditor.EventArgsHelper),
 
@@ -72,10 +72,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
                 typeof(BasicUndo.IBasicUndoHistory),
 
                 // Microsoft.VisualStudio.Language.StandardClassification.dll:
-                typeof(Microsoft.VisualStudio.Language.StandardClassification.PredefinedClassificationTypeNames)
+                typeof(Microsoft.VisualStudio.Language.StandardClassification.PredefinedClassificationTypeNames),
             };
-
-            return types;
         }
 
         public void Dispose()

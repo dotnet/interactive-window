@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <VersionBase>2.3.0</VersionBase>
-    <PreReleaseVersionLabel></PreReleaseVersionLabel>
+    <VersionBase>2.4.0</VersionBase>
+    <PreReleaseVersionLabel>beta1</PreReleaseVersionLabel>
 
     <!-- Opt-in repo features -->
     <UsingToolVSSDK>true</UsingToolVSSDK>
@@ -11,7 +11,12 @@
     <!-- Toolset -->
     <RoslynToolsMicrosoftRepoToolsetVersion>1.0.0-alpha30</RoslynToolsMicrosoftRepoToolsetVersion>
     <VSWhereVersion>1.0.47</VSWhereVersion>
-    <MicrosoftVSSDKVersion>15.0.26201-alpha</MicrosoftVSSDKVersion>
+    <MicrosoftVSSDKVersion>15.0.26606</MicrosoftVSSDKVersion>
+    <MicrosoftVisualStudioPlatformVSEditorVersion>15.0.26606-alpha</MicrosoftVisualStudioPlatformVSEditorVersion>
+    <MicrosoftVisualStudioPlatformVSEditorInteropVersion>15.0.26606-alpha</MicrosoftVisualStudioPlatformVSEditorInteropVersion>
+    <MicrosoftVisualStudioTextInternalVersion>15.0.26606-alpha</MicrosoftVisualStudioTextInternalVersion>
+    <MicrosoftVisualStudioTelemetryVersion>15.0.26606-alpha</MicrosoftVisualStudioTelemetryVersion>
+    <MicrosoftVisualStudioThreadingVersion>15.3.83</MicrosoftVisualStudioThreadingVersion>
 
     <!-- Tests -->
     <MoqVersion>4.2.1402.2112</MoqVersion>
