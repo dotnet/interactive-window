@@ -9,9 +9,12 @@
   <ItemGroup>
     <PackageReference Include="System.Collections.Immutable" Version="$(SystemCollectionsImmutableVersion)" />
     <PackageReference Include="BasicUndo" Version="$(BasicUndoVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Platform.VSEditor" Version="15.0.26201-alpha" />
-    <PackageReference Include="Microsoft.VisualStudio.Platform.VSEditor.Interop" Version="15.0.26201-alpha" />
+    <PackageReference Include="Microsoft.VisualStudio.Platform.VSEditor" Version="$(MicrosoftVisualStudioPlatformVSEditorVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Platform.VSEditor.Interop" Version="$(MicrosoftVisualStudioPlatformVSEditorInteropVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Telemetry" Version="$(MicrosoftVisualStudioTelemetryVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.Internal" Version="$(MicrosoftVisualStudioTextInternalVersion)" />
     <PackageReference Include="Moq" Version="$(MoqVersion)" />
+    
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

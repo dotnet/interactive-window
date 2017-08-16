@@ -17,13 +17,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Text.Logic" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Text.UI" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="$(MicrosoftVSSDKVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Text.Internal" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.ImageCatalog" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Language.StandardClassification" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Language.Intellisense" Version="$(MicrosoftVSSDKVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVSSDKVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.CoreUtility" Version="$(MicrosoftVSSDKVersion)" />
+    <!-- Reference internal assembly as a private asset to avoid including it as a dependency of the nupkg -->
+    <PackageReference Include="Microsoft.VisualStudio.Text.Internal" Version="$(MicrosoftVisualStudioTextInternalVersion)" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
