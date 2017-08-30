@@ -98,15 +98,9 @@ function Build {
   $vsInstallDir = LocateVisualStudio
   $msbuildExe = Join-Path $vsInstallDir "MSBuild\15.0\Bin\msbuild.exe"
 
-  # Microbuild is on 15.1 which doesn't support binary log
   if ($ci -or $log) {
     Create-Directory($logDir)
-
-    if ($env:BUILD_BUILDNUMBER -eq $null) {
-      $logCmd = "/bl:" + (Join-Path $LogDir "Build.binlog")
-    } else {
-      $logCmd = "/flp1:Summary;Verbosity=diagnostic;Encoding=UTF-8;LogFile=" + (Join-Path $LogDir "Build.log")
-    }
+    $logCmd = "/bl:" + (Join-Path $LogDir "Build.binlog")
   } else {
     $logCmd = ""
   }
