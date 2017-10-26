@@ -128,7 +128,7 @@ namespace Roslyn.Test.Utilities
         {
             var type = typeof(T);
             var targetType = typeof(IEquatable<T>);
-            Assert.True(type.GetTypeInfo().ImplementedInterfaces.Contains(targetType));
+            Assert.Contains(targetType, type.GetTypeInfo().ImplementedInterfaces);
         }
 
         private void ObjectEquals1()
