@@ -16,6 +16,13 @@
       "values": [
         "VSSetup/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
       ]
+    },
+    {
+      "certificate": null,
+      "strongName": null,
+      "values": [
+        "packages/*.nupkg"
+      ]
     }
   ]
 }
