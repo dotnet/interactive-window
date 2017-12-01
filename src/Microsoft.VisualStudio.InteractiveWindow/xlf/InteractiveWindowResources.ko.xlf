@@ -244,7 +244,7 @@
       </trans-unit>
       <trans-unit id="ErrorOutputFormatDefinitionDisplayName">
         <source>Interactive Window Error Output</source>
-        <target state="new">Interactive Window Error Output</target>
+        <target state="translated">대화형 창 오류 출력</target>
         <note />
       </trans-unit>
     </body>
