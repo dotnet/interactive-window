@@ -37,7 +37,6 @@ steps:
     connectedServiceName: 'InteractiveWindow NuGet feed'
     nuGetVersion: 4.0.0.2283
 
-
 - task: PublishSymbols@1
   displayName: Prepare Symbols
   inputs:
