@@ -14,7 +14,8 @@
       "certificate": "VsixSHA2",
       "strongName": null,
       "values": [
-        "VSSetup/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
+        "VSSetup/Microsoft.VisualStudio.VsInteractiveWindow.vsix",        
+        "VSSetup/Insertion/Microsoft.VisualStudio.VsInteractiveWindow.vsix"
       ]
     },
     {
