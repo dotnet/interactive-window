@@ -2,30 +2,24 @@
 // Jenkins DSL: https://github.com/jenkinsci/job-dsl-plugin/wiki
 
 import jobs.generation.Utilities;
-import jobs.generation.ArchivalSettings;
 
-static addArchival(def job, def configName) {
-  def archivalSettings = new ArchivalSettings()
-  archivalSettings.addFiles("**/artifacts/**")
-  archivalSettings.excludeFiles("**/artifacts/${configName}/obj/**")
-  archivalSettings.excludeFiles("**/artifacts/${configName}/tmp/**")
-  archivalSettings.excludeFiles("**/artifacts/${configName}/VSSetup.obj/**")
-  archivalSettings.setFailIfNothingArchived()
-  archivalSettings.setArchiveOnFailure()
-
-  Utilities.addArchival(job, archivalSettings)
+static getJobName(def opsysName, def configName) {
+  return "${opsysName}_${configName}"
 }
 
-static addGithubTrigger(def job, def isPR, def branchName, def jobName) {
-  if (isPR) {
-    def prContext = "prtest/${jobName.replace('_', '/')}"
-    def triggerPhrase = "(?i)^\\s*(@?dotnet-bot\\s+)?(re)?test\\s+(${prContext})(\\s+please)?\\s*\$"
-    def triggerOnPhraseOnly = false
+static addArchival(def job, def filesToArchive, def filesToExclude) {
+  def doNotFailIfNothingArchived = false
+  def archiveOnlyIfSuccessful = false
 
-    Utilities.addGithubPRTriggerForBranch(job, branchName, prContext, triggerPhrase, triggerOnPhraseOnly)
-  } else {
-    Utilities.addGithubPushTrigger(job)
-  }
+  Utilities.addArchival(job, filesToArchive, filesToExclude, doNotFailIfNothingArchived, archiveOnlyIfSuccessful)
+}
+
+static addGithubPRTriggerForBranch(def job, def branchName, def jobName) {
+  def prContext = "prtest/${jobName.replace('_', '/')}"
+  def triggerPhrase = "(?i)^\\s*(@?dotnet-bot\\s+)?(re)?test\\s+(${prContext})(\\s+please)?\\s*\$"
+  def triggerOnPhraseOnly = false
+
+  Utilities.addGithubPRTriggerForBranch(job, branchName, prContext, triggerPhrase, triggerOnPhraseOnly)
 }
 
 static addXUnitDotNETResults(def job, def configName) {
@@ -35,33 +29,52 @@ static addXUnitDotNETResults(def job, def configName) {
   Utilities.addXUnitDotNETResults(job, resultFilePattern, skipIfNoTestFiles)
 }
 
-def createJob(def platform, def configName, def isPR) {
-  def projectName = GithubProject
-  def branchName = GithubBranchName  
-  def jobName = "${platform}_${configName}"
-  def newJob = job(Utilities.getFullJobName(projectName, jobName, isPR))
+static addBuildSteps(def job, def projectName, def os, def configName, def isPR) {
+  def buildJobName = getJobName(os, configName)
+  def buildFullJobName = Utilities.getFullJobName(projectName, buildJobName, isPR)
 
-  Utilities.standardJobSetup(newJob, projectName, isPR, "*/${branchName}")
-
-  addGithubTrigger(newJob, isPR, branchName, jobName)
-  addArchival(newJob, configName)
-  addXUnitDotNETResults(newJob, configName)
-
-  return newJob
+  job.with {
+    steps {
+      if (os == "Windows_NT") {
+        batchFile(""".\\eng\\common\\CIBuild.cmd -configuration ${configName} -prepareMachine""")
+      } else {
+        shell("./eng/common/cibuild.sh --configuration ${configName} --prepareMachine")
+      }
+    }
+  }
 }
 
 [true, false].each { isPR ->
-  ['windows'].each { platform ->
-    ['debug', 'release'].each { configName ->
-      def newJob = createJob(platform, configName, isPR)
+  ['Windows_NT'].each { os ->
+    ['Debug', 'Release'].each { configName ->
+      def projectName = GithubProject
 
-      Utilities.setMachineAffinity(newJob, 'Windows_NT', 'latest-dev15-3-preview7')
+      def branchName = GithubBranchName
 
-      newJob.with {
-        steps {
-          batchFile(".\\build\\CIBuild.cmd -configuration ${configName} -prepareMachine")
-        }
+      def filesToArchive = "**/artifacts/${configName}/**"
+
+      def jobName = getJobName(os, configName)
+      def fullJobName = Utilities.getFullJobName(projectName, jobName, isPR)
+      def myJob = job(fullJobName)
+
+      Utilities.standardJobSetup(myJob, projectName, isPR, "*/${branchName}")
+
+      if (isPR) {
+        addGithubPRTriggerForBranch(myJob, branchName, jobName)
+      } else {
+        Utilities.addGithubPushTrigger(myJob)
       }
+      
+      addArchival(myJob, filesToArchive, "")
+      addXUnitDotNETResults(myJob, configName)
+
+      if (os == 'Windows_NT') {
+        Utilities.setMachineAffinity(myJob, os, 'latest-dev15-3')  
+      } else {
+        Utilities.setMachineAffinity(myJob, os, 'latest-or-auto')
+      }
+
+      addBuildSteps(myJob, projectName, os, configName, isPR)
     }
   }
 }
