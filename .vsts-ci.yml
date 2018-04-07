@@ -18,7 +18,7 @@ steps:
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
   displayName: Install Swix Plugin
 
-- script: build\CIBuild.cmd -configuration $(BuildConfiguration)
+- script: eng\common\CIBuild.cmd -configuration $(BuildConfiguration)
   displayName: Build
 
 - task: PublishTestResults@1

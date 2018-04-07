@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="1F42C6D0-F876-4AF0-8185-1BEB0A325BB2" Version="|%CurrentProject%;GetBuildVersion|" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="1F42C6D0-F876-4AF0-8185-1BEB0A325BB2" Version="|%CurrentProject%;GetVsixVersion|" Language="en-US" Publisher="Microsoft" />
     <DisplayName>VisualStudio Interactive Window</DisplayName>
     <Description>Interactive components for Visual Studio.</Description>
     <PackageId>Microsoft.VisualStudio.InteractiveWindow</PackageId>

@@ -2,8 +2,6 @@
 <Project>
   <Import Project="..\Directory.Build.props"/>
 
-  <Import Project="$(RepoToolsetDir)Settings.props" />
-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
