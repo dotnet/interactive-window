@@ -199,8 +199,6 @@ function InitializeCustomToolset {
 
 function Build {
   & $BuildDriver $BuildArgs $ToolsetBuildProj /m /nologo /clp:Summary /warnaserror /v:$verbosity /bl:$BuildLog /p:Configuration=$configuration /p:Projects=$projects /p:RepoRoot=$RepoRoot /p:Restore=$restore /p:DeployDeps=$deployDeps /p:Build=$build /p:Rebuild=$rebuild /p:Deploy=$deploy /p:Test=$test /p:IntegrationTest=$integrationTest /p:Sign=$sign /p:Pack=$pack /p:CIBuild=$ci $properties
-  Write-Host "!!!! $lastExitCode"
-  
   if ($lastExitCode -ne 0) {
     Write-Host "Build log: $Log" -ForegroundColor DarkGray
     exit $lastExitCode
