@@ -3,12 +3,12 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
 
-    <VersionBase>2.9.0</VersionBase>
+    <VersionPrefix>2.9.0</VersionPrefix>
     <PreReleaseVersionLabel>beta1</PreReleaseVersionLabel>
 
     <!-- Opt-in repo features -->
     <UsingToolVSSDK>true</UsingToolVSSDK>
-    
+
     <SystemCollectionsImmutableVersion>1.3.1</SystemCollectionsImmutableVersion>
 
     <MicrosoftVSSDKVersion>15.0.26606</MicrosoftVSSDKVersion>
