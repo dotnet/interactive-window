@@ -105,7 +105,8 @@ function InstallDotNetSdk([string] $dotnetRoot, [string] $version) {
   
   & $installScript -Version $version -InstallDir $dotnetRoot
   if ($lastExitCode -ne 0) {
-    throw "Failed to install dotnet SDK $version to '$dotnetRoot' (exit code '$lastExitCode')."
+    Write-Host "Failed to install dotnet cli (exit code '$lastExitCode')." -ForegroundColor Red
+    exit $lastExitCode
   }
 }
 
@@ -140,8 +141,9 @@ function LocateVisualStudio {
 
   $vsInstallDir = & $vsWhereExe -latest -prerelease -property installationPath -requires Microsoft.Component.MSBuild -requires Microsoft.VisualStudio.Component.VSSDK -requires Microsoft.Net.Component.4.6.TargetingPack -requires Microsoft.VisualStudio.Component.Roslyn.Compiler -requires Microsoft.VisualStudio.Component.VSSDK
 
-  if (!(Test-Path $vsInstallDir)) {
-    throw "Failed to locate Visual Studio (exit code '$lastExitCode')."
+  if ($lastExitCode -ne 0) {
+    Write-Host "Failed to locate Visual Studio (exit code '$lastExitCode')." -ForegroundColor Red
+    exit $lastExitCode
   }
 
   return $vsInstallDir
@@ -158,9 +160,10 @@ function InitializeToolset {
       return
     }
   }
-
-  if (!$restore) {
-    throw "Toolset has not been restored (version $toolsetVersion)."
+    
+  if (-not $restore) {
+    Write-Host  "Toolset version $toolsetVersion has not been restored."
+    exit 1
   }
 
   $proj = Join-Path $ToolsetDir "restore.proj"  
@@ -169,7 +172,9 @@ function InitializeToolset {
   & $BuildDriver $BuildArgs $proj /t:__WriteToolsetLocation /m /nologo /clp:None /warnaserror /bl:$ToolsetRestoreLog /v:$verbosity /p:__ToolsetLocationOutputFile=$toolsetLocationFile
     
   if ($lastExitCode -ne 0) {
-    throw "Failed to restore toolset (exit code '$lastExitCode'). See log: $ToolsetRestoreLog"
+    Write-Host "Failed to restore toolset (exit code '$lastExitCode')." -Color Red
+    Write-Host "Build log: $ToolsetRestoreLog" -ForegroundColor DarkGray
+    exit $lastExitCode
   }
 
   $path = Get-Content $toolsetLocationFile -TotalCount 1
@@ -194,6 +199,10 @@ function InitializeCustomToolset {
 
 function Build {
   & $BuildDriver $BuildArgs $ToolsetBuildProj /m /nologo /clp:Summary /warnaserror /v:$verbosity /bl:$BuildLog /p:Configuration=$configuration /p:Projects=$projects /p:RepoRoot=$RepoRoot /p:Restore=$restore /p:DeployDeps=$deployDeps /p:Build=$build /p:Rebuild=$rebuild /p:Deploy=$deploy /p:Test=$test /p:IntegrationTest=$integrationTest /p:Sign=$sign /p:Pack=$pack /p:CIBuild=$ci $properties
+  if ($lastExitCode -ne 0) {
+    Write-Host "Build log: $BuildLog" -ForegroundColor DarkGray
+    exit $lastExitCode
+  }
 }
 
 function Stop-Processes() {
@@ -212,7 +221,7 @@ try {
   $BuildLog = Join-Path $LogDir "Build.binlog"
   $ToolsetRestoreLog = Join-Path $LogDir "ToolsetRestore.binlog"
   $TempDir = Join-Path (Join-Path $ArtifactsDir $configuration) "tmp"
-  $GlobalJson = Get-Content(Join-Path $RepoRoot "global.json") | ConvertFrom-Json
+  $GlobalJson = Get-Content -Raw -Path (Join-Path $RepoRoot "global.json") | ConvertFrom-Json
   
   if ($projects -eq "") {
     $projects = Join-Path $RepoRoot "*.sln"
@@ -240,7 +249,8 @@ try {
   } elseif ((Get-Member -InputObject $GlobalJson -Name "sdk") -ne $null) {  
     InitializeDotNetCli
   } else {
-    throw "/global.json must either specify 'sdk.version' or 'vswhere.version'."
+    Write-Host "/global.json must either specify 'sdk.version' or 'vswhere.version'." -ForegroundColor Red
+    exit 1
   }
 
   if ($ci) {
@@ -251,7 +261,6 @@ try {
   InitializeCustomToolset
 
   Build
-  exit $lastExitCode
 }
 catch {
   Write-Host $_
