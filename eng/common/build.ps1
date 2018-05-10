@@ -86,8 +86,7 @@ function InitializeDotNetCli {
     }
   }
 
-  $global:BuildDriver = Join-Path $dotnetRoot "dotnet.exe"    
-  $global:BuildArgs = "msbuild"
+  return $dotnetRoot
 }
 
 function GetDotNetInstallScript([string] $dotnetRoot) {
@@ -123,8 +122,7 @@ function InitializeVisualStudioBuild {
     $env:VSSDKInstall = Join-Path $vsInstallDir "VSSDK\"
   }
 
-  $global:BuildDriver = Join-Path $vsInstallDir "MSBuild\15.0\Bin\msbuild.exe"
-  $global:BuildArgs = "/nodeReuse:$(!$ci)"
+  return $vsInstallDir;
 }
 
 function LocateVisualStudio {
@@ -242,13 +240,24 @@ try {
     $env:TEMP = $TempDir
     $env:TMP = $TempDir
   }
+  
+  if ((Get-Member -InputObject $GlobalJson -Name "sdk") -ne $null) {  
+    $dotnetRoot = InitializeDotNetCli
+  
+    # by default build with dotnet cli:
+    $BuildDriver = Join-Path $dotnetRoot "dotnet.exe"    
+    $BuildArgs = "msbuild"
+  }
 
-  # Presence of vswhere.version indicates the repo needs to build using VS msbuild
   if ((Get-Member -InputObject $GlobalJson -Name "vswhere") -ne $null) {    
-    InitializeVisualStudioBuild
-  } elseif ((Get-Member -InputObject $GlobalJson -Name "sdk") -ne $null) {  
-    InitializeDotNetCli
-  } else {
+    $vsInstallDir = InitializeVisualStudioBuild
+    
+    # Presence of vswhere.version indicates the repo needs to build using VS msbuild:
+    $BuildDriver = Join-Path $vsInstallDir "MSBuild\15.0\Bin\msbuild.exe"
+    $BuildArgs = "/nodeReuse:$(!$ci)"
+  }
+  
+  if ($BuildDriver -eq $null) {
     Write-Host "/global.json must either specify 'sdk.version' or 'vswhere.version'." -ForegroundColor Red
     exit 1
   }
