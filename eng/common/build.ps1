@@ -154,7 +154,7 @@ function InitializeToolset {
   $toolsetLocationFile = Join-Path $ToolsetDir "$toolsetVersion.txt"
 
   if (Test-Path $toolsetLocationFile) {
-    $path = Get-Content $toolsetLocationFile -TotalCount 1
+    $path = Get-Content -Raw -Path $toolsetLocationFile
     if (Test-Path $path) {
       $global:ToolsetBuildProj = $path
       return
@@ -177,7 +177,7 @@ function InitializeToolset {
     exit $lastExitCode
   }
 
-  $path = Get-Content $toolsetLocationFile -TotalCount 1
+  $path = Get-Content -Raw -Path $toolsetLocationFile
   if (!(Test-Path $path)) {
     throw "Invalid toolset path: $path"
   }
