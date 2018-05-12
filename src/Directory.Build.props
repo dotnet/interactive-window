@@ -2,6 +2,12 @@
 <Project>
   <Import Project="..\Directory.Build.props"/>
 
+  <PropertyGroup>
+    <ImportNetSdkFromRepoToolset>false</ImportNetSdkFromRepoToolset>
+  </PropertyGroup>
+
+  <Import Project="Sdk.props" Sdk="RoslynTools.RepoToolset" />
+
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
