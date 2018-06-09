@@ -240,10 +240,10 @@ try {
     $env:TEMP = $TempDir
     $env:TMP = $TempDir
   }
-  
+
   if ((Get-Member -InputObject $GlobalJson -Name "sdk") -ne $null) {  
     $dotnetRoot = InitializeDotNetCli
-  
+
     # by default build with dotnet cli:
     $BuildDriver = Join-Path $dotnetRoot "dotnet.exe"    
     $BuildArgs = "msbuild"
@@ -256,7 +256,7 @@ try {
     $BuildDriver = Join-Path $vsInstallDir "MSBuild\15.0\Bin\msbuild.exe"
     $BuildArgs = "/nodeReuse:$(!$ci)"
   }
-  
+
   if ($BuildDriver -eq $null) {
     Write-Host "/global.json must either specify 'sdk.version' or 'vswhere.version'." -ForegroundColor Red
     exit 1

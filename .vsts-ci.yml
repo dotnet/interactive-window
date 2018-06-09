@@ -18,7 +18,10 @@ steps:
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
   displayName: Install Swix Plugin
 
-- script: eng\common\CIBuild.cmd -configuration $(BuildConfiguration)
+- script: eng\common\CIBuild.cmd 
+          -configuration $(BuildConfiguration)
+          /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
+          /p:DotNetSymbolServerTokenSymWeb=$(symweb-symbol-server-pat)
   displayName: Build
 
 - task: PublishTestResults@1
@@ -37,22 +40,6 @@ steps:
     connectedServiceName: 'InteractiveWindow NuGet feed'
     nuGetVersion: 4.0.0.2283
 
-- task: PublishSymbols@1
-  displayName: Prepare Symbols
-  inputs:
-    SymbolsPath: '$(DropRoot)\$(TeamName)\$(Build.DefinitionName)\$(Build.BuildNumber)\Symbols'
-    SearchPattern: '**/*.dll;**/*.exe;**/*.pdb'
-    SymbolsFolder: '$(Build.SourcesDirectory)\artifacts\$(BuildConfiguration)\SymStore'
-    SkipIndexing: true
-
-- task: ms-vscs-artifact.build-tasks.artifactSymbolTask-1.artifactSymbolTask@0
-  displayName: Publish Symbols
-  inputs:
-    symbolServiceURI: 'https://microsoft.artifacts.visualstudio.com/DefaultCollection'
-    requestName: '$(system.teamProject)/$(Build.DefinitionName)/$(Build.BuildNumber)/$(Build.BuildId)'
-    sourcePath: '$(DropRoot)\$(TeamName)\$(Build.DefinitionName)\$(Build.BuildNumber)\Symbols'
-    usePat: false
-
 - task: ms-vseng.MicroBuildTasks.4305a8de-ba66-4d8b-b2d1-0dc4ecbbf5e8.MicroBuildUploadVstsDropFolder@1
   displayName: Publish VS Insertion Artifacts 
   inputs:
@@ -66,6 +53,7 @@ steps:
      artifacts\$(BuildConfiguration)\bin
      artifacts\$(BuildConfiguration)\log
      artifacts\$(BuildConfiguration)\TestResults
+     artifacts\$(BuildConfiguration)\SymStore
      artifacts\$(BuildConfiguration)\packages
      artifacts\$(BuildConfiguration)\VSSetup
     ArtifactName: '$(Build.BuildNumber)'

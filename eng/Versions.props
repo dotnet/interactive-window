@@ -3,12 +3,16 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
 
+    <!-- This repo version -->
     <VersionPrefix>2.9.0</VersionPrefix>
     <PreReleaseVersionLabel>beta1</PreReleaseVersionLabel>
 
     <!-- Opt-in repo features -->
     <UsingToolVSSDK>true</UsingToolVSSDK>
+    <UsingToolNuGetRepack>true</UsingToolNuGetRepack>
+    <UsingToolSymbolUploader>true</UsingToolSymbolUploader>
 
+    <!-- Dependencies -->
     <SystemCollectionsImmutableVersion>1.3.1</SystemCollectionsImmutableVersion>
 
     <MicrosoftVSSDKVersion>15.0.26606</MicrosoftVSSDKVersion>
@@ -18,7 +22,7 @@
     <MicrosoftVisualStudioTelemetryVersion>15.0.26606-alpha</MicrosoftVisualStudioTelemetryVersion>
     <MicrosoftVisualStudioThreadingVersion>15.3.83</MicrosoftVisualStudioThreadingVersion>
 
-    <!-- Tests -->
+    <!-- Test dependencies -->
     <MoqVersion>4.2.1402.2112</MoqVersion>
     <BasicUndoVersion>0.9.3</BasicUndoVersion>
   </PropertyGroup>
