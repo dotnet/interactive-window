@@ -60,8 +60,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             uint toolbarId,
             IOleCommandTarget toolbarCommandTarget)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             _componentModel = model;
-            this.Caption = title;
+            Caption = title;
             _editorAdapters = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
             _evaluator = evaluator;
 
@@ -70,7 +72,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             _toolbarId = toolbarId;
 
             // The following calls this.OnCreate:
-            Guid clsId = this.ToolClsid;
+            Guid clsId = ToolClsid;
             Guid empty = Guid.Empty;
             Guid typeId = providerId;
             IVsWindowFrame frame;
@@ -83,7 +85,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
                 vsShell.CreateToolWindow(
                     (uint)(__VSCREATETOOLWIN.CTW_fInitNew | __VSCREATETOOLWIN.CTW_fToolbarHost | creationFlags),
                     (uint)instanceId,
-                    this.GetIVsWindowPane(),
+                    GetIVsWindowPane(),
                     ref clsId,
                     ref typeId,
                     ref empty,
@@ -95,7 +97,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             );
             var guid = GetType().GUID;
             ErrorHandler.ThrowOnFailure(frame.SetGuidProperty((int)__VSFPROPID.VSFPROPID_CmdUIGuid, ref guid));
-            this.Frame = frame;
+            Frame = frame;
         }
 
         public void SetLanguage(Guid languageServiceGuid, IContentType contentType)
@@ -109,6 +111,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         protected override void OnCreate()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             _window = _componentModel.GetService<IInteractiveWindowFactoryService>().CreateWindow(_evaluator);
             _window.SubmissionBufferAdded += SubmissionBufferAdded;
             _textViewHost = _window.GetTextViewHost();
@@ -123,6 +127,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private void SubmissionBufferAdded(object sender, SubmissionBufferAddedEventArgs e)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             GetToolbarHost().ForceUpdateUI();
         }
 
@@ -164,6 +170,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public override void OnToolWindowCreated()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             Guid commandUiGuid = VSConstants.GUID_TextEditorFactory;
             ((IVsWindowFrame)Frame).SetGuidProperty((int)__VSFPROPID.VSFPROPID_InheritKeyBindings, ref commandUiGuid);
             ((INotifyPropertyChanged)Frame).PropertyChanged += OnFramePropertyChanged;
@@ -198,11 +206,13 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public int QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             return _commandTarget.QueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText);
         }
 
         public int Exec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             return _commandTarget.Exec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut);
         }
 
@@ -212,6 +222,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public void Show(bool focus)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             var windowFrame = (IVsWindowFrame)Frame;
             ErrorHandler.ThrowOnFailure(focus ? windowFrame.Show() : windowFrame.ShowNoActivate());
 
@@ -227,6 +239,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private IVsToolWindowToolbarHost GetToolbarHost()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             var frame = (IVsWindowFrame)Frame;
             object result;
             ErrorHandler.ThrowOnFailure(frame.GetProperty((int)__VSFPROPID.VSFPROPID_ToolbarHost, out result));

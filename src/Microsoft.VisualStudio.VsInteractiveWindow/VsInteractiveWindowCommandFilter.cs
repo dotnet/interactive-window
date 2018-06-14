@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.OLE.Interop;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
@@ -70,6 +71,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         {
             get
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 // Non-character command processing starts with WindowFrame which calls ReplWindow.Exec.
                 // We need to invoke the view's Exec method in order to invoke its full command chain 
                 // (features add their filters to the view).
@@ -81,6 +84,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public int QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             var nextTarget = TextViewCommandFilterChain;
 
             return nextTarget.QueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText);
@@ -88,6 +92,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         public int Exec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             var nextTarget = TextViewCommandFilterChain;
 
             return nextTarget.Exec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut);
@@ -122,6 +127,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
             public int QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 try
                 {
                     switch (_layer)
@@ -145,6 +152,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
             public int Exec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 try
                 {
                     switch (_layer)
@@ -169,6 +178,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private int PreEditorCommandFilterQueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             if (pguidCmdGroup == Guids.InteractiveCommandSetId)
             {
                 switch ((CommandIds)prgCmds[0].cmdID)
@@ -196,6 +207,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private int PreEditorCommandFilterExec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             var nextTarget = _editorCommandFilter;
 
             if (pguidCmdGroup == Guids.InteractiveCommandSetId)
@@ -350,6 +363,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private int PreLanguageCommandFilterQueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             var nextTarget = firstLanguageServiceCommandFilter ?? _editorServicesCommandFilter;
 
             if (pguidCmdGroup == Guids.InteractiveCommandSetId)
@@ -410,6 +425,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private int PreLanguageCommandFilterExec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             var nextTarget = firstLanguageServiceCommandFilter ?? _editorServicesCommandFilter;
 
             if (pguidCmdGroup == Guids.InteractiveCommandSetId)
@@ -482,7 +499,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         private void ShowContextMenu()
         {
-            var uishell = (IVsUIShell)InteractiveWindowPackage.GetGlobalService(typeof(SVsUIShell));
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            var uishell = (IVsUIShell)Package.GetGlobalService(typeof(SVsUIShell));
             if (uishell != null)
             {
                 var pt = System.Windows.Forms.Cursor.Position;

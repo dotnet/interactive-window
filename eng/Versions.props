@@ -18,10 +18,11 @@
     <MicrosoftVSSDKVersion>15.0.26606</MicrosoftVSSDKVersion>
     <MicrosoftVisualStudioPlatformVSEditorVersion>15.0.26606-alpha</MicrosoftVisualStudioPlatformVSEditorVersion>
     <MicrosoftVisualStudioPlatformVSEditorInteropVersion>15.0.26606-alpha</MicrosoftVisualStudioPlatformVSEditorInteropVersion>
+    <MicrosoftVisualStudioSDKAnalyzersVersion>15.7.7</MicrosoftVisualStudioSDKAnalyzersVersion>
     <MicrosoftVisualStudioTextInternalVersion>15.0.26606-alpha</MicrosoftVisualStudioTextInternalVersion>
     <MicrosoftVisualStudioTelemetryVersion>15.0.26606-alpha</MicrosoftVisualStudioTelemetryVersion>
     <MicrosoftVisualStudioThreadingVersion>15.3.83</MicrosoftVisualStudioThreadingVersion>
-
+    
     <!-- Test dependencies -->
     <MoqVersion>4.2.1402.2112</MoqVersion>
     <BasicUndoVersion>0.9.3</BasicUndoVersion>
