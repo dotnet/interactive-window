@@ -12,17 +12,17 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.VisualStudio.InteractiveWindow;
-using Microsoft.VisualStudio.InteractiveWindow.Shell;
+using Microsoft.VisualStudio.Shell;
 
 namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 {
-    using IOleServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
+    using IOleServiceProvider = OLE.Interop.IServiceProvider;
 
     [Export(typeof(IInteractiveWindowEditorFactoryService))]
     internal sealed class VsInteractiveWindowEditorFactoryService : IInteractiveWindowEditorFactoryService
     {
-        private readonly IOleServiceProvider _provider;
+        private readonly object _provider; // IOleServiceProvider
+
         private readonly IVsEditorAdaptersFactoryService _adapterFactory;
         private readonly IContentTypeRegistryService _contentTypeRegistry;
         private readonly IEnumerable<Lazy<IVsInteractiveWindowOleCommandTargetProvider, ContentTypeMetadata>> _oleCommandTargetProviders;
@@ -31,18 +31,21 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         public VsInteractiveWindowEditorFactoryService(IVsEditorAdaptersFactoryService adaptersFactory, IContentTypeRegistryService contentTypeRegistry, [ImportMany]IEnumerable<Lazy<IVsInteractiveWindowOleCommandTargetProvider, ContentTypeMetadata>> oleCommandTargetProviders)
         {
             _adapterFactory = adaptersFactory;
-            _provider = (IOleServiceProvider)InteractiveWindowPackage.GetGlobalService(typeof(IOleServiceProvider));
+            _provider = Package.GetGlobalService(typeof(IOleServiceProvider));
             _contentTypeRegistry = contentTypeRegistry;
             _oleCommandTargetProviders = oleCommandTargetProviders;
         }
 
         IWpfTextView IInteractiveWindowEditorFactoryService.CreateTextView(IInteractiveWindow window, ITextBuffer buffer, ITextViewRoleSet roles)
         {
-            var bufferAdapter = _adapterFactory.CreateVsTextBufferAdapterForSecondaryBuffer(_provider, buffer);
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            var provider = (IOleServiceProvider)_provider;
+            var bufferAdapter = _adapterFactory.CreateVsTextBufferAdapterForSecondaryBuffer(provider, buffer);
 
             // Create and initialize text view adapter.
             // WARNING: This might trigger various services like IntelliSense, margins, taggers, etc.
-            var textViewAdapter = _adapterFactory.CreateVsTextViewAdapter(_provider, roles);
+            var textViewAdapter = _adapterFactory.CreateVsTextViewAdapter(provider, roles);
 
             var commandFilter = new VsInteractiveWindowCommandFilter(_adapterFactory, window, textViewAdapter, bufferAdapter, _oleCommandTargetProviders, _contentTypeRegistry);
             window.Properties[typeof(VsInteractiveWindowCommandFilter)] = commandFilter;
@@ -51,14 +54,15 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         ITextBuffer IInteractiveWindowEditorFactoryService.CreateAndActivateBuffer(IInteractiveWindow window)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+         
             // create buffer adapter to support undo/redo:
-            IContentType contentType;
-            if (!window.Properties.TryGetProperty(typeof(IContentType), out contentType))
+            if (!window.Properties.TryGetProperty(typeof(IContentType), out IContentType contentType))
             {
                 contentType = _contentTypeRegistry.GetContentType("text");
             }
 
-            var bufferAdapter = _adapterFactory.CreateVsTextBufferAdapter(_provider, contentType);
+            var bufferAdapter = _adapterFactory.CreateVsTextBufferAdapter((IOleServiceProvider)_provider, contentType);
             bufferAdapter.InitializeContent("", 0);
 
             var commandFilter = GetCommandFilter(window);
@@ -74,7 +78,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
         internal static void SetEditorOptions(IEditorOptions options, Guid languageServiceGuid)
         {
-            IVsTextManager textMgr = (IVsTextManager)InteractiveWindowPackage.GetGlobalService(typeof(SVsTextManager));
+            IVsTextManager textMgr = (IVsTextManager)Package.GetGlobalService(typeof(SVsTextManager));
             var langPrefs = new LANGPREFERENCES[1];
             langPrefs[0].guidLang = languageServiceGuid;
             ErrorHandler.ThrowOnFailure(textMgr.GetUserPreferences(null, null, langPrefs, null));

@@ -48,6 +48,7 @@
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.1.DesignTime" Version="12.1.30328" />
     <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVSSDKVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.WCFReference.Interop" Version="9.0.30729" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" Version="$(MicrosoftVisualStudioSDKAnalyzersVersion)" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.csproj">

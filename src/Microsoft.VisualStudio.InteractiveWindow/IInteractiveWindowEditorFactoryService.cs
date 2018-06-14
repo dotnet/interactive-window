@@ -14,13 +14,14 @@ namespace Microsoft.VisualStudio.InteractiveWindow
     /// service understands how the editors and buffers need to be created and sets them up
     /// so that commands are properly routed to the editor window.
     /// 
-    /// This service is imported by <see cref="Microsoft.VisualStudio.InteractiveWindow.IInteractiveWindowFactoryService"/> 
-    /// to use in the creation of <see cref="Microsoft.VisualStudio.InteractiveWindow.IInteractiveWindow"/>s.
+    /// This service is imported by <see cref="IInteractiveWindowFactoryService"/> 
+    /// to use in the creation of <see cref="IInteractiveWindow"/>s.
     /// </summary>
     public interface IInteractiveWindowEditorFactoryService
     {
         /// <summary>
         /// Creates a new text view for an interactive window.
+        /// Must be called on UI thread.
         /// </summary>
         /// <param name="window">The interactive window the text view is being created for.</param>
         /// <param name="buffer">The projection buffer used for displaying the interactive window</param>
@@ -29,6 +30,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
         /// <summary>
         /// Creates a new input buffer for the interactive window.
+        /// Must be called on UI thread.
         /// </summary>
         ITextBuffer CreateAndActivateBuffer(IInteractiveWindow window);
     }
