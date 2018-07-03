@@ -36,7 +36,7 @@ steps:
 - task: NuGetPublisher@0
   displayName: Publish NuGet Packages to MyGet
   inputs:
-    searchPattern: 'artifacts\$(BuildConfiguration)\packages\*.nupkg'
+    searchPattern: 'artifacts\$(BuildConfiguration)\packages\Shipping\*.nupkg'
     connectedServiceName: 'InteractiveWindow NuGet feed'
     nuGetVersion: 4.0.0.2283
 
