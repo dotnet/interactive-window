@@ -26,6 +26,8 @@
     <!-- Test dependencies -->
     <MoqVersion>4.2.1402.2112</MoqVersion>
     <BasicUndoVersion>0.9.3</BasicUndoVersion>
+
+    <MicroBuildPluginsSwixBuildVersion>1.0.422</MicroBuildPluginsSwixBuildVersion>
   </PropertyGroup>
 
   <PropertyGroup>
