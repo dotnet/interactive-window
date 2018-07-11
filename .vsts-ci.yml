@@ -15,6 +15,9 @@ steps:
     signType: real
     esrpSigning: true
 
+- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
+  displayName: Install Swix Plugin
+
 - script: eng\common\CIBuild.cmd 
           -configuration $(BuildConfiguration)
           /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
