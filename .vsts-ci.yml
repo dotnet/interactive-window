@@ -12,23 +12,27 @@ steps:
 - task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@1
   displayName: Install Signing Plugin
   inputs:
-    signType: real
+    signType: $(SignType)
     esrpSigning: true
+  condition: and(succeeded(), ne(variables['SignType'], ''))
 
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
   displayName: Install Swix Plugin
 
 - script: eng\common\CIBuild.cmd 
-          -configuration $(BuildConfiguration)
-          /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
-          /p:DotNetSymbolServerTokenSymWeb=$(symweb-symbol-server-pat)
+            -configuration $(BuildConfiguration)
+            /p:PB_PublishBlobFeedKey=$(PB_PublishBlobFeedKey)
+            /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+            /p:DotNetSignType=$(SignType)
+            /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
+            /p:DotNetSymbolServerTokenSymWeb=$(symweb-symbol-server-pat)
   displayName: Build
 
 - task: PublishTestResults@1
   displayName: Publish Test Results
   inputs:
     testRunner: XUnit
-    testResultsFiles: 'artifacts/$(BuildConfiguration)/TestResults/*.xml'
+    testResultsFiles: 'artifacts/TestResults/$(BuildConfiguration)/*.xml'
     mergeTestResults: true
     testRunTitle: 'Unit Tests'
   condition: succeededOrFailed()
@@ -36,26 +40,27 @@ steps:
 - task: NuGetPublisher@0
   displayName: Publish NuGet Packages to MyGet
   inputs:
-    searchPattern: 'artifacts\$(BuildConfiguration)\packages\Shipping\*.nupkg'
+    searchPattern: 'artifacts\packages\$(BuildConfiguration)\Shipping\*.nupkg'
     connectedServiceName: 'InteractiveWindow NuGet feed'
     nuGetVersion: 4.0.0.2283
+  condition: succeeded()
 
 - task: ms-vseng.MicroBuildTasks.4305a8de-ba66-4d8b-b2d1-0dc4ecbbf5e8.MicroBuildUploadVstsDropFolder@1
   displayName: Publish VS Insertion Artifacts 
   inputs:
-    DropFolder: 'artifacts\$(BuildConfiguration)\VSSetup\Insertion'
+    DropFolder: 'artifacts\VSSetup\$(BuildConfiguration)\Insertion'
 
 - task: CopyPublishBuildArtifacts@1
   displayName: Publish Artifacts
   inputs:
     CopyRoot: '$(Build.SourcesDirectory)'
     Contents: |
-     artifacts\$(BuildConfiguration)\bin
-     artifacts\$(BuildConfiguration)\log
-     artifacts\$(BuildConfiguration)\TestResults
-     artifacts\$(BuildConfiguration)\SymStore
-     artifacts\$(BuildConfiguration)\packages
-     artifacts\$(BuildConfiguration)\VSSetup
+     artifacts\bin\$(BuildConfiguration)
+     artifacts\log\$(BuildConfiguration)
+     artifacts\TestResults\$(BuildConfiguration)
+     artifacts\SymStore\$(BuildConfiguration)
+     artifacts\packages\$(BuildConfiguration)
+     artifacts\VSSetup\$(BuildConfiguration)
     ArtifactName: '$(Build.BuildNumber)'
     ArtifactType: FilePath
     TargetPath: '$(DropRoot)\$(TeamName)\$(Build.DefinitionName)'

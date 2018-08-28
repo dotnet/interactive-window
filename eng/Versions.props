@@ -5,7 +5,8 @@
 
     <!-- This repo version -->
     <VersionPrefix>2.9.0</VersionPrefix>
-    <PreReleaseVersionLabel>beta1</PreReleaseVersionLabel>
+    <PreReleaseVersionLabel>beta2</PreReleaseVersionLabel>
+    <SemanticVersioningV1>true</SemanticVersioningV1>
 
     <!-- Opt-in repo features -->
     <UsingToolVSSDK>true</UsingToolVSSDK>
