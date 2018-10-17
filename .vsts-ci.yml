@@ -21,7 +21,6 @@ steps:
 
 - script: eng\common\CIBuild.cmd 
             -configuration $(BuildConfiguration)
-            /p:PB_PublishBlobFeedKey=$(PB_PublishBlobFeedKey)
             /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
             /p:DotNetSignType=$(SignType)
             /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
@@ -35,7 +34,7 @@ steps:
     testResultsFiles: 'artifacts/TestResults/$(BuildConfiguration)/*.xml'
     mergeTestResults: true
     testRunTitle: 'Unit Tests'
-  condition: succeededOrFailed()
+  condition: not(succeeded())
 
 - task: NuGetPublisher@0
   displayName: Publish NuGet Packages to MyGet
