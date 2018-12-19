@@ -5,7 +5,7 @@
   <PropertyGroup>
     <LangVersion>Latest</LangVersion>
     <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
-    <NoWarn>NU5125</NoWarn>
+    <NoWarn>$(NoWarn);NU5125</NoWarn>
     <CheckForOverflowUnderflow Condition="'$(Configuration)' == 'Debug'">true</CheckForOverflowUnderflow>
   </PropertyGroup>
 </Project>
