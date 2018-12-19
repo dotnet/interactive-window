@@ -64,6 +64,14 @@ steps:
     testRunTitle: 'Unit Tests'
   condition: always()
 
+# Publish an artifact that the RoslynInsertionTool is able to find by its name.
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifact VSSetup
+  inputs:
+    PathtoPublish: 'artifacts\VSSetup\$(BuildConfiguration)'
+    ArtifactName: 'VSSetup'
+  condition: succeeded()
+    
 # Archive NuGet packages to DevOps.
 - task: PublishBuildArtifacts@1
   displayName: Publish Artifact Packages
