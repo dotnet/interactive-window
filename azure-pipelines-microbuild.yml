@@ -7,6 +7,7 @@ queue:
 variables:
   BuildConfiguration: Release
   TeamName: Roslyn
+  VisualStudioDropName: Products/$(System.TeamProject)/$(Build.Repository.Name)/$(Build.SourceBranchName)/$(Build.BuildNumber)
 
 # CI trigger
 trigger:
@@ -20,12 +21,10 @@ steps:
     esrpSigning: true
   condition: and(succeeded(), ne(variables['SignType'], ''))
 
-- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
-  displayName: Install Swix Plugin
-
 - script: eng\common\CIBuild.cmd 
             -configuration $(BuildConfiguration)
-            /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+            /p:OfficialBuildId=$(Build.BuildNumber)
+            /p:VisualStudioDropName=$(VisualStudioDropName)
             /p:DotNetSignType=$(SignType)
             /p:DotNetSymbolServerTokenMsdl=$(microsoft-symbol-server-pat)
             /p:DotNetSymbolServerTokenSymWeb=$(symweb-symbol-server-pat)
@@ -39,11 +38,12 @@ steps:
     nuGetVersion: 4.0.0.2283
   condition: succeeded()
 
-# Publishes setup VSIXes to a drop with id defined by MicroBuildSwixPlugin.
+# Publishes setup VSIXes to a drop.
 # Note: The insertion tool looks for the display name of this task in the logs.
 - task: ms-vseng.MicroBuildTasks.4305a8de-ba66-4d8b-b2d1-0dc4ecbbf5e8.MicroBuildUploadVstsDropFolder@1
   displayName: Upload VSTS Drop
   inputs:
+    DropName: $(VisualStudioDropName)
     DropFolder: 'artifacts\VSSetup\$(BuildConfiguration)\Insertion'
     condition: succeeded()
 
