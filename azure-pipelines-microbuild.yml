@@ -1,15 +1,18 @@
 resources:
 - repo: self
   clean: true
+
 queue:
   name: VSEng-MicroBuildVS2017
   demands: Cmd
+ 
 variables:
   BuildConfiguration: Release
+  SignType: real
   TeamName: Roslyn
   VisualStudioDropName: Products/$(System.TeamProject)/$(Build.Repository.Name)/$(Build.SourceBranchName)/$(Build.BuildNumber)
 
-# CI trigger
+# Branches that trigger a build on commit
 trigger:
 - master
 
