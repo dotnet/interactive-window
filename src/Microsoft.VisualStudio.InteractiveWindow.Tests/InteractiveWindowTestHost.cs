@@ -1,11 +1,9 @@
 // Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System;
-using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
-using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
 using Xunit;
 
@@ -19,8 +17,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
 
         private static readonly Lazy<AggregateCatalog> s_lazyCatalog = new Lazy<AggregateCatalog>(() =>
         {
-            var types = new[] { typeof(TestInteractiveEngine), typeof(InteractiveWindow) }.Concat(GetVisualStudioTypes());
-            return new AggregateCatalog(types.Select(t => new AssemblyCatalog(t.Assembly)));
+            var assemblies = new[] { typeof(TestInteractiveEngine).Assembly, typeof(InteractiveWindow).Assembly }.Concat(GetVisualStudioAssemblies());
+            return new AggregateCatalog(assemblies.Select(a => new AssemblyCatalog(a)));
         });
 
         internal InteractiveWindowTestHost(Action<InteractiveWindow.State> stateChangedHandler = null)
@@ -47,34 +45,26 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
             }
         }
 
-        public static Type[] GetVisualStudioTypes()
-        {
-            return new[]
+        public static Assembly[] GetVisualStudioAssemblies()
+            => new[]
             {
-                // Microsoft.VisualStudio.Platform.VSEditor.dll:
-                typeof(Microsoft.VisualStudio.Platform.VSEditor.EventArgsHelper),
+                Assembly.Load("Microsoft.VisualStudio.Platform.VSEditor"),
 
-                // Microsoft.VisualStudio.Text.Logic.dll:
-                //   Must include this because several editor options are actually stored as exported information 
-                //   on this DLL.  Including most importantly, the tab size information.
-                typeof(Microsoft.VisualStudio.Text.Editor.DefaultOptions),
+                // Must include this because several editor options are actually stored as exported information 
+                // on this DLL.  Including most importantly, the tab size information.
+                Assembly.Load("Microsoft.VisualStudio.Text.Logic"),
 
-                // Microsoft.VisualStudio.Text.UI.dll:
-                //   Include this DLL to get several more EditorOptions including WordWrapStyle.
-                typeof(Microsoft.VisualStudio.Text.Editor.WordWrapStyle),
+                // Include this DLL to get several more EditorOptions including WordWrapStyle.
+                Assembly.Load("Microsoft.VisualStudio.Text.UI"),
 
-                // Microsoft.VisualStudio.Text.UI.Wpf.dll:
-                //   Include this DLL to get more EditorOptions values.
-                typeof(Microsoft.VisualStudio.Text.Editor.HighlightCurrentLineOption),
+                // Include this DLL to get more EditorOptions values.
+                Assembly.Load("Microsoft.VisualStudio.Text.UI.Wpf"),
 
-                // BasicUndo.dll:
-                //   Include this DLL to satisfy ITextUndoHistoryRegistry
-                typeof(BasicUndo.IBasicUndoHistory),
+                // Include this DLL to satisfy ITextUndoHistoryRegistry
+                Assembly.Load("BasicUndo"),
 
-                // Microsoft.VisualStudio.Language.StandardClassification.dll:
-                typeof(Microsoft.VisualStudio.Language.StandardClassification.PredefinedClassificationTypeNames),
+                Assembly.Load("Microsoft.VisualStudio.Language.StandardClassification"),
             };
-        }
 
         public void Dispose()
         {

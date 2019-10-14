@@ -42,11 +42,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         private readonly Guid _toolbarCommandSet;
         private readonly uint _toolbarId;
         private readonly IOleCommandTarget _toolbarCommandTarget;
+        private readonly IInteractiveEvaluator _evaluator;
 
         private IInteractiveWindow _window;
-        private IVsFindTarget _findTarget;
         private IOleCommandTarget _commandTarget;
-        private IInteractiveEvaluator _evaluator;
         private IWpfTextViewHost _textViewHost;
 
         internal VsInteractiveWindow(
@@ -75,8 +74,12 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             Guid clsId = ToolClsid;
             Guid empty = Guid.Empty;
             Guid typeId = providerId;
-            IVsWindowFrame frame;
+
             var vsShell = (IVsUIShell)ServiceProvider.GlobalProvider.GetService(typeof(SVsUIShell));
+            if (vsShell == null)
+            {
+                throw new InvalidOperationException("Service 'SVsUIShell' is not available");
+            }
 
             // we don't pass __VSCREATETOOLWIN.CTW_fMultiInstance because multi instance panes are
             // destroyed when closed.  We are really multi instance but we don't want to be closed.
@@ -92,7 +95,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
                     null,
                     title,
                     null,
-                    out frame
+                    out var frame
                 )
             );
             var guid = GetType().GUID;
@@ -121,7 +124,6 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             AutomationProperties.SetName(textView.VisualElement, Caption);
 
             var viewAdapter = _editorAdapters.GetViewAdapter(textView);
-            _findTarget = viewAdapter as IVsFindTarget;
             _commandTarget = viewAdapter as IOleCommandTarget;
         }
 
@@ -227,13 +229,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             var windowFrame = (IVsWindowFrame)Frame;
             ErrorHandler.ThrowOnFailure(focus ? windowFrame.Show() : windowFrame.ShowNoActivate());
 
-            if (focus)
+            if (focus && _window.TextView is IInputElement input)
             {
-                IInputElement input = _window.TextView as IInputElement;
-                if (input != null)
-                {
-                    Keyboard.Focus(input);
-                }
+                Keyboard.Focus(input);
             }
         }
 
@@ -242,8 +240,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             ThreadHelper.ThrowIfNotOnUIThread();
 
             var frame = (IVsWindowFrame)Frame;
-            object result;
-            ErrorHandler.ThrowOnFailure(frame.GetProperty((int)__VSFPROPID.VSFPROPID_ToolbarHost, out result));
+            ErrorHandler.ThrowOnFailure(frame.GetProperty((int)__VSFPROPID.VSFPROPID_ToolbarHost, out var result));
             return (IVsToolWindowToolbarHost)result;
         }
 

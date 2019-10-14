@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
+using Task = System.Threading.Tasks.Task;
 
 namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 {
@@ -21,10 +22,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         // Command filter chain: 
         // *window* -> VsTextView -> ... -> *pre-language + the current language service's filter* -> editor services -> *preEditor* -> editor
         //
-        private IOleCommandTarget _preLanguageCommandFilter;
-        private IOleCommandTarget _editorServicesCommandFilter;
-        private IOleCommandTarget _preEditorCommandFilter;
-        private IOleCommandTarget _editorCommandFilter;
+        private readonly IOleCommandTarget _preLanguageCommandFilter;
+        private readonly IOleCommandTarget _editorServicesCommandFilter;
+        private readonly IOleCommandTarget _preEditorCommandFilter;
+        private readonly IOleCommandTarget _editorCommandFilter;
         // we route undo/redo commands to this target:
         internal IOleCommandTarget currentBufferCommandHandler;
         internal IOleCommandTarget firstLanguageServiceCommandFilter;
@@ -43,8 +44,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
             this.textViewAdapter = textViewAdapter;
 
             // make us a code window so we'll have the same colors as a normal code window.
-            IVsTextEditorPropertyContainer propContainer;
-            ErrorHandler.ThrowOnFailure(((IVsTextEditorPropertyCategoryContainer)textViewAdapter).GetPropertyCategory(Microsoft.VisualStudio.Editor.DefGuidList.guidEditPropCategoryViewMasterSettings, out propContainer));
+            ErrorHandler.ThrowOnFailure(((IVsTextEditorPropertyCategoryContainer)textViewAdapter).GetPropertyCategory(DefGuidList.guidEditPropCategoryViewMasterSettings, out var propContainer));
             propContainer.SetProperty(VSEDITPROPID.VSEDITPROPID_ViewComposite_AllCodeWindowDefaults, true);
             propContainer.SetProperty(VSEDITPROPID.VSEDITPROPID_ViewGlobalOpt_AutoScrollCaretOnTextEntry, true);
 
@@ -131,17 +131,12 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
                 try
                 {
-                    switch (_layer)
+                    return _layer switch
                     {
-                        case CommandFilterLayer.PreLanguage:
-                            return _window.PreLanguageCommandFilterQueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText);
-
-                        case CommandFilterLayer.PreEditor:
-                            return _window.PreEditorCommandFilterQueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText);
-
-                        default:
-                            throw ExceptionUtilities.UnexpectedValue(_layer);
-                    }
+                        CommandFilterLayer.PreLanguage => _window.PreLanguageCommandFilterQueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText),
+                        CommandFilterLayer.PreEditor => _window.PreEditorCommandFilterQueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText),
+                        _ => throw ExceptionUtilities.UnexpectedValue(_layer),
+                    };
                 }
                 catch (Exception e) when (FatalError.ReportWithoutCrashUnlessCanceled(e))
                 {
@@ -156,17 +151,12 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
                 try
                 {
-                    switch (_layer)
+                    return _layer switch
                     {
-                        case CommandFilterLayer.PreLanguage:
-                            return _window.PreLanguageCommandFilterExec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut);
-
-                        case CommandFilterLayer.PreEditor:
-                            return _window.PreEditorCommandFilterExec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut);
-
-                        default:
-                            throw ExceptionUtilities.UnexpectedValue(_layer);
-                    }
+                        CommandFilterLayer.PreLanguage => _window.PreLanguageCommandFilterExec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut),
+                        CommandFilterLayer.PreEditor => _window.PreEditorCommandFilterExec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut),
+                        _ => throw ExceptionUtilities.UnexpectedValue(_layer),
+                    };
                 }
                 catch (Exception e) when (FatalError.ReportWithoutCrashUnlessCanceled(e))
                 {
@@ -229,8 +219,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
                 {
                     case VSConstants.VSStd2KCmdID.TYPECHAR:
                         {
-                            var operations = _window.Operations as IInteractiveWindowOperations2;
-                            if (operations != null)
+                            if (_window.Operations is IInteractiveWindowOperations2 operations)
                             {
                                 char typedChar = (char)(ushort)System.Runtime.InteropServices.Marshal.GetObjectForNativeVariant(pvaIn);
                                 operations.TypeChar(typedChar);
@@ -300,8 +289,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
                         return VSConstants.S_OK;
                     case VSConstants.VSStd2KCmdID.CUTLINE:
                         {
-                            var operations = _window.Operations as IInteractiveWindowOperations2;
-                            if (operations != null)
+                            if (_window.Operations is IInteractiveWindowOperations2 operations)
                             {
                                 operations.CutLine();
                                 return VSConstants.S_OK;
@@ -310,8 +298,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
                         break;
                     case VSConstants.VSStd2KCmdID.DELETELINE:
                         {
-                            var operations = _window.Operations as IInteractiveWindowOperations2;
-                            if (operations != null)
+                            if (_window.Operations is IInteractiveWindowOperations2 operations)
                             {
                                 operations.DeleteLine();
                                 return VSConstants.S_OK;
@@ -339,8 +326,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
 
                     case VSConstants.VSStd97CmdID.Copy:
                         {
-                            var operations = _window.Operations as IInteractiveWindowOperations2;
-                            if (operations != null)
+                            if (_window.Operations is IInteractiveWindowOperations2 operations)
                             {
                                 operations.Copy();
                                 return VSConstants.S_OK;
@@ -434,15 +420,14 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
                 switch ((CommandIds)nCmdID)
                 {
                     case CommandIds.AbortExecution: _window.Evaluator.AbortExecution(); return VSConstants.S_OK;
-                    case CommandIds.Reset: _window.Operations.ResetAsync(); return VSConstants.S_OK;
+                    case CommandIds.Reset: _ = Task.Run(() => _window.Operations.ResetAsync()); return VSConstants.S_OK;
                     case CommandIds.SmartExecute: _window.Operations.ExecuteInput(); return VSConstants.S_OK;
                     case CommandIds.HistoryNext: _window.Operations.HistoryNext(); return VSConstants.S_OK;
                     case CommandIds.HistoryPrevious: _window.Operations.HistoryPrevious(); return VSConstants.S_OK;
                     case CommandIds.ClearScreen: _window.Operations.ClearView(); return VSConstants.S_OK;
                     case CommandIds.CopyCode:
                         {
-                            var operation = _window.Operations as IInteractiveWindowOperations2;
-                            if (operation != null)
+                            if (_window.Operations is IInteractiveWindowOperations2 operation)
                             {
                                 operation.CopyCode();
                             }
@@ -512,8 +497,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Shell
         }
 
         private const uint CommandEnabled = (uint)(OLECMDF.OLECMDF_ENABLED | OLECMDF.OLECMDF_SUPPORTED);
-        private const uint CommandDisabled = (uint)(OLECMDF.OLECMDF_SUPPORTED);
-        private const uint CommandDisabledAndHidden = (uint)(OLECMDF.OLECMDF_INVISIBLE | OLECMDF.OLECMDF_SUPPORTED);
+        private const uint CommandDisabled = (uint)OLECMDF.OLECMDF_SUPPORTED;
 
         private bool CaretAtEnd
         {
