@@ -20,13 +20,12 @@
     <MicrosoftVisualStudioCoreUtilityVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioCoreUtilityVersion>
     <MicrosoftVisualStudioDesignerInterfacesVersion>1.1.4322</MicrosoftVisualStudioDesignerInterfacesVersion>
     <MicrosoftVisualStudioEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioEditorVersion>
-    <MicrosoftVisualStudioImagingVersion>16.3.29124.81</MicrosoftVisualStudioImagingVersion>
+    <MicrosoftVisualStudioImagingVersion>16.3.29212.169</MicrosoftVisualStudioImagingVersion>
     <MicrosoftVisualStudioImageCatalogVersion>16.3.29316.127</MicrosoftVisualStudioImageCatalogVersion>
     <MicrosoftVisualStudioLanguageStandardClassificationVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageStandardClassificationVersion>
     <MicrosoftVisualStudioLanguageIntellisenseVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageIntellisenseVersion>
     <MicrosoftVisualStudioOLEInteropVersion>7.10.6071</MicrosoftVisualStudioOLEInteropVersion>
     <MicrosoftVisualStudioPlatformVSEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioPlatformVSEditorVersion>
-    <MicrosoftVisualStudioPlatformVSEditorInteropVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioPlatformVSEditorInteropVersion>
     <MicrosoftVisualStudioSDKAnalyzersVersion>16.3.2</MicrosoftVisualStudioSDKAnalyzersVersion>
     <MicrosoftVisualStudioShell150Version>16.0.28316-pre</MicrosoftVisualStudioShell150Version>
     <MicrosoftVisualStudioShellFrameworkVersion>16.3.29316.78</MicrosoftVisualStudioShellFrameworkVersion>

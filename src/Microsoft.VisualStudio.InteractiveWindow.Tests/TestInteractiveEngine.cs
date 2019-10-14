@@ -10,26 +10,11 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
     {
         internal event EventHandler<string> OnExecute;
 
-        private readonly IContentType _contentType;
-        private IInteractiveWindow _currentWindow;
-
-        public TestInteractiveEngine(IContentTypeRegistryService contentTypeRegistryService)
+        public TestInteractiveEngine()
         {
-            _contentType = contentTypeRegistryService.GetContentType(TestContentTypeDefinition.ContentTypeName);
         }
 
-        public IInteractiveWindow CurrentWindow
-        {
-            get
-            {
-                return _currentWindow;
-            }
-
-            set
-            {
-                _currentWindow = value;
-            }
-        }
+        public IInteractiveWindow CurrentWindow { get; set; }
 
         public void Dispose()
         {

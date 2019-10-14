@@ -29,8 +29,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
                     s_lazyCatalog.Value,
                     CompositionOptions.DisableSilentRejection | CompositionOptions.IsThreadSafe);
 
-                var contentTypeRegistryService = ExportProvider.GetExport<IContentTypeRegistryService>().Value;
-                Evaluator = new TestInteractiveEngine(contentTypeRegistryService);
+                Evaluator = new TestInteractiveEngine();
                 Window = ExportProvider.GetExport<IInteractiveWindowFactoryService>().Value.CreateWindow(Evaluator);
                 ((InteractiveWindow)Window).StateChanged += stateChangedHandler;
                 Window.InitializeAsync().Wait();
@@ -49,7 +48,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
             => new[]
             {
                 Assembly.Load("Microsoft.VisualStudio.Platform.VSEditor"),
-
+                
                 // Must include this because several editor options are actually stored as exported information 
                 // on this DLL.  Including most importantly, the tab size information.
                 Assembly.Load("Microsoft.VisualStudio.Text.Logic"),
