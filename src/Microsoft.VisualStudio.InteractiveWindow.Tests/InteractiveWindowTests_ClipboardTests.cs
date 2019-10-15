@@ -14,6 +14,13 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
 {
     public partial class InteractiveWindowTests : IDisposable
     {
+        static InteractiveWindowTests()
+        {
+            // DataContractJsonSerializer uses different encoding of line breaks on .NET 4.7.
+            // VS Test host is compiled against 4.5.1, which causes pre-4.7 behavior.
+            AppContext.SetSwitch("Switch.System.Runtime.Serialization.DoNotUseECMAScriptV6EscapeControlCharacter", false);
+        }
+
         [WpfFact]
         public void CopyStreamSelectionWithinInput()
         {
@@ -53,7 +60,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
             Window.Operations.Copy();
             VerifyClipboardData("111\r\n> 222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par > 222}",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]");
+                "[{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]");
         }
 
         [WpfFact]
@@ -82,7 +89,7 @@ System.Console.WriteLine(o);",
             Window.Operations.Copy();
             VerifyClipboardData("> foreach (var o in new[] { 1, 2, 3 })\r\n> System.Console.WriteLine(o);\r\n1\r\n2\r\n3\r\n> 1 + 2",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > foreach (var o in new[] \\{ 1, 2, 3 \\})\\par > System.Console.WriteLine(o);\\par 1\\par 2\\par 3\\par > 1 + 2}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"foreach (var o in new[] { 1, 2, 3 })\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine(o);\\u000d\\u000a\",\"kind\":2},{\"content\":\"1\\u000d\\u000a2\\u000d\\u000a3\\u000d\\u000a\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 + 2\",\"kind\":2}]");
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"foreach (var o in new[] { 1, 2, 3 })\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine(o);\\r\\n\",\"kind\":2},{\"content\":\"1\\r\\n2\\r\\n3\\r\\n\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 + 2\",\"kind\":2}]");
 
             // Shrink the selection.
             var selection = Window.TextView.Selection;
@@ -92,7 +99,7 @@ System.Console.WriteLine(o);",
             Window.Operations.Copy();
             VerifyClipboardData("oreach (var o in new[] { 1, 2, 3 })\r\n> System.Console.WriteLine(o);\r\n1\r\n2\r\n3\r\n> 1 ",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 oreach (var o in new[] \\{ 1, 2, 3 \\})\\par > System.Console.WriteLine(o);\\par 1\\par 2\\par 3\\par > 1 }",
-                "[{\"content\":\"oreach (var o in new[] { 1, 2, 3 })\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine(o);\\u000d\\u000a\",\"kind\":2},{\"content\":\"1\\u000d\\u000a2\\u000d\\u000a3\\u000d\\u000a\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 \",\"kind\":2}]");
+                "[{\"content\":\"oreach (var o in new[] { 1, 2, 3 })\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine(o);\\r\\n\",\"kind\":2},{\"content\":\"1\\r\\n2\\r\\n3\\r\\n\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 \",\"kind\":2}]");
         }
 
         [WpfFact]
@@ -118,7 +125,7 @@ System.Console.WriteLine(o);",
             Window.Operations.Copy();
             VerifyClipboardData("1\r\n2\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 1\\par 2}",
-                "[{\"content\":\"1\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"1\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                 expectedToBeBoxCopy: true);
         }
 
@@ -145,7 +152,7 @@ System.Console.WriteLine(o);",
             Window.Operations.Copy();
             VerifyClipboardData("> 111\r\n> 222\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par > 222}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                 expectedToBeBoxCopy: true);
         }
 
@@ -175,7 +182,7 @@ System.Console.WriteLine(o);",
             Window.Operations.Copy();
             VerifyClipboardData("1\r\n2\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 1\\par 2}",
-                "[{\"content\":\"1\",\"kind\":1},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"1\",\"kind\":1},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                 expectedToBeBoxCopy: true);
         }
 
@@ -224,7 +231,7 @@ System.Console.WriteLine(o);",
 
             VerifyClipboardData("111\r\n> 222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par > 222}",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]");
+                "[{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]");
 
             // undo
             ((InteractiveWindow)Window).Undo_TestOnly(1);
@@ -264,7 +271,7 @@ System.Console.WriteLine();",
             // everything got copied to clipboard
             VerifyClipboardData("> foreach (var o in new[] { 1, 2, 3 })\r\n> System.Console.WriteLine();\r\n1\r\n2\r\n3\r\n> 1 + 2",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > foreach (var o in new[] \\{ 1, 2, 3 \\})\\par > System.Console.WriteLine();\\par 1\\par 2\\par 3\\par > 1 + 2}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"foreach (var o in new[] { 1, 2, 3 })\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine();\\u000d\\u000a\",\"kind\":2},{\"content\":\"1\\u000d\\u000a2\\u000d\\u000a3\\u000d\\u000a\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 + 2\",\"kind\":2}]");
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"foreach (var o in new[] { 1, 2, 3 })\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine();\\r\\n\",\"kind\":2},{\"content\":\"1\\r\\n2\\r\\n3\\r\\n\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 + 2\",\"kind\":2}]");
         }
 
         [WpfFact]
@@ -297,7 +304,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("1\r\n2\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 1\\par 2}",
-                "[{\"content\":\"1\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"1\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                 expectedToBeBoxCopy: true);
 
             // undo
@@ -335,7 +342,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n> 222\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par > 222}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                 expectedToBeBoxCopy: true);
 
             // undo
@@ -382,7 +389,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("1\r\n2\r\n3\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 1\\par 2\\par 3}",
-                "[{\"content\":\"1\",\"kind\":1},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"3\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"1\",\"kind\":1},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"3\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                 expectedToBeBoxCopy: true);
         }
 
@@ -406,22 +413,22 @@ System.Console.WriteLine();",
             // readonly buffer
             CopyNoSelectionAndVerify(0, 7, "> s +\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > s +\\par }",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"s +\\u000d\\u000a\",\"kind\":2}]");
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"s +\\r\\n\",\"kind\":2}]");
             CopyNoSelectionAndVerify(7, 11, "> \r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > \\par }",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"\\u000d\\u000a\",\"kind\":2}]");
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"\\r\\n\",\"kind\":2}]");
             CopyNoSelectionAndVerify(11, 17, ">  t\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 >  t\\par }",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\" t\\u000d\\u000a\",\"kind\":2}]");
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\" t\\r\\n\",\"kind\":2}]");
             CopyNoSelectionAndVerify(17, 21, " 1\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0  1\\par }",
-                "[{\"content\":\" 1\\u000d\\u000a\",\"kind\":1}]");
+                "[{\"content\":\" 1\\r\\n\",\"kind\":1}]");
             CopyNoSelectionAndVerify(21, 23, "\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 \\par }",
-                "[{\"content\":\"\\u000d\\u000a\",\"kind\":1}]");
+                "[{\"content\":\"\\r\\n\",\"kind\":1}]");
             CopyNoSelectionAndVerify(23, 27, "22\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 22\\par }",
-                "[{\"content\":\"22\\u000d\\u000a\",\"kind\":1}]");
+                "[{\"content\":\"22\\r\\n\",\"kind\":1}]");
 
             // editable buffer and active prompt
             CopyNoSelectionAndVerify(27, 34, "> 1 + 2",
@@ -503,7 +510,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("111\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par }",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":1}]",
+                "[{\"content\":\"111\\r\\n\",\"kind\":1}]",
                 expectedToBeLineCopy: true);
 
             // caret in non-active prompt"
@@ -517,7 +524,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par }",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\u000d\\u000a\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\r\\n\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
         }
 
@@ -622,7 +629,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("111\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par }",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":1}]",
+                "[{\"content\":\"111\\r\\n\",\"kind\":1}]",
                 expectedToBeLineCopy: true);
 
             // caret in non-active prompt"
@@ -636,7 +643,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par }",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\u000d\\u000a\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\r\\n\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
         }
 
@@ -669,7 +676,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par }",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\u000d\\u000a\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\r\\n\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
 
             // undo
@@ -706,7 +713,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n> 222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par > 222}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
 
             // undo
@@ -747,7 +754,7 @@ System.Console.WriteLine();",
             // everything got copied to clipboard
             VerifyClipboardData("> foreach (var o in new[] { 1, 2, 3 })\r\n> System.Console.WriteLine();\r\n1\r\n2\r\n3\r\n> 1 + 2",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > foreach (var o in new[] \\{ 1, 2, 3 \\})\\par > System.Console.WriteLine();\\par 1\\par 2\\par 3\\par > 1 + 2}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"foreach (var o in new[] { 1, 2, 3 })\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine();\\u000d\\u000a\",\"kind\":2},{\"content\":\"1\\u000d\\u000a2\\u000d\\u000a3\\u000d\\u000a\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 + 2\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"foreach (var o in new[] { 1, 2, 3 })\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"System.Console.WriteLine();\\r\\n\",\"kind\":2},{\"content\":\"1\\r\\n2\\r\\n3\\r\\n\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"1 + 2\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
         }
 
@@ -780,7 +787,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n> 222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par > 222}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
 
             // undo
@@ -817,7 +824,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("> 111\r\n> 222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 > 111\\par > 222}",
-                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]",
+                "[{\"content\":\"> \",\"kind\":0},{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
 
             // undo
@@ -864,7 +871,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("11111\r\n> 222\r\n> 333",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 11111\\par > 222\\par > 333}",
-                "[{\"content\":\"11111\\u000d\\u000a\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\\u000d\\u000a\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"333\",\"kind\":2}]",
+                "[{\"content\":\"11111\\r\\n\",\"kind\":1},{\"content\":\"> \",\"kind\":0},{\"content\":\"222\\r\\n\",\"kind\":2},{\"content\":\"> \",\"kind\":0},{\"content\":\"333\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
         }
 
@@ -1478,7 +1485,7 @@ System.Console.WriteLine();",
             Window.Operations.CopyCode();
             VerifyClipboardData("111\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par }",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":2}]",
+                "[{\"content\":\"111\\r\\n\",\"kind\":2}]",
                 expectedToBeLineCopy: true);
 
             _testClipboard.Clear();
@@ -1520,7 +1527,7 @@ System.Console.WriteLine();",
             Window.Operations.CopyCode();
             VerifyClipboardData("111\r\n222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par 222}",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"222\",\"kind\":2}]");
+                "[{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"222\",\"kind\":2}]");
 
 
             _testClipboard.Clear();
@@ -1539,7 +1546,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("111\r\n222",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 111\\par 222}",
-                "[{\"content\":\"111\\u000d\\u000a\",\"kind\":2},{\"content\":\"222\",\"kind\":2}]");
+                "[{\"content\":\"111\\r\\n\",\"kind\":2},{\"content\":\"222\",\"kind\":2}]");
 
             _testClipboard.Clear();
             Window.TextView.Selection.Clear();
@@ -1560,7 +1567,7 @@ System.Console.WriteLine();",
 
             VerifyClipboardData("1\r\n2\r\n",
                 "{\\rtf\\ansi{\\fonttbl{\\f0 Consolas;}}{\\colortbl;\\red0\\green0\\blue0;}\\f0 \\fs24 \\cf1 \\cb0 \\highlight0 1\\par 2}",
-                "[{\"content\":\"1\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\u000d\\u000a\",\"kind\":4}]",
+                "[{\"content\":\"1\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4},{\"content\":\"2\",\"kind\":2},{\"content\":\"\\r\\n\",\"kind\":4}]",
                  expectedToBeBoxCopy: true);
 
             _testClipboard.Clear();

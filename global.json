@@ -1,10 +1,10 @@
 {
   "tools": {
     "vs": {
-       "version": "15.9"
+       "version": "16.3"
     }
   },
   "msbuild-sdks": {
-    "Microsoft.DotNet.Arcade.Sdk": "1.0.0-beta.19054.11"
+    "Microsoft.DotNet.Arcade.Sdk": "5.0.0-beta.19506.1"
   }
 }

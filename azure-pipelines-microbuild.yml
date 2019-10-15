@@ -34,10 +34,10 @@ steps:
   displayName: Build
 
 - task: NuGetPublisher@0
-  displayName: Publish NuGet Packages to MyGet
+  displayName: Publish NuGet Packages to public vssdk feed
   inputs:
     searchPattern: 'artifacts\packages\$(BuildConfiguration)\Shipping\*.nupkg'
-    connectedServiceName: 'InteractiveWindow NuGet feed'
+    connectedServiceName: 'VSIDE vssdk'
     nuGetVersion: 4.0.0.2283
   condition: succeeded()
 

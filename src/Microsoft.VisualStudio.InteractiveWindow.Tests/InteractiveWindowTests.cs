@@ -24,8 +24,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
     {
         #region Helpers
 
-        private InteractiveWindowTestHost _testHost;
-        private List<InteractiveWindow.State> _states;
+        private readonly InteractiveWindowTestHost _testHost;
+        private readonly List<InteractiveWindow.State> _states;
         private readonly TestClipboard _testClipboard;
         private readonly TaskFactory _factory = new TaskFactory(TaskScheduler.Default);
 

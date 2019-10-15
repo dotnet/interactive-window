@@ -1,6 +1,12 @@
-# PR trigger
+# Branches that trigger a build on commit
+trigger:
+- master
+- release/*
+
+# Branches that trigger builds on PR
 pr:
 - master
+- release/*
 
 jobs:
 - job: Windows
@@ -13,7 +19,9 @@ jobs:
         _configuration: Debug
       Release:
         _configuration: Release
-  pool: dotnet-external-temp
+  pool:
+    name: NetCorePublic-Pool
+    queue: BuildPool.Windows.10.Amd64.VS2017.Open
   timeoutInMinutes: 20
 
   steps:
