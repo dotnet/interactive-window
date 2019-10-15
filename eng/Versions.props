@@ -45,6 +45,7 @@
     <MicrosoftVisualStudioThreadingVersion>16.3.13</MicrosoftVisualStudioThreadingVersion>
     <MicrosoftVisualStudioUtilitiesVersion>16.3.29316.78</MicrosoftVisualStudioUtilitiesVersion>
 
+    <MicrosoftVSSDKBuildToolsVersion>16.3.2099</MicrosoftVSSDKBuildToolsVersion>
     <MicroBuildPluginsSwixBuildVersion>1.0.670</MicroBuildPluginsSwixBuildVersion>
     <SystemCollectionsImmutableVersion>1.5.0</SystemCollectionsImmutableVersion>
 
