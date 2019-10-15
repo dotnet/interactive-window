@@ -34,7 +34,7 @@ steps:
   displayName: Build
 
 - task: NuGetPublisher@0
-  displayName: Publish NuGet Packages to public vssdk feed
+  displayName: Publish NuGet Packages to MyGet feed
   inputs:
     searchPattern: 'artifacts\packages\$(BuildConfiguration)\Shipping\*.nupkg'
     connectedServiceName: 'InteractiveWindow NuGet feed'
