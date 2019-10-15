@@ -5,5 +5,6 @@
   <PropertyGroup>
     <LangVersion>Latest</LangVersion>
     <VSSDKTargetPlatformRegRootSuffix>IW</VSSDKTargetPlatformRegRootSuffix>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 </Project>

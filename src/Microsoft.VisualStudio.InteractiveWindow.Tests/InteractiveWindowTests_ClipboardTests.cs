@@ -16,8 +16,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
     {
         static InteractiveWindowTests()
         {
-            // DataContractJsonSerializer uses different encoding of line breaks on .NET 4.7.2.
-            // Running tests from VS Test Explorer doesn't respect that for some reason, override the switch here explicitly.
+            // DataContractJsonSerializer uses different encoding of line breaks on .NET 4.7.
+            // VS Test host is compiled against 4.5.1, which causes pre-4.7 behavior.
             AppContext.SetSwitch("Switch.System.Runtime.Serialization.DoNotUseECMAScriptV6EscapeControlCharacter", false);
         }
 
