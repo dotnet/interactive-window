@@ -1494,7 +1494,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 // By default IVsPersistDocData.Close called in CreateAndActivateBuffer changes
                 // the content type of the buffer to "inert". Setting this property on the buffer 
                 // keeps the content type unchanged on close.
-                // See https://devdiv.visualstudio.com/DevDiv/_git/VS-Platform/pullrequest/254269
+                // See https://github.com/dotnet/interactive-window/issues/156
                 buffer.Properties.AddProperty("DoNotSetContentTypeOnClose", null);
 
                 CurrentLanguageBuffer = buffer;
