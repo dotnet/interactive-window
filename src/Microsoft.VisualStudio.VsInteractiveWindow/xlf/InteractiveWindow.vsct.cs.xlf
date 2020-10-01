@@ -14,12 +14,12 @@
       </trans-unit>
       <trans-unit id="menuIdInteractiveToolbar|ButtonText">
         <source>Interactive Window</source>
-        <target state="translated">Interaktivní okno</target>
+        <target state="translated">Okno Interactive</target>
         <note />
       </trans-unit>
       <trans-unit id="menuIdInteractiveToolbar|CommandName">
         <source>Interactive Window</source>
-        <target state="translated">Interaktivní okno</target>
+        <target state="translated">Okno Interactive</target>
         <note />
       </trans-unit>
       <trans-unit id="cmdidReset|ButtonText">

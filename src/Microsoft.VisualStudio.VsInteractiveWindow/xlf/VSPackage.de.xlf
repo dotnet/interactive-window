@@ -4,17 +4,17 @@
     <body>
       <trans-unit id="110">
         <source>Microsoft Visual Studio Interactive Window</source>
-        <target state="translated">Microsoft Visual Studio Interactive Window</target>
+        <target state="translated">Microsoft Visual Studio – Interactive-Fenster</target>
         <note />
       </trans-unit>
       <trans-unit id="112">
         <source>Microsoft Visual Studio Interactive Window</source>
-        <target state="translated">Microsoft Visual Studio Interactive Window</target>
+        <target state="translated">Microsoft Visual Studio – Interactive-Fenster</target>
         <note />
       </trans-unit>
       <trans-unit id="200">
         <source>Interactive Window</source>
-        <target state="translated">Interaktives Fenster</target>
+        <target state="translated">Interactive-Fenster</target>
         <note />
       </trans-unit>
     </body>

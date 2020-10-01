@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="InternalError">
         <source>An internal error has occurred in the Interactive window.  Please restart Visual Studio.</source>
-        <target state="translated">В интерактивном окне произошла внутренняя ошибка. Перезапустите Visual Studio.</target>
+        <target state="translated">В Интерактивном окне произошла внутренняя ошибка. Перезапустите Visual Studio.</target>
         <note />
       </trans-unit>
       <trans-unit id="KeyboardShortcuts">
@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="IsResetting">
         <source>The interactive window is resetting.</source>
-        <target state="translated">Выполняется сброс интерактивного окна.</target>
+        <target state="translated">Выполняется сброс Интерактивного окна.</target>
         <note />
       </trans-unit>
       <trans-unit id="Parameters">

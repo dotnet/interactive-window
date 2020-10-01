@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="AlreadyInitialized">
         <source>The interactive window has already been initialized.</source>
-        <target state="translated">Interaktivní okno už je inicializované.</target>
+        <target state="translated">Okno Interactive už je inicializované.</target>
         <note />
       </trans-unit>
       <trans-unit id="AltDownArrowHelp">
@@ -114,12 +114,12 @@
       </trans-unit>
       <trans-unit id="NotInitialized">
         <source>The interactive window has not yet been initialized.</source>
-        <target state="translated">Interaktivní okno se zatím neinicializovalo.</target>
+        <target state="translated">Okno Interactive se zatím neinicializovalo.</target>
         <note />
       </trans-unit>
       <trans-unit id="IsResetting">
         <source>The interactive window is resetting.</source>
-        <target state="translated">Interaktivní okno se přenastavuje.</target>
+        <target state="translated">Okno Interactive se přenastavuje.</target>
         <note />
       </trans-unit>
       <trans-unit id="Parameters">
@@ -244,7 +244,7 @@
       </trans-unit>
       <trans-unit id="ErrorOutputFormatDefinitionDisplayName">
         <source>Interactive Window Error Output</source>
-        <target state="translated">Chybový výstup v interaktivním okně</target>
+        <target state="translated">Chybový výstup v okně Interactive</target>
         <note />
       </trans-unit>
     </body>
