@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="IsResetting">
         <source>The interactive window is resetting.</source>
-        <target state="translated">正在重置交互式窗口。</target>
+        <target state="translated">正在重置交互窗口。</target>
         <note />
       </trans-unit>
       <trans-unit id="Parameters">

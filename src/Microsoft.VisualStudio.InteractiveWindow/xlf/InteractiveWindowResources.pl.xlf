@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="InternalError">
         <source>An internal error has occurred in the Interactive window.  Please restart Visual Studio.</source>
-        <target state="translated">W oknie interaktywnym wystąpił błąd wewnętrzny. Uruchom ponownie program Visual Studio.</target>
+        <target state="translated">W oknie Interactive wystąpił błąd wewnętrzny. Uruchom ponownie program Visual Studio.</target>
         <note />
       </trans-unit>
       <trans-unit id="KeyboardShortcuts">
@@ -244,7 +244,7 @@
       </trans-unit>
       <trans-unit id="ErrorOutputFormatDefinitionDisplayName">
         <source>Interactive Window Error Output</source>
-        <target state="translated">Dane wyjściowe błędu okna interakcyjnego</target>
+        <target state="translated">Dane wyjściowe błędu okna Interactive</target>
         <note />
       </trans-unit>
     </body>

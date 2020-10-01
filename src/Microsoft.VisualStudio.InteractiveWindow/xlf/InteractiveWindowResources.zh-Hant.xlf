@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="AlreadyInitialized">
         <source>The interactive window has already been initialized.</source>
-        <target state="translated">已經初始化此互動式視窗。</target>
+        <target state="translated">已經初始化此互動視窗。</target>
         <note />
       </trans-unit>
       <trans-unit id="AltDownArrowHelp">
@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="InternalError">
         <source>An internal error has occurred in the Interactive window.  Please restart Visual Studio.</source>
-        <target state="translated">Interactive 視窗中發生內部錯誤。  請重新啟動 Visual Studio。</target>
+        <target state="translated">互動視窗中發生內部錯誤。  請重新啟動 Visual Studio。</target>
         <note />
       </trans-unit>
       <trans-unit id="KeyboardShortcuts">
@@ -114,12 +114,12 @@
       </trans-unit>
       <trans-unit id="NotInitialized">
         <source>The interactive window has not yet been initialized.</source>
-        <target state="translated">尚未初始化此互動式視窗。</target>
+        <target state="translated">尚未初始化此互動視窗。</target>
         <note />
       </trans-unit>
       <trans-unit id="IsResetting">
         <source>The interactive window is resetting.</source>
-        <target state="translated">正在重設互動式視窗。</target>
+        <target state="translated">正在重設互動視窗。</target>
         <note />
       </trans-unit>
       <trans-unit id="Parameters">
@@ -244,7 +244,7 @@
       </trans-unit>
       <trans-unit id="ErrorOutputFormatDefinitionDisplayName">
         <source>Interactive Window Error Output</source>
-        <target state="translated">互動式視窗錯誤輸出</target>
+        <target state="translated">互動視窗錯誤輸出</target>
         <note />
       </trans-unit>
     </body>

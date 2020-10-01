@@ -134,12 +134,12 @@
       </trans-unit>
       <trans-unit id="RequireNonUIThread">
         <source>This method may not be called on the UI thread (to avoid hangs).</source>
-        <target state="translated">Esse método pode não ser chamado no thread da interface do usuário (para evitar travamentos).</target>
+        <target state="translated">Esse método pode não ser chamado no thread da IU (para evitar travamentos).</target>
         <note />
       </trans-unit>
       <trans-unit id="RequireUIThread">
         <source>This method may only be called on the UI thread.</source>
-        <target state="translated">Esse método só pode ser chamado no thread da interface do usuário.</target>
+        <target state="translated">Esse método só pode ser chamado no thread da IU.</target>
         <note />
       </trans-unit>
       <trans-unit id="ResetCommandDescription">
