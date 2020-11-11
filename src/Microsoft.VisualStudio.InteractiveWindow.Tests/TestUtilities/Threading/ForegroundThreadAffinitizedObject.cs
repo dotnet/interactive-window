@@ -140,22 +140,6 @@ namespace Microsoft.CodeAnalysis.Editor.Shared.Utilities
             // Does nothing.
         }
 
-        public Task InvokeBelowInputPriority(Action action, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (IsForeground() && !IsInputPending())
-            {
-                // Optimize to inline the action if we're already on the foreground thread
-                // and there's no pending user input.
-                action();
-
-                return SpecializedTasks.EmptyTask;
-            }
-            else
-            {
-                return Task.Factory.SafeStartNew(action, cancellationToken, ForegroundTaskScheduler);
-            }
-        }
-
         /// <summary>
         /// Returns true if any keyboard or mouse button input is pending on the message queue.
         /// </summary>

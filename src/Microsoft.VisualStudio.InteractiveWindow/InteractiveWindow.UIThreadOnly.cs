@@ -70,7 +70,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
             private string _uncommittedInput;
 
-            /// <remarks>Always access through <see cref="GetStandardInputValue"/> and <see cref="SetStandardInputValue"/>.</remarks>
+            /// <remarks>Always access through <see cref="GetStandardInputValueAsync"/> and <see cref="SetStandardInputValue"/>.</remarks>
             private SnapshotSpan? _standardInputValue;
             /// <remarks>Don't reference directly.</remarks>
             private readonly SemaphoreSlim _standardInputValueGuard = new SemaphoreSlim(initialCount: 0, maxCount: 1);
@@ -402,7 +402,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
                     _uncommittedInput = null;
 
-                    var value = await GetStandardInputValue().ConfigureAwait(true);
+                    var value = await GetStandardInputValueAsync().ConfigureAwait(true);
                     Debug.Assert(_window.OnUIThread()); // ConfigureAwait should bring us back to the UI thread.
 
                     // set new start location after read is done.
@@ -429,7 +429,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 _standardInputValueGuard.Release();
             }
 
-            private async Task<SnapshotSpan?> GetStandardInputValue()
+            private async Task<SnapshotSpan?> GetStandardInputValueAsync()
             {
                 try
                 {
@@ -873,7 +873,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                     // Therefore, we don't need to await the task (which we would normally do to
                     // propagate any exceptions it might throw).  We also don't need an NFW
                     // exception filter around the continuation.
-                    submission.Task.ContinueWith(_ => submission.Completion.SetResult(null), TaskScheduler.Current);
+                    _ = submission.Task.ContinueWith(_ => submission.Completion.SetResult(null), TaskScheduler.Current);
                 }
             }
 

@@ -189,7 +189,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
 
         [WorkItem(8121, "https://github.com/dotnet/roslyn/issues/8121")]
         [WpfFact]
-        public void InteractiveWindow_GetHelpShortcutDescriptionss()
+        public void InteractiveWindow_GetHelpShortcutDescriptions()
         {
             var interactiveCommands = new InteractiveCommandsFactory(null, null).CreateInteractiveCommands(
                 Window,

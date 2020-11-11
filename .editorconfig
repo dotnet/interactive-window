@@ -17,8 +17,12 @@ indent_size = 2
 indent_size = 2
 
 # Code files
-[*.cs,*.csx,*.vb,*.vbx]
+[*.{cs}]
 indent_size = 4
+
+# IDE0073: File header
+dotnet_diagnostic.IDE0073.severity = warning
+file_header_template = Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 # Xml project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]

@@ -219,7 +219,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
             var command = TryParseCommand(span, out prefixSpan, out commandSpan, out argumentsSpan);
             if (command == null)
             {
+#pragma warning disable VSTHRD114 // Avoid returning a null Task
                 return null;
+#pragma warning restore
             }
 
             return ExecuteCommandAsync(command, argumentsSpan.GetText());
@@ -233,7 +235,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
             }
             catch (Exception e)
             {
-                _window.ErrorOutputWriter.WriteLine(InteractiveWindowResources.CommandFailed, command.Names.First(), e.Message);
+                await _window.ErrorOutputWriter.WriteLineAsync(string.Format(InteractiveWindowResources.CommandFailed, command.Names.First(), e.Message)).ConfigureAwait(false);
                 return ExecutionResult.Failure;
             }
         }

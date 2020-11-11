@@ -60,7 +60,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow
             {
                 if (Dispatcher.CurrentDispatcher != _dispatcher)
                 {
-                    _dispatcher.BeginInvoke(new Action(() => AddAdornment(uiElement)));
+#pragma warning disable VSTHRD001 // Avoid legacy thread switching APIs
+                    _ = _dispatcher.BeginInvoke(new Action(() => AddAdornment(uiElement)));
+#pragma warning restore
                     return;
                 }
 

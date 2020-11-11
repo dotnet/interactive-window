@@ -228,7 +228,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
             // These should all have finished already, but we'll await them so that their
             // statuses are folded into the task we return.
+#pragma warning disable VSTHRD003 // Avoid awaiting foreign Tasks
             await Task.WhenAll(pendingSubmissions.Select(p => p.Task)).ConfigureAwait(false);
+#pragma warning restore
         }
 
         void IInteractiveWindow.AddInput(string command)
@@ -280,7 +282,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
         void IInteractiveWindowOperations.ExecuteInput()
         {
-            UIThread(uiOnly => uiOnly.ExecuteInputAsync());
+            _ = UIThread(uiOnly => uiOnly.ExecuteInputAsync());
         }
 
         /// <remarks>
@@ -462,7 +464,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         {
             // shouldn't be called on the UI thread because we'll hang
             RequiresNonUIThread();
+
+#pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
             return ReadStandardInputAsync().GetAwaiter().GetResult();
+#pragma warning restore
         }
 
         private async Task<TextReader> ReadStandardInputAsync()
@@ -531,7 +536,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         {
             if (!OnUIThread())
             {
+#pragma warning disable VSTHRD001 // Avoid legacy thread switching APIs
                 return (T)Dispatcher.Invoke(func, _uiOnly); // Safe because of dispatch.
+#pragma warning restore
             }
 
             return func(_uiOnly); // Safe because of check.
@@ -541,7 +548,9 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         {
             if (!OnUIThread())
             {
+#pragma warning disable VSTHRD001 // Avoid legacy thread switching APIs
                 Dispatcher.Invoke(action, _uiOnly); // Safe because of dispatch.
+#pragma warning restore
                 return;
             }
 
@@ -567,10 +576,13 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         private static void DoEvents()
         {
             var frame = new DispatcherFrame();
-            Dispatcher.CurrentDispatcher.BeginInvoke(
+
+#pragma warning disable VSTHRD001 // Avoid legacy thread switching APIs
+            _ = Dispatcher.CurrentDispatcher.BeginInvoke(
                 DispatcherPriority.Background,
                 new Action<DispatcherFrame>(f => f.Continue = false),
                 frame);
+#pragma warning restore
 
             Dispatcher.PushFrame(frame);
         }

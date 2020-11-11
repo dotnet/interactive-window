@@ -27,15 +27,15 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
             get { return InteractiveWindowResources.CommandNamePlaceholder; }
         }
 
-        public override Task<ExecutionResult> Execute(IInteractiveWindow window, string arguments)
+        public override async Task<ExecutionResult> Execute(IInteractiveWindow window, string arguments)
         {
             string commandName;
             IInteractiveWindowCommand command;
             if (!ParseArguments(window, arguments, out commandName, out command))
             {
-                window.ErrorOutputWriter.WriteLine(string.Format(InteractiveWindowResources.UnknownCommand, commandName));
+                await window.ErrorOutputWriter.WriteLineAsync(string.Format(InteractiveWindowResources.UnknownCommand, commandName)).ConfigureAwait(false);
                 ReportInvalidArguments(window);
-                return ExecutionResult.Failed;
+                return ExecutionResult.Failure;
             }
 
             var commands = (IInteractiveWindowCommands)window.Properties[typeof(IInteractiveWindowCommands)];
@@ -48,7 +48,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
                 commands.DisplayHelp();
             }
 
-            return ExecutionResult.Succeeded;
+            return ExecutionResult.Success;
         }
 
         private static readonly char[] s_whitespaceChars = new[] { '\r', '\n', ' ', '\t' };

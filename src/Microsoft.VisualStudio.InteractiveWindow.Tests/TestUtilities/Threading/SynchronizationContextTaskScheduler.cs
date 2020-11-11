@@ -29,8 +29,11 @@ namespace Microsoft.CodeAnalysis.Editor.Shared.Utilities
 
         protected override void QueueTask(Task task)
         {
+#pragma warning disable VSTHRD001 // Avoid legacy thread switching APIs
             _synchronizationContext.Post(_postCallback, task);
+#pragma warning restore
         }
+
         protected override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued)
         {
             if (SynchronizationContext.Current == _synchronizationContext)

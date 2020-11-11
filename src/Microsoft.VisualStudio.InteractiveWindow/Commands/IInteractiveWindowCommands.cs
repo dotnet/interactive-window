@@ -37,6 +37,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
         /// Returns null if the current command is unrecognized.
         /// </summary>
         /// <returns></returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods", Justification = "Public API")]
         Task<ExecutionResult> TryExecuteCommand();
 
         /// <summary>
