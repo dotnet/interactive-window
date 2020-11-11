@@ -14,7 +14,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Language.Intellisense.Utilities;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Editor.OptionsExtensionMethods;
@@ -91,7 +90,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
             private readonly OutputBuffer _buffer;
 
-            private readonly IWaitIndicator _waitIndicator;
+            private readonly IUIThreadOperationExecutor _waitIndicator;
 
             public ITextBuffer OutputBuffer { get; }
             public ITextBuffer StandardInputBuffer { get; }
@@ -150,7 +149,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 IIntellisenseSessionStackMapService intellisenseSessionStackMap,
                 ISmartIndentationService smartIndenterService,
                 IInteractiveEvaluator evaluator,
-                IWaitIndicator waitIndicator)
+                IUIThreadOperationExecutor waitIndicator)
             {
                 _window = window;
                 _factory = factory;
@@ -2971,14 +2970,13 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 // This behavior is consistent with VS editor. 
                 // Don't generate RTF for large spans (since it is expensive and probably not wanted).
                 int length = spans.Sum((span) => span.Length);
-                if (length < 1000000)
+                if (length > 1_000_000)
                 {
-                    using (var dialog = _waitIndicator.StartWait(InteractiveWindowResources.WaitTitle, InteractiveWindowResources.WaitMessage, allowCancel: true))
-                    {
-                        return isBoxSelection
-                            ? _rtfBuilderService.GenerateRtf(spans, dialog.CancellationToken)
-                            : _rtfBuilderService.GenerateRtf(spans, string.Empty, dialog.CancellationToken);
-                    }
+                    using var dialog = _waitIndicator.BeginExecute(InteractiveWindowResources.WaitTitle, InteractiveWindowResources.WaitMessage, allowCancellation: true, showProgress: true);
+
+                    return isBoxSelection
+                        ? _rtfBuilderService.GenerateRtf(spans, dialog.UserCancellationToken)
+                        : _rtfBuilderService.GenerateRtf(spans, string.Empty, dialog.UserCancellationToken);
                 }
                 else
                 {

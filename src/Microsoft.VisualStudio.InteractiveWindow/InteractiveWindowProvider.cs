@@ -3,7 +3,6 @@
 using System;
 using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Language.Intellisense.Utilities;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Formatting;
@@ -26,7 +25,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         private readonly IIntellisenseSessionStackMapService _intellisenseSessionStackMap;
         private readonly ISmartIndentationService _smartIndenterService;
         private readonly IInteractiveWindowEditorFactoryService _windowFactoryService;
-        private readonly IWaitIndicator _waitIndicator;
+        private readonly IUIThreadOperationExecutor _waitIndicator;
 
         [ImportingConstructor]
         public InteractiveWindowProvider(
@@ -40,7 +39,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
             IIntellisenseSessionStackMapService intellisenseSessionStackMap,
             ISmartIndentationService smartIndenterService,
             IInteractiveWindowEditorFactoryService windowFactoryService,
-            IWaitIndicator waitIndicator)
+            IUIThreadOperationExecutor waitIndicator)
         {
             _contentTypeRegistry = contentTypeRegistry;
             _bufferFactory = bufferFactory;
