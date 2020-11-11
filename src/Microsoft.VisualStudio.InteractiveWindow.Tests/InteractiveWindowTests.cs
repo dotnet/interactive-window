@@ -94,10 +94,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
             SnapshotSpan prefixSpan, commandSpan, argsSpan;
             IInteractiveWindowCommand cmd;
 
-            cmd = commands.TryParseCommand(new SnapshotSpan(s1, Span.FromBounds(0, 0)), out prefixSpan, out commandSpan, out argsSpan);
+            cmd = commands.TryParseCommand(new SnapshotSpan(s1, Span.FromBounds(0, 0)), out _, out _, out _);
             Assert.Null(cmd);
 
-            cmd = commands.TryParseCommand(new SnapshotSpan(s1, Span.FromBounds(0, 1)), out prefixSpan, out commandSpan, out argsSpan);
+            cmd = commands.TryParseCommand(new SnapshotSpan(s1, Span.FromBounds(0, 1)), out _, out _, out _);
             Assert.Null(cmd);
 
             cmd = commands.TryParseCommand(new SnapshotSpan(s1, Span.FromBounds(0, 2)), out prefixSpan, out commandSpan, out argsSpan);
@@ -579,14 +579,13 @@ $@"  UpArrow              {InteractiveWindowResources.UpArrowHelp1}
         [WpfFact]
         public void ResetCommandArgumentParsing_Failure()
         {
-            bool initialize;
-            Assert.False(ResetCommand.TryParseArguments("a", out initialize));
-            Assert.False(ResetCommand.TryParseArguments("noconfi", out initialize));
-            Assert.False(ResetCommand.TryParseArguments("noconfig1", out initialize));
-            Assert.False(ResetCommand.TryParseArguments("noconfig 1", out initialize));
-            Assert.False(ResetCommand.TryParseArguments("1 noconfig", out initialize));
-            Assert.False(ResetCommand.TryParseArguments("noconfig\r\na", out initialize));
-            Assert.False(ResetCommand.TryParseArguments("nOcOnfIg", out initialize));
+            Assert.False(ResetCommand.TryParseArguments("a", out _));
+            Assert.False(ResetCommand.TryParseArguments("noconfi", out _));
+            Assert.False(ResetCommand.TryParseArguments("noconfig1", out _));
+            Assert.False(ResetCommand.TryParseArguments("noconfig 1", out _));
+            Assert.False(ResetCommand.TryParseArguments("1 noconfig", out _));
+            Assert.False(ResetCommand.TryParseArguments("noconfig\r\na", out _));
+            Assert.False(ResetCommand.TryParseArguments("nOcOnfIg", out _));
         }
 
         [WpfFact]

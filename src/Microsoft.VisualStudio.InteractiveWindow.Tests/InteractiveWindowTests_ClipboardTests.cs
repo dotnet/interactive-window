@@ -1098,9 +1098,6 @@ System.Console.WriteLine();",
         [WpfFact]
         public void PasteStreamSelectionInputAndActivePromptThenUndo()
         {
-            var caret = Window.TextView.Caret;
-            var selection = Window.TextView.Selection;
-
             Window.InsertCode("111");
             Window.Operations.BreakLine();
             Window.InsertCode("222");

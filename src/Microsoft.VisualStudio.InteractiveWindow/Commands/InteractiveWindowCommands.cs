@@ -124,10 +124,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
         }
 
         internal bool IsCommand(SnapshotSpan span)
-        {
-            SnapshotSpan prefixSpan, commandSpan, argumentsSpan;
-            return TryParseCommand(span, out prefixSpan, out commandSpan, out argumentsSpan) != null;
-        }
+            => TryParseCommand(span, out _, out _, out _) != null;
 
         internal IInteractiveWindowCommand TryParseCommand(SnapshotSpan span, out SnapshotSpan prefixSpan, out SnapshotSpan commandSpan, out SnapshotSpan argumentsSpan)
         {
@@ -136,7 +133,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
             SnapshotSpan trimmed = span.TrimStart();
             if (!trimmed.StartsWith(prefix))
             {
-                prefixSpan = commandSpan = argumentsSpan = default(SnapshotSpan);
+                prefixSpan = commandSpan = argumentsSpan = default;
                 return null;
             }
 
@@ -215,8 +212,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
         {
             var span = _window.CurrentLanguageBuffer.CurrentSnapshot.GetExtent();
 
-            SnapshotSpan prefixSpan, commandSpan, argumentsSpan;
-            var command = TryParseCommand(span, out prefixSpan, out commandSpan, out argumentsSpan);
+            var command = TryParseCommand(span, out _, out _, out var argumentsSpan);
             if (command == null)
             {
 #pragma warning disable VSTHRD114 // Avoid returning a null Task

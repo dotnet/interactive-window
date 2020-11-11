@@ -1521,7 +1521,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
             {
                 if (projectionSnapshot.SpanCount == 0)
                 {
-                    result = default(Span);
+                    result = default;
                     return false;
                 }
 
@@ -1529,7 +1529,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 var snapshot = projectionSnapshot.GetSourceSpan(projectionSnapshot.SpanCount - 1).Snapshot;
                 if (snapshot.TextBuffer != CurrentLanguageBuffer)
                 {
-                    result = default(Span);
+                    result = default;
                     return false;
                 }
 
@@ -2362,9 +2362,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 var selectionBottomRight = new VirtualSnapshotPoint(selectionBottomLine, selectionRightColumn);
 
                 SnapshotPoint editable = GetClosestEditablePoint(selectionTopLeft.Position);
-                int editableColumn;
                 ITextSnapshotLine editableLine;
-                editable.GetLineAndColumn(out editableLine, out editableColumn);
+                editable.GetLineAndColumn(out editableLine, out _);
 
                 Debug.Assert(selectionLeftColumn <= selectionRightColumn);
                 Debug.Assert(selectionTopLine.LineNumber <= selectionBottomLine.LineNumber);
@@ -2773,8 +2772,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                         }
                         else
                         {
-                            VirtualSnapshotPoint unusedStart, unusedEnd;
-                            EditorOperations.InsertTextAsBox(code, out unusedStart, out unusedEnd);
+                            EditorOperations.InsertTextAsBox(code, out _, out _);
                         }
                     }
                     else
@@ -3318,7 +3316,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                     // note that caret might be located in virtual space behind the current buffer end:
                     if (trySubmit && caretPosition >= CurrentLanguageBuffer.CurrentSnapshot.Length && CanExecuteActiveCode())
                     {
-                        var dummy = SubmitAsync();
+                        _ = SubmitAsync();
                     }
                     else
                     {
