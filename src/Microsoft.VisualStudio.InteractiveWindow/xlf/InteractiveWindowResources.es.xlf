@@ -24,7 +24,7 @@
       </trans-unit>
       <trans-unit id="CommandFailed">
         <source>Command '{0}' failed: {1}</source>
-        <target state="translated">Command '{0}' failed: {1}</target>
+        <target state="translated">Error del comando "{0}": {1}</target>
         <note />
       </trans-unit>
       <trans-unit id="CommandNamePlaceholder">

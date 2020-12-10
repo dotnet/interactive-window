@@ -74,7 +74,7 @@
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryPrevious|ButtonText">
         <source>Search History Previous</source>
-        <target state="translated">Search History Previous</target>
+        <target state="translated">搜尋先前的歷程紀錄</target>
         <note />
       </trans-unit>
       <trans-unit id="cmdidSearchHistoryPrevious|LocCanonicalName">
