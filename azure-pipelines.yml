@@ -24,6 +24,8 @@ variables:
     value: true
   - name: _DotNetArtifactsCategory
     value: .NETCore
+  - name: VisualStudioDropName
+    value: Products/$(System.TeamProject)/$(Build.Repository.Name)/$(Build.SourceBranchName)/$(Build.BuildNumber)
 
 stages:
 - stage: build
@@ -97,6 +99,16 @@ stages:
             filePath: 'eng\publish-assets.ps1'
             arguments: '-configuration $(BuildConfiguration) -branchName "$(SourceBranchName)"
           condition: and(succeeded(), eq(variables['PRNumber'], 'default'))
+        
+        # Publishes setup VSIXes to a drop.
+        # Note: The insertion tool looks for the display name of this task in the logs.
+        ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - task: ms-vseng.MicroBuildTasks.4305a8de-ba66-4d8b-b2d1-0dc4ecbbf5e8.MicroBuildUploadVstsDropFolder@1
+            displayName: Upload VSTS Drop
+            inputs:
+              DropName: $(VisualStudioDropName)
+              DropFolder: 'artifacts\VSSetup\$(BuildConfiguration)\Insertion'
+              condition: succeeded()
 
 - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
   - template: eng\common\templates\post-build\post-build.yml
