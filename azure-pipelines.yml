@@ -1,44 +1,118 @@
-# Branches that trigger a build on commit
-trigger:
-- main
-- release/*
-
 # Branches that trigger builds on PR
 pr:
-- main
-- release/*
+  branches:
+    include:
+    - main
+    - release/*
+  paths:
+    exclude:
+    - README.md
+    - docs/*
 
-jobs:
-- job: Windows
-  variables:
-    _os: Windows
-  strategy:
-    maxParallel: 4
-    matrix:
-      Debug:
-        _configuration: Debug
-      Release:
-        _configuration: Release
-  pool:
-    name: NetCorePublic-Pool
-    queue: BuildPool.Windows.10.Amd64.VS2017.Open
-  timeoutInMinutes: 20
+# Run official build every day at midnight, if code has changed since the last run.
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily Official Build
+  branches:
+    include:
+    - main 
+      
+variables:
+  - name: _TeamName
+    value: Roslyn
+  - name: _PublishUsingPipelines
+    value: true
+  - name: _DotNetArtifactsCategory
+    value: .NETCore
+  - name: VisualStudioDropName
+    value: Products/$(System.TeamProject)/$(Build.Repository.Name)/$(Build.SourceBranchName)/$(Build.BuildNumber)
 
-  steps:
-    - script: eng\common\cibuild.cmd -configuration $(_configuration) -prepareMachine
-      displayName: Build and Test
+stages:
+- stage: build
+  displayName: Build
+  jobs:
+  - template: /eng/common/templates/jobs/jobs.yml
+    parameters:
+      enableMicrobuild: true
+      enablePublishBuildArtifacts: true
+      enablePublishTestResults: true
+      enablePublishBuildAssets: true
+      enablePublishUsingPipelines: $(_PublishUsingPipelines)
+      enableTelemetry: true
+      enableSourceBuild: true
+      helixRepo: dotnet/interactive-window
+      jobs:
+      - job: Windows
+        pool:
+          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+            name: NetCorePublic-Pool
+            queue: BuildPool.Windows.10.Amd64.VS2017.Open
+          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+            name: NetCoreInternal-Pool
+            queue: BuildPool.Windows.10.Amd64.VS2017
+        variables:
+        # Only enable publishing in official builds
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          # DotNet-Blob-Feed provides: dotnetfeed-storage-access-key-1
+          # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
+          - group: DotNet-Blob-Feed
+          - group: Publish-Build-Assets
+          - name: _OfficialBuildArgs
+            value: /p:DotNetSignType=$(_SignType) 
+                  /p:TeamName=$(_TeamName)
+                  /p:DotNetPublishBlobFeedKey=$(dotnetfeed-storage-access-key-1)
+                  /p:DotNetPublishBlobFeedUrl=https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json
+                  /p:DotNetPublishToBlobFeed=$(_DotNetPublishToBlobFeed)
+                  /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
+                  /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
+                  /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+        # else
+        - ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+          - name: _OfficialBuildArgs
+            value: ''
+        strategy:
+          matrix:
+            Debug:
+              _BuildConfig: Debug
+              _SignType: test
+              _DotNetPublishToBlobFeed: false
+              _BuildArgs: ''
+            Release:
+              _BuildConfig: Release
+              # PRs or external builds are not signed.
+              ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+                _SignType: test
+                _DotNetPublishToBlobFeed: false
+                _BuildArgs: ''
+              ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+                _SignType: real
+                _DotNetPublishToBlobFeed: true
+                _BuildArgs: $(_OfficialBuildArgs)
+        steps:
+        - checkout: self
+          clean: true
+        - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_BuildArgs)
+          displayName: Build and Test
+        - task: PowerShell@2
+          displayName: Publish Assets
+          inputs:
+            filePath: 'eng\publish-assets.ps1'
+            arguments: '-configuration $(BuildConfiguration) -branchName "$(SourceBranchName)"
+          condition: and(succeeded(), eq(variables['PRNumber'], 'default'))
+        
+        # Publishes setup VSIXes to a drop.
+        # Note: The insertion tool looks for the display name of this task in the logs.
+        ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - task: ms-vseng.MicroBuildTasks.4305a8de-ba66-4d8b-b2d1-0dc4ecbbf5e8.MicroBuildUploadVstsDropFolder@1
+            displayName: Upload VSTS Drop
+            inputs:
+              DropName: $(VisualStudioDropName)
+              DropFolder: 'artifacts\VSSetup\$(BuildConfiguration)\Insertion'
+              condition: succeeded()
 
-    - task: PublishTestResults@1
-      inputs:
-        testRunner: XUnit
-        testResultsFiles: '$(Build.SourcesDirectory)\artifacts\TestResults\$(_configuration)\*.xml'
-        mergeTestResults: true
-        testRunTitle: '$(_os) $(_configuration)'
-      condition: always()
-    - task: PublishBuildArtifacts@1
-      displayName: Publish Logs
-      inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)\artifacts\log\$(_configuration)'
-        ArtifactName: '$(_os) $(_configuration)'
-      continueOnError: true
-      condition: not(succeeded())
+- ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+  - template: eng\common\templates\post-build\post-build.yml
+    parameters:
+      # Symbol validation isn't being very reliable lately. This should be enabled back
+      # once this issue is resolved: https://github.com/dotnet/arcade/issues/2871
+      enableSymbolValidation: false

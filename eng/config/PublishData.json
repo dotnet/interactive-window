@@ -1,0 +1,23 @@
+{
+  "feeds": {
+      "vssdk": "https://pkgs.dev.azure.com/azure-public/vside/_packaging/vssdk/nuget/v3/index.json"
+  },
+  "packages": {
+    "default": {
+
+      "Microsoft.VisualStudio.InteractiveWindow": "vssdk",
+      "Microsoft.VisualStudio.VsInteractiveWindow": "vssdk"
+    }
+  },
+  "branches": {
+    "master": {
+      "nugetKind": "PerBuildPreRelease",
+      "version": "3.4.*",
+      "nuget": [ ],
+      "vsix": null,
+      "channels": [ "VS Master" ],
+      "vsBranch": "master",
+      "vsMajorVersion": 16
+    }
+  }
+}
