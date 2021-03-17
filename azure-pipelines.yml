@@ -98,7 +98,7 @@ stages:
           inputs:
             filePath: 'eng\publish-assets.ps1'
             arguments: '-configuration $(BuildConfiguration) -branchName "$(SourceBranchName)"
-          condition: and(succeeded(), eq(variables['PRNumber'], 'default'))
+            condition: and(succeeded(), eq(variables['PRNumber'], 'default'))
         
         # Publishes setup VSIXes to a drop.
         # Note: The insertion tool looks for the display name of this task in the logs.
