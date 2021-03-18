@@ -43,6 +43,7 @@ jobs:
         filePath: $(Build.SourcesDirectory)/eng/common/generate-locproject.ps1
         arguments: $(_GenerateLocProjectArguments)
       displayName: Generate LocProject.json
+      condition: always()
 
     - task: OneLocBuild@2
       displayName: OneLocBuild
