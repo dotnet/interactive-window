@@ -14,7 +14,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Language.Intellisense.Utilities;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Editor.OptionsExtensionMethods;
@@ -70,7 +69,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
             private string _uncommittedInput;
 
-            /// <remarks>Always access through <see cref="GetStandardInputValue"/> and <see cref="SetStandardInputValue"/>.</remarks>
+            /// <remarks>Always access through <see cref="GetStandardInputValueAsync"/> and <see cref="SetStandardInputValue"/>.</remarks>
             private SnapshotSpan? _standardInputValue;
             /// <remarks>Don't reference directly.</remarks>
             private readonly SemaphoreSlim _standardInputValueGuard = new SemaphoreSlim(initialCount: 0, maxCount: 1);
@@ -91,7 +90,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
             private readonly OutputBuffer _buffer;
 
-            private readonly IWaitIndicator _waitIndicator;
+            private readonly IUIThreadOperationExecutor _waitIndicator;
 
             public ITextBuffer OutputBuffer { get; }
             public ITextBuffer StandardInputBuffer { get; }
@@ -150,7 +149,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 IIntellisenseSessionStackMapService intellisenseSessionStackMap,
                 ISmartIndentationService smartIndenterService,
                 IInteractiveEvaluator evaluator,
-                IWaitIndicator waitIndicator)
+                IUIThreadOperationExecutor waitIndicator)
             {
                 _window = window;
                 _factory = factory;
@@ -402,7 +401,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
                     _uncommittedInput = null;
 
-                    var value = await GetStandardInputValue().ConfigureAwait(true);
+                    var value = await GetStandardInputValueAsync().ConfigureAwait(true);
                     Debug.Assert(_window.OnUIThread()); // ConfigureAwait should bring us back to the UI thread.
 
                     // set new start location after read is done.
@@ -429,7 +428,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 _standardInputValueGuard.Release();
             }
 
-            private async Task<SnapshotSpan?> GetStandardInputValue()
+            private async Task<SnapshotSpan?> GetStandardInputValueAsync()
             {
                 try
                 {
@@ -873,7 +872,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                     // Therefore, we don't need to await the task (which we would normally do to
                     // propagate any exceptions it might throw).  We also don't need an NFW
                     // exception filter around the continuation.
-                    submission.Task.ContinueWith(_ => submission.Completion.SetResult(null), TaskScheduler.Current);
+                    _ = submission.Task.ContinueWith(_ => submission.Completion.SetResult(null), TaskScheduler.Current);
                 }
             }
 
@@ -1521,7 +1520,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
             {
                 if (projectionSnapshot.SpanCount == 0)
                 {
-                    result = default(Span);
+                    result = default;
                     return false;
                 }
 
@@ -1529,7 +1528,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 var snapshot = projectionSnapshot.GetSourceSpan(projectionSnapshot.SpanCount - 1).Snapshot;
                 if (snapshot.TextBuffer != CurrentLanguageBuffer)
                 {
-                    result = default(Span);
+                    result = default;
                     return false;
                 }
 
@@ -2362,9 +2361,8 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 var selectionBottomRight = new VirtualSnapshotPoint(selectionBottomLine, selectionRightColumn);
 
                 SnapshotPoint editable = GetClosestEditablePoint(selectionTopLeft.Position);
-                int editableColumn;
                 ITextSnapshotLine editableLine;
-                editable.GetLineAndColumn(out editableLine, out editableColumn);
+                editable.GetLineAndColumn(out editableLine, out _);
 
                 Debug.Assert(selectionLeftColumn <= selectionRightColumn);
                 Debug.Assert(selectionTopLine.LineNumber <= selectionBottomLine.LineNumber);
@@ -2773,8 +2771,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                         }
                         else
                         {
-                            VirtualSnapshotPoint unusedStart, unusedEnd;
-                            EditorOperations.InsertTextAsBox(code, out unusedStart, out unusedEnd);
+                            EditorOperations.InsertTextAsBox(code, out _, out _);
                         }
                     }
                     else
@@ -2973,14 +2970,13 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 // This behavior is consistent with VS editor. 
                 // Don't generate RTF for large spans (since it is expensive and probably not wanted).
                 int length = spans.Sum((span) => span.Length);
-                if (length < 1000000)
+                if (length > 1_000_000)
                 {
-                    using (var dialog = _waitIndicator.StartWait(InteractiveWindowResources.WaitTitle, InteractiveWindowResources.WaitMessage, allowCancel: true))
-                    {
-                        return isBoxSelection
-                            ? _rtfBuilderService.GenerateRtf(spans, dialog.CancellationToken)
-                            : _rtfBuilderService.GenerateRtf(spans, string.Empty, dialog.CancellationToken);
-                    }
+                    using var dialog = _waitIndicator.BeginExecute(InteractiveWindowResources.WaitTitle, InteractiveWindowResources.WaitMessage, allowCancellation: true, showProgress: true);
+
+                    return isBoxSelection
+                        ? _rtfBuilderService.GenerateRtf(spans, dialog.UserCancellationToken)
+                        : _rtfBuilderService.GenerateRtf(spans, string.Empty, dialog.UserCancellationToken);
                 }
                 else
                 {
@@ -3318,7 +3314,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                     // note that caret might be located in virtual space behind the current buffer end:
                     if (trySubmit && caretPosition >= CurrentLanguageBuffer.CurrentSnapshot.Length && CanExecuteActiveCode())
                     {
-                        var dummy = SubmitAsync();
+                        _ = SubmitAsync();
                     }
                     else
                     {

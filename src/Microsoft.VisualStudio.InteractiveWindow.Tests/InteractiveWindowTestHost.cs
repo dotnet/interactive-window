@@ -32,7 +32,10 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
                 Evaluator = new TestInteractiveEngine();
                 Window = ExportProvider.GetExport<IInteractiveWindowFactoryService>().Value.CreateWindow(Evaluator);
                 ((InteractiveWindow)Window).StateChanged += stateChangedHandler;
+
+#pragma warning disable VSTHRD002 // Avoid problematic synchronous waits
                 Window.InitializeAsync().Wait();
+#pragma warning restore
             }
             catch (ReflectionTypeLoadException e)
             {

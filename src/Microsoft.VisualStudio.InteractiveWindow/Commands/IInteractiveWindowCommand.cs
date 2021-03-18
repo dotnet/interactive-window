@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information.
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.Language.StandardClassification;
 using Microsoft.VisualStudio.Text;
@@ -21,6 +22,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.Commands
         /// <param name="window">The interactive window.</param>
         /// <param name="arguments">Command arguments.</param>
         /// <returns>The task that completes the execution.</returns>
+        [SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods", Justification = "Public API")]
         Task<ExecutionResult> Execute(IInteractiveWindow window, string arguments);
 
         /// <summary>

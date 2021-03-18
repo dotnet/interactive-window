@@ -70,18 +70,18 @@ namespace Microsoft.VisualStudio.InteractiveWindow
         private ContextMenu MakeContextMenu()
         {
             var result = new ContextMenu();
-            AddMenuItem(result, "Zoom In", "Ctrl+OemPlus", (s, e) => OnZoomIn());
-            AddMenuItem(result, "Zoom Out", "Ctrl+OemMinus", (s, e) => OnZoomOut());
+            AddMenuItem(result, "Zoom In", (s, e) => OnZoomIn());
+            AddMenuItem(result, "Zoom Out", (s, e) => OnZoomOut());
             result.Items.Add(new Separator());
-            AddMenuItem(result, "150%", null, (s, e) => Zoom(1.5));
-            AddMenuItem(result, "100%", null, (s, e) => Zoom(1.0));
-            AddMenuItem(result, "75%", null, (s, e) => Zoom(0.75));
-            AddMenuItem(result, "50%", null, (s, e) => Zoom(0.50));
-            AddMenuItem(result, "25%", null, (s, e) => Zoom(0.25));
+            AddMenuItem(result, "150%", (s, e) => Zoom(1.5));
+            AddMenuItem(result, "100%", (s, e) => Zoom(1.0));
+            AddMenuItem(result, "75%", (s, e) => Zoom(0.75));
+            AddMenuItem(result, "50%", (s, e) => Zoom(0.50));
+            AddMenuItem(result, "25%", (s, e) => Zoom(0.25));
             return result;
         }
 
-        private static void AddMenuItem(ContextMenu menu, string text, string shortcut, EventHandler handler)
+        private static void AddMenuItem(ContextMenu menu, string text, EventHandler handler)
         {
             var item = new MenuItem();
             item.Header = text;
