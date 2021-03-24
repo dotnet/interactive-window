@@ -41,8 +41,8 @@
     <MicrosoftVisualStudioTextUIWpfVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIWpfVersion>
     <MicrosoftVisualStudioThreadingVersion>16.3.13</MicrosoftVisualStudioThreadingVersion>
     <MicrosoftVisualStudioUtilitiesVersion>16.3.29316.78</MicrosoftVisualStudioUtilitiesVersion>
-    <MicrosoftVSSDKBuildToolsVersion>16.3.2099</MicrosoftVSSDKBuildToolsVersion>
-    <MicroBuildPluginsSwixBuildVersion>1.0.670</MicroBuildPluginsSwixBuildVersion>
+    <MicrosoftVSSDKBuildToolsVersion>17.0.39-dev17-g977fccd6</MicrosoftVSSDKBuildToolsVersion>
+    <MicroBuildPluginsSwixBuildVersion>1.1.33</MicroBuildPluginsSwixBuildVersion>
     <SystemCollectionsImmutableVersion>1.5.0</SystemCollectionsImmutableVersion>
     <!-- Test dependencies -->
     <MoqVersion>4.7.99</MoqVersion>

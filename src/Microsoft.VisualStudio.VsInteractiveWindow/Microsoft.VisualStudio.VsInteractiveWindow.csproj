@@ -17,6 +17,7 @@
     <ExtensionInstallationRoot>CommonExtensions</ExtensionInstallationRoot>
     <ExtensionInstallationFolder>Microsoft\InteractiveWindow</ExtensionInstallationFolder>
     <VisualStudioInsertionComponent>Microsoft.VisualStudio.InteractiveWindow</VisualStudioInsertionComponent>
+    <SetupProductArch>Neutral</SetupProductArch>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
