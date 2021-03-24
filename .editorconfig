@@ -9,6 +9,27 @@ root = true
 indent_style = space
 # (Please don't specify an indent_size here; that has too many unintended consequences.)
 
+# VSTHRD001: Avoid legacy thread switching APIs (deferred: https://github.com/dotnet/interactive-window/issues/179)
+dotnet_diagnostic.VSTHRD001.severity = none
+
+# VSTHRD002: Avoid problematic synchronous waits (deferred: https://github.com/dotnet/interactive-window/issues/180)
+dotnet_diagnostic.VSTHRD002.severity = none
+
+# VSTHRD003: Avoid awaiting foreign Tasks (deferred: https://github.com/dotnet/interactive-window/issues/181)
+dotnet_diagnostic.VSTHRD003.severity = none
+
+# VSTHRD103: Call async methods when in an async method (deferred: https://github.com/dotnet/interactive-window/issues/182)
+dotnet_diagnostic.VSTHRD103.severity = none
+
+# VSTHRD110: Observe result of async calls (deferred: https://github.com/dotnet/interactive-window/issues/183)
+dotnet_diagnostic.VSTHRD110.severity = none
+
+# VSTHRD114: Avoid returning a null Task (deferred: https://github.com/dotnet/interactive-window/issues/184)
+dotnet_diagnostic.VSTHRD114.severity = none
+
+# VSTHRD200: Use "Async" suffix for async methods (deferred: https://github.com/dotnet/interactive-window/issues/185)
+dotnet_diagnostic.VSTHRD200.severity = none
+
 [*.{sh}]
 end_of_line = lf
 indent_size = 2
