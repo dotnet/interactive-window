@@ -1,23 +1,22 @@
 {
   "feeds": {
-      "vssdk": "https://pkgs.dev.azure.com/azure-public/vside/_packaging/vssdk/nuget/v3/index.json"
+    "vssdk": "https://pkgs.dev.azure.com/azure-public/vside/_packaging/vssdk/nuget/v3/index.json"
   },
   "packages": {
     "default": {
-
       "Microsoft.VisualStudio.InteractiveWindow": "vssdk",
       "Microsoft.VisualStudio.VsInteractiveWindow": "vssdk"
     }
   },
   "branches": {
-    "master": {
+    "main": {
       "nugetKind": "PerBuildPreRelease",
-      "version": "3.4.*",
-      "nuget": [ ],
+      "version": "4.0.*",
+      "packageFeeds": "default",
       "vsix": null,
-      "channels": [ "VS Master" ],
-      "vsBranch": "master",
-      "vsMajorVersion": 16
+      "channels": [],
+      "vsBranch": "feature/d17initial",
+      "vsMajorVersion": 17
     }
   }
 }
