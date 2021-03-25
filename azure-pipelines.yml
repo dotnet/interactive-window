@@ -97,7 +97,7 @@ stages:
           displayName: Publish Assets
           inputs:
             filePath: 'eng\publish-assets.ps1'
-            arguments: '-configuration $(BuildConfiguration) -branchName "$(SourceBranchName)"'
+            arguments: '-configuration $(_BuildConfig) -branchName "$(SourceBranchName)"'
           condition: and(succeeded(), eq(variables['PRNumber'], 'default'))
         
         # Publishes setup VSIXes to a drop.
@@ -107,8 +107,8 @@ stages:
             displayName: Upload VSTS Drop
             inputs:
               DropName: $(VisualStudioDropName)
-              DropFolder: 'artifacts\VSSetup\$(BuildConfiguration)\Insertion'
-            condition: and(succeeded(), eq($(_BuildConfig), 'Release'))
+              DropFolder: 'artifacts\VSSetup\$(_BuildConfig)\Insertion'
+            condition: and(succeeded(), eq(variables['_BuildConfig'], 'Release'))
 
 - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
   - template: eng\common\templates\post-build\post-build.yml
