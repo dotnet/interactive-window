@@ -72,11 +72,12 @@ stages:
             value: ''
         strategy:
           matrix:
-            Debug:
-              _BuildConfig: Debug
-              _SignType: test
-              _DotNetPublishToBlobFeed: false
-              _BuildArgs: ''
+            ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}: 
+              Debug:
+                _BuildConfig: Debug
+                _SignType: test
+                _DotNetPublishToBlobFeed: false
+                _BuildArgs: ''
             Release:
               _BuildConfig: Release
               # PRs or external builds are not signed.
@@ -93,12 +94,14 @@ stages:
           clean: true
         - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_BuildArgs)
           displayName: Build and Test
-        - task: PowerShell@2
-          displayName: Publish Assets
-          inputs:
-            filePath: 'eng\publish-assets.ps1'
-            arguments: '-configuration $(BuildConfiguration) -branchName "$(SourceBranchName)"'
-          condition: and(succeeded(), eq(variables['PRNumber'], 'default'))
+
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - task: PowerShell@2
+            displayName: Publish Assets
+            inputs:
+              filePath: 'eng\publish-assets.ps1'
+              arguments: '-configuration $(_BuildConfig) -branchName "$(SourceBranchName)"'
+              condition: succeeded()
         
         # Publishes setup VSIXes to a drop.
         # Note: The insertion tool looks for the display name of this task in the logs.
@@ -107,8 +110,8 @@ stages:
             displayName: Upload VSTS Drop
             inputs:
               DropName: $(VisualStudioDropName)
-              DropFolder: 'artifacts\VSSetup\$(BuildConfiguration)\Insertion'
-            condition: and(succeeded(), eq($(_BuildConfig), 'Release'))
+              DropFolder: 'artifacts\VSSetup\$(_BuildConfig)\Insertion'
+            condition: succeeded()
 
 - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
   - template: eng\common\templates\post-build\post-build.yml
