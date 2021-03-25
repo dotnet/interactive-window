@@ -100,7 +100,7 @@ stages:
             displayName: Publish Assets
             inputs:
               filePath: 'eng\publish-assets.ps1'
-              arguments: '-configuration $(_BuildConfig) -branchName "$(SourceBranchName)"'
+              arguments: '-configuration $(_BuildConfig) -branchName "$(Build.SourceBranchName)"'
               condition: succeeded()
         
         # Publishes setup VSIXes to a drop.
