@@ -66,9 +66,13 @@ stages:
                   /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
                   /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
                   /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+          - name: _DevDivDropAccessToken
+            value: $(dn-bot-devdiv-drop-rw-code-rw)
         # else
         - ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
           - name: _OfficialBuildArgs
+            value: ''
+          - name: _DevDivDropAccessToken
             value: ''
         strategy:
           matrix:
@@ -92,6 +96,7 @@ stages:
         steps:
         - checkout: self
           clean: true
+
         # Authenticate with service connections to be able to publish packages to external nuget feeds.
         - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
           - task: NuGetAuthenticate@0
@@ -117,6 +122,7 @@ stages:
             inputs:
               DropName: $(VisualStudioDropName)
               DropFolder: 'artifacts\VSSetup\$(_BuildConfig)\Insertion'
+              AccessToken: $(_DevDivDropAccessToken)
             condition: succeeded()
 
 - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
