@@ -10,11 +10,9 @@
   },
   "branches": {
     "main": {
-      "nugetKind": "PerBuildPreRelease",
+      "nugetKind": "Shipping",
       "version": "4.0.*",
       "packageFeeds": "default",
-      "vsix": null,
-      "channels": [],
       "vsBranch": "feature/d17initial",
       "vsMajorVersion": 17
     }
