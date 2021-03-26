@@ -15,8 +15,8 @@ schedules:
   displayName: Daily Official Build
   branches:
     include:
-    - main 
-      
+    - main
+
 variables:
   - name: _TeamName
     value: Roslyn
@@ -58,7 +58,7 @@ stages:
           - group: DotNet-Blob-Feed
           - group: Publish-Build-Assets
           - name: _OfficialBuildArgs
-            value: /p:DotNetSignType=$(_SignType) 
+            value: /p:DotNetSignType=$(_SignType)
                   /p:TeamName=$(_TeamName)
                   /p:DotNetPublishBlobFeedKey=$(dotnetfeed-storage-access-key-1)
                   /p:DotNetPublishBlobFeedUrl=https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json
@@ -72,7 +72,7 @@ stages:
             value: ''
         strategy:
           matrix:
-            ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}: 
+            ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
               Debug:
                 _BuildConfig: Debug
                 _SignType: test
@@ -92,6 +92,12 @@ stages:
         steps:
         - checkout: self
           clean: true
+        # Authenticate with service connections to be able to publish packages to external nuget feeds.
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - task: NuGetAuthenticate@0
+            inputs:
+              nuGetServiceConnections: azure-public/vssdk
+
         - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_BuildArgs)
           displayName: Build and Test
 
@@ -102,7 +108,7 @@ stages:
               filePath: 'eng\publish-assets.ps1'
               arguments: '-configuration $(_BuildConfig) -branchName "$(Build.SourceBranchName)"'
               condition: succeeded()
-        
+
         # Publishes setup VSIXes to a drop.
         # Note: The insertion tool looks for the display name of this task in the logs.
         - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
