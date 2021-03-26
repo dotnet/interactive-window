@@ -55,8 +55,10 @@ stages:
         - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
           # DotNet-Blob-Feed provides: dotnetfeed-storage-access-key-1
           # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
+          # DotNet-VSTS-Infra-Access provides: dn-bot-devdiv-drop-rw-code-rw
           - group: DotNet-Blob-Feed
           - group: Publish-Build-Assets
+          - group: DotNet-VSTS-Infra-Access
           - name: _OfficialBuildArgs
             value: /p:DotNetSignType=$(_SignType)
                   /p:TeamName=$(_TeamName)
