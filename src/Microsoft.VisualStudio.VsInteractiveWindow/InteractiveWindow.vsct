@@ -70,7 +70,6 @@
       <Menu guid="guidInteractiveWindowCmdSet" id="menuIdInteractiveToolbar" priority="0x0000" type="ToolWindowToolbar">
         <Parent guid="guidInteractiveWindowCmdSet" id="menuIdInteractiveToolbar"/>
         <CommandFlag>DefaultDocked</CommandFlag>
-        <CommandFlag>NoToolbarClose</CommandFlag>
         <CommandFlag>AlwaysCreate</CommandFlag>
         <CommandFlag>TextChanges</CommandFlag>
         <Strings>
