@@ -2,7 +2,7 @@
 <Project>
   <PropertyGroup>
     <!-- This repo version -->
-    <VersionPrefix>3.4.0</VersionPrefix>
+    <VersionPrefix>4.0.0</VersionPrefix>
     <PreReleaseVersionLabel>beta</PreReleaseVersionLabel>
     <!-- Opt-in repo features -->
     <UsingToolVSSDK>true</UsingToolVSSDK>
@@ -10,40 +10,37 @@
     <UsingToolSymbolUploader>true</UsingToolSymbolUploader>
     <UsingToolNetFrameworkReferenceAssemblies>true</UsingToolNetFrameworkReferenceAssemblies>
     <!-- Common versions -->
-    <VisualStudioEditorPackagesVersion>16.3.98</VisualStudioEditorPackagesVersion>
+    <VisualStudioEditorPackagesVersion>17.0.18-g637bb03c64</VisualStudioEditorPackagesVersion>
     <!-- Dependencies -->
-    <NewtonsoftJsonVersion>12.0.1</NewtonsoftJsonVersion>
-    <MicrosoftVisualStudioComponentModelHostVersion>16.0.342-g758a0a97e0</MicrosoftVisualStudioComponentModelHostVersion>
+    <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
+    <MicrosoftVisualStudioComponentModelHostVersion>17.0.18-g637bb03c64</MicrosoftVisualStudioComponentModelHostVersion>
     <MicrosoftVisualStudioCoreUtilityVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioCoreUtilityVersion>
-    <MicrosoftVisualStudioDesignerInterfacesVersion>1.1.4322</MicrosoftVisualStudioDesignerInterfacesVersion>
+    <MicrosoftVisualStudioDesignerInterfacesVersion>17.0.0-preview-1-31108-209</MicrosoftVisualStudioDesignerInterfacesVersion>
     <MicrosoftVisualStudioEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioEditorVersion>
-    <MicrosoftVisualStudioImagingVersion>16.3.29212.169</MicrosoftVisualStudioImagingVersion>
-    <MicrosoftVisualStudioImageCatalogVersion>16.3.29316.127</MicrosoftVisualStudioImageCatalogVersion>
+    <MicrosoftVisualStudioImagingVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioImagingVersion>
+    <MicrosoftVisualStudioImageCatalogVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioImageCatalogVersion>
+    <MicrosoftVisualStudioInteropVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioInteropVersion>
     <MicrosoftVisualStudioLanguageStandardClassificationVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageStandardClassificationVersion>
     <MicrosoftVisualStudioLanguageIntellisenseVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageIntellisenseVersion>
-    <MicrosoftVisualStudioOLEInteropVersion>7.10.6071</MicrosoftVisualStudioOLEInteropVersion>
+    <MicrosoftVisualStudioOLEInteropVersion>17.0.0-preview-1-31115-307</MicrosoftVisualStudioOLEInteropVersion>
     <MicrosoftVisualStudioPlatformVSEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioPlatformVSEditorVersion>
-    <MicrosoftVisualStudioSDKAnalyzersVersion>16.3.2</MicrosoftVisualStudioSDKAnalyzersVersion>
-    <MicrosoftVisualStudioShell150Version>16.0.28316-pre</MicrosoftVisualStudioShell150Version>
-    <MicrosoftVisualStudioShellFrameworkVersion>16.3.29316.78</MicrosoftVisualStudioShellFrameworkVersion>
-    <MicrosoftVisualStudioShellInterop90Version>9.0.30730</MicrosoftVisualStudioShellInterop90Version>
-    <MicrosoftVisualStudioShellInterop100Version>10.0.30320</MicrosoftVisualStudioShellInterop100Version>
-    <MicrosoftVisualStudioShellInterop110Version>11.0.61031</MicrosoftVisualStudioShellInterop110Version>
-    <MicrosoftVisualStudioShellInterop121DesignTimeVersion>12.1.30328</MicrosoftVisualStudioShellInterop121DesignTimeVersion>
-    <MicrosoftVisualStudioTelemetryVersion>16.0.233</MicrosoftVisualStudioTelemetryVersion>
+    <MicrosoftVisualStudioProjectAggregatorVersion>17.0.0-preview-1-31108-209</MicrosoftVisualStudioProjectAggregatorVersion>
+    <MicrosoftVisualStudioSDKAnalyzersVersion>16.9.2-alpha</MicrosoftVisualStudioSDKAnalyzersVersion>
+    <MicrosoftVisualStudioShell150Version>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioShell150Version>
+    <MicrosoftVisualStudioShellFrameworkVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioShellFrameworkVersion>
+    <MicrosoftVisualStudioShellInteropVersion>16.9.30921.310</MicrosoftVisualStudioShellInteropVersion>
+    <MicrosoftVisualStudioTelemetryVersion>16.3.104</MicrosoftVisualStudioTelemetryVersion>
     <MicrosoftVisualStudioTextDataVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextDataVersion>
     <MicrosoftVisualStudioTextInternalVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextInternalVersion>
     <MicrosoftVisualStudioTextLogicVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextLogicVersion>
-    <MicrosoftVisualStudioTextManagerInterop100Version>10.0.30320</MicrosoftVisualStudioTextManagerInterop100Version>
-    <MicrosoftVisualStudioTextManagerInterop120Version>12.0.30110</MicrosoftVisualStudioTextManagerInterop120Version>
-    <MicrosoftVisualStudioTextManagerInterop121DesignTimeVersion>12.1.30328</MicrosoftVisualStudioTextManagerInterop121DesignTimeVersion>
+    <MicrosoftVisualStudioTextManagerInteropVersion>16.9.30921.310</MicrosoftVisualStudioTextManagerInteropVersion>
     <MicrosoftVisualStudioTextUIVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIVersion>
     <MicrosoftVisualStudioTextUIWpfVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIWpfVersion>
-    <MicrosoftVisualStudioThreadingVersion>16.3.13</MicrosoftVisualStudioThreadingVersion>
-    <MicrosoftVisualStudioUtilitiesVersion>16.3.29316.78</MicrosoftVisualStudioUtilitiesVersion>
-    <MicrosoftVSSDKBuildToolsVersion>17.0.39-dev17-g977fccd6</MicrosoftVSSDKBuildToolsVersion>
+    <MicrosoftVisualStudioThreadingVersion>16.10.21-alpha</MicrosoftVisualStudioThreadingVersion>
+    <MicrosoftVisualStudioUtilitiesVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioUtilitiesVersion>
+    <MicrosoftVSSDKBuildToolsVersion>17.0.50-dev17-g2de5c827</MicrosoftVSSDKBuildToolsVersion>
     <MicroBuildPluginsSwixBuildVersion>1.1.33</MicroBuildPluginsSwixBuildVersion>
-    <SystemCollectionsImmutableVersion>1.5.0</SystemCollectionsImmutableVersion>
+    <SystemCollectionsImmutableVersion>5.0.0</SystemCollectionsImmutableVersion>
     <!-- Test dependencies -->
     <MoqVersion>4.7.99</MoqVersion>
     <BasicUndoVersion>0.9.3</BasicUndoVersion>
