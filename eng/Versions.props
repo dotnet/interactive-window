@@ -10,7 +10,7 @@
     <UsingToolSymbolUploader>true</UsingToolSymbolUploader>
     <UsingToolNetFrameworkReferenceAssemblies>true</UsingToolNetFrameworkReferenceAssemblies>
     <!-- Common versions -->
-    <VisualStudioEditorPackagesVersion>17.0.18-g637bb03c64</VisualStudioEditorPackagesVersion>
+    <VisualStudioEditorPackagesVersion>17.0.24-g4265d215ae</VisualStudioEditorPackagesVersion>
     <!-- Dependencies -->
     <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
     <MicrosoftVisualStudioComponentModelHostVersion>17.0.29-gc4daf307f5</MicrosoftVisualStudioComponentModelHostVersion>
