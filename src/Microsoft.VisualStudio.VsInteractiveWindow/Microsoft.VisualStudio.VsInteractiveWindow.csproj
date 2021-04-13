@@ -42,14 +42,6 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" Version="$(MicrosoftVisualStudioSDKAnalyzersVersion)" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <!-- Manual exclusions for obsolete interop assemblies -->
-    <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="$(MicrosoftVisualStudioOLEInteropVersion)" ExcludeAssets="all" />
-    <PackageReference Include="Microsoft.VisualStudio.ProjectAggregator" Version="$(MicrosoftVisualStudioProjectAggregatorVersion)" ExcludeAssets="all" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop" Version="$(MicrosoftVisualStudioShellInteropVersion)" ExcludeAssets="all" />
-    <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop" Version="$(MicrosoftVisualStudioTextManagerInteropVersion)" ExcludeAssets="all" />
-    <PackageReference Include="Microsoft.VisualStudio.Designer.Interfaces" Version="$(MicrosoftVisualStudioDesignerInterfacesVersion)" ExcludeAssets="all" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.csproj">
       <!-- Name of the dependency used in vsixmanifest -->
       <Name>InteractiveWindow</Name>
