@@ -13,31 +13,31 @@
     <VisualStudioEditorPackagesVersion>17.0.18-g637bb03c64</VisualStudioEditorPackagesVersion>
     <!-- Dependencies -->
     <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
-    <MicrosoftVisualStudioComponentModelHostVersion>17.0.18-g637bb03c64</MicrosoftVisualStudioComponentModelHostVersion>
+    <MicrosoftVisualStudioComponentModelHostVersion>17.0.29-gc4daf307f5</MicrosoftVisualStudioComponentModelHostVersion>
     <MicrosoftVisualStudioCoreUtilityVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioCoreUtilityVersion>
-    <MicrosoftVisualStudioDesignerInterfacesVersion>17.0.0-preview-1-31108-209</MicrosoftVisualStudioDesignerInterfacesVersion>
+    <MicrosoftVisualStudioDesignerInterfacesVersion>17.0.0-preview-1-31208-1111</MicrosoftVisualStudioDesignerInterfacesVersion>
     <MicrosoftVisualStudioEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioEditorVersion>
-    <MicrosoftVisualStudioImagingVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioImagingVersion>
-    <MicrosoftVisualStudioImageCatalogVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioImageCatalogVersion>
-    <MicrosoftVisualStudioInteropVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioInteropVersion>
+    <MicrosoftVisualStudioImagingVersion>17.0.0-preview-1-31212-1111</MicrosoftVisualStudioImagingVersion>
+    <MicrosoftVisualStudioImageCatalogVersion>17.0.0-preview-1-31209-1111</MicrosoftVisualStudioImageCatalogVersion>
+    <MicrosoftVisualStudioInteropVersion>17.0.0-preview-1-31209-1111</MicrosoftVisualStudioInteropVersion>
     <MicrosoftVisualStudioLanguageStandardClassificationVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageStandardClassificationVersion>
     <MicrosoftVisualStudioLanguageIntellisenseVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageIntellisenseVersion>
-    <MicrosoftVisualStudioOLEInteropVersion>17.0.0-preview-1-31115-307</MicrosoftVisualStudioOLEInteropVersion>
+    <MicrosoftVisualStudioOLEInteropVersion>17.0.0-preview-1-31209-1111</MicrosoftVisualStudioOLEInteropVersion>
     <MicrosoftVisualStudioPlatformVSEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioPlatformVSEditorVersion>
-    <MicrosoftVisualStudioProjectAggregatorVersion>17.0.0-preview-1-31108-209</MicrosoftVisualStudioProjectAggregatorVersion>
+    <MicrosoftVisualStudioProjectAggregatorVersion>17.0.0-preview-1-31209-1111</MicrosoftVisualStudioProjectAggregatorVersion>
     <MicrosoftVisualStudioSDKAnalyzersVersion>16.9.2-alpha</MicrosoftVisualStudioSDKAnalyzersVersion>
-    <MicrosoftVisualStudioShell150Version>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioShell150Version>
-    <MicrosoftVisualStudioShellFrameworkVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioShellFrameworkVersion>
-    <MicrosoftVisualStudioShellInteropVersion>16.9.30921.310</MicrosoftVisualStudioShellInteropVersion>
-    <MicrosoftVisualStudioTelemetryVersion>16.3.104</MicrosoftVisualStudioTelemetryVersion>
+    <MicrosoftVisualStudioShell150Version>17.0.0-preview-1-31212-1111</MicrosoftVisualStudioShell150Version>
+    <MicrosoftVisualStudioShellFrameworkVersion>17.0.0-preview-1-31212-1111</MicrosoftVisualStudioShellFrameworkVersion>
+    <MicrosoftVisualStudioShellInteropVersion>17.0.0-preview-1-31209-1111</MicrosoftVisualStudioShellInteropVersion>
+    <MicrosoftVisualStudioTelemetryVersion>16.3.110</MicrosoftVisualStudioTelemetryVersion>
     <MicrosoftVisualStudioTextDataVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextDataVersion>
     <MicrosoftVisualStudioTextInternalVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextInternalVersion>
     <MicrosoftVisualStudioTextLogicVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextLogicVersion>
     <MicrosoftVisualStudioTextManagerInteropVersion>16.9.30921.310</MicrosoftVisualStudioTextManagerInteropVersion>
     <MicrosoftVisualStudioTextUIVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIVersion>
     <MicrosoftVisualStudioTextUIWpfVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIWpfVersion>
-    <MicrosoftVisualStudioThreadingVersion>16.10.21-alpha</MicrosoftVisualStudioThreadingVersion>
-    <MicrosoftVisualStudioUtilitiesVersion>17.0.0-preview-1-30928-1111</MicrosoftVisualStudioUtilitiesVersion>
+    <MicrosoftVisualStudioThreadingVersion>16.10.53-alpha</MicrosoftVisualStudioThreadingVersion>
+    <MicrosoftVisualStudioUtilitiesVersion>17.0.0-preview-1-31212-1111</MicrosoftVisualStudioUtilitiesVersion>
     <MicrosoftVSSDKBuildToolsVersion>17.0.63-dev17-g3f11f5ab</MicrosoftVSSDKBuildToolsVersion>
     <MicroBuildPluginsSwixBuildVersion>1.1.33</MicroBuildPluginsSwixBuildVersion>
     <SystemCollectionsImmutableVersion>5.0.0</SystemCollectionsImmutableVersion>
