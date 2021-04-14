@@ -10,6 +10,9 @@
     <Description>Visual Studio Interactive Window (Text Editor)</Description>
     <PackageReleaseNotes>Visual Studio Interactive Window (Text Editor)</PackageReleaseNotes>
     <PackageTags>Visual Studio Interactive Window Text Editor WPF</PackageTags>
+    
+    <!-- We are currently using unsigned VS pacakges -->
+    <NoWarn>$(NoWarn);NU3018;NU3027</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="Microsoft.VisualStudio.InteractiveWindow.UnitTests" />
