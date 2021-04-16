@@ -14,7 +14,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Language.Intellisense.Utilities;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Editor.OptionsExtensionMethods;
@@ -91,7 +90,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
 
             private readonly OutputBuffer _buffer;
 
-            private readonly IWaitIndicator _waitIndicator;
+            private readonly IUIThreadOperationExecutor _uiThreadOperationExecutor;
 
             public ITextBuffer OutputBuffer { get; }
             public ITextBuffer StandardInputBuffer { get; }
@@ -150,7 +149,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 IIntellisenseSessionStackMapService intellisenseSessionStackMap,
                 ISmartIndentationService smartIndenterService,
                 IInteractiveEvaluator evaluator,
-                IWaitIndicator waitIndicator)
+                IUIThreadOperationExecutor uiThreadOperationExecutor)
             {
                 _window = window;
                 _factory = factory;
@@ -159,7 +158,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 _rtfBuilderService = (IRtfBuilderService2)rtfBuilderService;
                 _intellisenseSessionStackMap = intellisenseSessionStackMap;
                 _smartIndenterService = smartIndenterService;
-                _waitIndicator = waitIndicator;
+                _uiThreadOperationExecutor = uiThreadOperationExecutor;
                 Evaluator = evaluator;
 
                 var replContentType = contentTypeRegistry.GetContentType(PredefinedInteractiveContentTypes.InteractiveContentTypeName);
@@ -2975,11 +2974,11 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 int length = spans.Sum((span) => span.Length);
                 if (length < 1000000)
                 {
-                    using (var dialog = _waitIndicator.StartWait(InteractiveWindowResources.WaitTitle, InteractiveWindowResources.WaitMessage, allowCancel: true))
+                    using (var dialog = _uiThreadOperationExecutor.BeginExecute(InteractiveWindowResources.WaitTitle, InteractiveWindowResources.WaitMessage, allowCancellation: true, showProgress: false))
                     {
                         return isBoxSelection
-                            ? _rtfBuilderService.GenerateRtf(spans, dialog.CancellationToken)
-                            : _rtfBuilderService.GenerateRtf(spans, string.Empty, dialog.CancellationToken);
+                            ? _rtfBuilderService.GenerateRtf(spans, dialog.UserCancellationToken)
+                            : _rtfBuilderService.GenerateRtf(spans, string.Empty, dialog.UserCancellationToken);
                     }
                 }
                 else

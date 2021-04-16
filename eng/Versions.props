@@ -31,7 +31,6 @@
     <MicrosoftVisualStudioShellInteropVersion>16.9.30921.310</MicrosoftVisualStudioShellInteropVersion>
     <MicrosoftVisualStudioTelemetryVersion>16.3.104</MicrosoftVisualStudioTelemetryVersion>
     <MicrosoftVisualStudioTextDataVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextDataVersion>
-    <MicrosoftVisualStudioTextInternalVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextInternalVersion>
     <MicrosoftVisualStudioTextLogicVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextLogicVersion>
     <MicrosoftVisualStudioTextManagerInteropVersion>16.9.30921.310</MicrosoftVisualStudioTextManagerInteropVersion>
     <MicrosoftVisualStudioTextUIVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIVersion>
