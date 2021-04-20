@@ -18,9 +18,6 @@
     <ExtensionInstallationFolder>Microsoft\InteractiveWindow</ExtensionInstallationFolder>
     <VisualStudioInsertionComponent>Microsoft.VisualStudio.InteractiveWindow</VisualStudioInsertionComponent>
     <SetupProductArch>Neutral</SetupProductArch>    
-    
-    <!-- We are currently using unsigned VS pacakges -->
-    <NoWarn>$(NoWarn);NU3018;NU3027</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />

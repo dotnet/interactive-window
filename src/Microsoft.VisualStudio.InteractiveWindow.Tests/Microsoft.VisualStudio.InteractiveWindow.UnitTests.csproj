@@ -2,9 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>    
-    
-    <!-- We are currently using unsigned VS pacakges -->
-    <NoWarn>$(NoWarn);NU3018;NU3027</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.VisualStudio.InteractiveWindow\Microsoft.VisualStudio.InteractiveWindow.csproj" />

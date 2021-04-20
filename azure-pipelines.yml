@@ -106,11 +106,10 @@ stages:
           clean: true
 
         # Authenticate with service connections to be able to publish packages to external nuget feeds.
-        # Temporarily add devdiv-vssdk-unifiedPIAs-Service-Connection for an internal feed
         - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
           - task: NuGetAuthenticate@0
             inputs:
-              nuGetServiceConnections: azure-public/vssdk, devdiv-vssdk-unifiedPIAs-Service-Connection
+              nuGetServiceConnections: azure-public/vssdk
 
         - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_BuildArgs)
           displayName: Build and Test
