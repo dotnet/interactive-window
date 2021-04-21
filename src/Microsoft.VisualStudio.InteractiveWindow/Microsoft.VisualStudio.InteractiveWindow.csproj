@@ -28,11 +28,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="$(MicrosoftVisualStudioTextUIWpfVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioUtilitiesVersion)" />
-    <!--
-      Reference internal assembly as a private asset to avoid including it as a dependency of the nupkg.
-      TODO: remove (https://github.com/dotnet/interactive-window/issues/126)
-    -->
-    <PackageReference Include="Microsoft.VisualStudio.Text.Internal" Version="$(MicrosoftVisualStudioTextInternalVersion)" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />

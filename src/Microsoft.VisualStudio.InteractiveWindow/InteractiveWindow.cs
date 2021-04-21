@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Language.Intellisense.Utilities;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Formatting;
@@ -74,7 +73,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
             IIntellisenseSessionStackMapService intellisenseSessionStackMap,
             ISmartIndentationService smartIndenterService,
             IInteractiveEvaluator evaluator,
-            IWaitIndicator waitIndicator)
+            IUIThreadOperationExecutor uiThreadOperationExecutor)
         {
             if (evaluator == null)
             {
@@ -94,7 +93,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow
                 intellisenseSessionStackMap,
                 smartIndenterService,
                 evaluator,
-                waitIndicator);
+                uiThreadOperationExecutor);
 
             evaluator.CurrentWindow = this;
 
