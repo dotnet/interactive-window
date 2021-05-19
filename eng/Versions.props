@@ -10,8 +10,8 @@
     <UsingToolSymbolUploader>true</UsingToolSymbolUploader>
     <UsingToolNetFrameworkReferenceAssemblies>true</UsingToolNetFrameworkReferenceAssemblies>
     <!-- Common versions -->
-    <VisualStudioEditorPackagesVersion>17.0.58-geff255422b</VisualStudioEditorPackagesVersion>
-    <VisualStudioShellPackagesVersion>17.0.0-previews-1-31312-464</VisualStudioShellPackagesVersion>
+    <VisualStudioEditorPackagesVersion>17.0.65-g6c25c21ba5</VisualStudioEditorPackagesVersion>
+    <VisualStudioShellPackagesVersion>17.0.0-previews-1-31318-291</VisualStudioShellPackagesVersion>
     <!-- Dependencies -->
     <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
     <MicrosoftVisualStudioComponentModelHostVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioComponentModelHostVersion>
@@ -31,7 +31,7 @@
     <MicrosoftVisualStudioTextLogicVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextLogicVersion>
     <MicrosoftVisualStudioTextUIVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIVersion>
     <MicrosoftVisualStudioTextUIWpfVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIWpfVersion>
-    <MicrosoftVisualStudioThreadingVersion>16.10.56</MicrosoftVisualStudioThreadingVersion>
+    <MicrosoftVisualStudioThreadingVersion>17.0.15-alpha</MicrosoftVisualStudioThreadingVersion>
     <MicrosoftVisualStudioUtilitiesVersion>$(VisualStudioShellPackagesVersion)</MicrosoftVisualStudioUtilitiesVersion>
     <MicrosoftVisualStudioValidationVersion>17.0.11-alpha</MicrosoftVisualStudioValidationVersion>
     <MicrosoftVSSDKBuildToolsVersion>17.0.1056-Dev17PIAs-g9dffd635</MicrosoftVSSDKBuildToolsVersion>
