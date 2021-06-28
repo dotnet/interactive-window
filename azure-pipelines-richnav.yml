@@ -1,4 +1,4 @@
-# Branches that trigger builds on PR
+# Branches that trigger builds on merge to main/release
 trigger:
   batch: true
   branches:
