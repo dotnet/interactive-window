@@ -10,11 +10,6 @@ trigger:
     - README.md
     - docs/*
 
-pr: 
-  branches:
-    include:
-    - main
-
 stages:
 - stage: build
   displayName: Build
