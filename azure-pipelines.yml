@@ -39,10 +39,10 @@ stages:
         LclPackageId: 'LCL-JUNO-PROD-INTERWIN'
   - template: /eng/common/templates/jobs/jobs.yml
     parameters:
-      enableRichCodeNavigation: true
-      richCodeNavigationEnvironment: "production"
-      richCodeNavigationLanguage: "csharp"
       enableMicrobuild: true
+      enablePublishBuildArtifacts: true
+      enablePublishTestResults: true
+      enablePublishBuildAssets: true
       enablePublishUsingPipelines: $(_PublishUsingPipelines)
       enableTelemetry: true
       enableSourceBuild: false
