@@ -43,9 +43,6 @@ stages:
       richCodeNavigationEnvironment: "production"
       richCodeNavigationLanguage: "csharp"
       enableMicrobuild: true
-      enablePublishBuildArtifacts: true
-      enablePublishTestResults: true
-      enablePublishBuildAssets: true
       enablePublishUsingPipelines: $(_PublishUsingPipelines)
       enableTelemetry: true
       enableSourceBuild: false
