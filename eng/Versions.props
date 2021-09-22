@@ -23,7 +23,6 @@
     <MicrosoftVisualStudioInteropVersion>$(VisualStudioShellPackagesVersion)</MicrosoftVisualStudioInteropVersion>
     <MicrosoftVisualStudioLanguageStandardClassificationVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageStandardClassificationVersion>
     <MicrosoftVisualStudioLanguageIntellisenseVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioLanguageIntellisenseVersion>
-    <MicrosoftVisualStudioPlatformVSEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioPlatformVSEditorVersion>
     <MicrosoftVisualStudioSDKAnalyzersVersion>16.9.2-alpha</MicrosoftVisualStudioSDKAnalyzersVersion>
     <MicrosoftVisualStudioShell150Version>$(VisualStudioShellPackagesVersion)</MicrosoftVisualStudioShell150Version>
     <MicrosoftVisualStudioShellFrameworkVersion>$(VisualStudioShellPackagesVersion)</MicrosoftVisualStudioShellFrameworkVersion>
