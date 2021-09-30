@@ -51,11 +51,11 @@ stages:
       - job: Windows
         pool:
           ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
-            name: NetCorePublic-Pool
-            queue: BuildPool.Windows.10.Amd64.Open
+            name: NetCore1ESPool-Svc-Public
+            demands: ImageOverride -equals Build.Windows.10.Amd64.Open
           ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-            name: NetCoreInternal-Pool
-            queue: BuildPool.Windows.10.Amd64.VS2019.Pre
+            name: NetCore1ESPool-Svc-Internal
+            demands: ImageOverride -equals Build.Server.Amd64.VS2019
         variables:
         # Only enable publishing in official builds
         - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
