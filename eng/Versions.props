@@ -14,7 +14,7 @@
     <VisualStudioEditorPackagesVersion>17.0.491</VisualStudioEditorPackagesVersion>
     <VisualStudioShellPackagesVersion>17.0.32112.339</VisualStudioShellPackagesVersion>
     <!-- Dependencies -->
-    <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
+    <NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
     <MicrosoftVisualStudioComponentModelHostVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioComponentModelHostVersion>
     <MicrosoftVisualStudioCoreUtilityVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioCoreUtilityVersion>
     <MicrosoftVisualStudioEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioEditorVersion>
@@ -27,7 +27,7 @@
     <MicrosoftVisualStudioSDKAnalyzersVersion>16.10.10</MicrosoftVisualStudioSDKAnalyzersVersion>
     <MicrosoftVisualStudioShell150Version>$(VisualStudioShellPackagesVersion)</MicrosoftVisualStudioShell150Version>
     <MicrosoftVisualStudioShellFrameworkVersion>$(VisualStudioShellPackagesVersion)</MicrosoftVisualStudioShellFrameworkVersion>
-    <MicrosoftVisualStudioTelemetryVersion>16.3.176</MicrosoftVisualStudioTelemetryVersion>
+    <MicrosoftVisualStudioTelemetryVersion>16.3.250</MicrosoftVisualStudioTelemetryVersion>
     <MicrosoftVisualStudioTextDataVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextDataVersion>
     <MicrosoftVisualStudioTextLogicVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextLogicVersion>
     <MicrosoftVisualStudioTextUIVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioTextUIVersion>
