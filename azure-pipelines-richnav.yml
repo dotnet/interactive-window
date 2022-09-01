@@ -30,7 +30,7 @@ stages:
       jobs:
       - job: Windows
         pool:
-            name: NetCore1ESPool-Public
+            name: NetCore-Public
             demands: ImageOverride -equals windows.vs2019.amd64.open
         variables:
           - name: _OfficialBuildArgs
