@@ -75,6 +75,8 @@ stages:
                   /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
           - name: _DevDivDropAccessToken
             value: $(dn-bot-devdiv-drop-rw-code-rw)
+          - name: Codeql.Enabled
+            value: true
         # else
         - ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
           - name: _OfficialBuildArgs
