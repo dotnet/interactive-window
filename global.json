@@ -2,9 +2,9 @@
   "tools": {
     "dotnet": "8.0.100",
     "vs": {
-      "version": "17.0"
+      "version": "17.8.0"
     },
-    "xcopy-msbuild": "17.2.1"
+    "xcopy-msbuild": "17.8.1-2"
   },
   "sdk": {
     "version": "8.0.100"
