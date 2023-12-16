@@ -38,7 +38,7 @@ namespace Microsoft.VisualStudio.InteractiveWindow.UnitTests
             }
             catch (ReflectionTypeLoadException e)
             {
-                Assert.False(true, 
+                Assert.Fail(
                     e.Message + 
                     "LoaderExceptions: " + 
                     Environment.NewLine + 
