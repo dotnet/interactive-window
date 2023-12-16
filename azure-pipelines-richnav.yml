@@ -10,6 +10,9 @@ trigger:
     - README.md
     - docs/*
 
+variables:
+  - template: eng/common/templates/variables/pool-providers.yml
+
 stages:
 - stage: build
   displayName: Build
@@ -29,8 +32,8 @@ stages:
       jobs:
       - job: Windows
         pool:
-            name: NetCore-Public
-            demands: ImageOverride -equals windows.vs2019.amd64.open
+            name: $(DncEngPublicBuildPool)
+            demands: ImageOverride -equals windows.vs2022.amd64.open
         variables:
           - name: _OfficialBuildArgs
             value: ''
