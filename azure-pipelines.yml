@@ -67,18 +67,13 @@ stages:
         variables:
         # Only enable publishing in official builds
         - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-          # DotNet-Blob-Feed provides: dotnetfeed-storage-access-key-1
           # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
           # DotNet-VSTS-Infra-Access provides: dn-bot-devdiv-drop-rw-code-rw
-          - group: DotNet-Blob-Feed
           - group: Publish-Build-Assets
           - group: DotNet-VSTS-Infra-Access
           - name: _OfficialBuildArgs
             value: /p:DotNetSignType=$(_SignType)
                   /p:TeamName=$(_TeamName)
-                  /p:DotNetPublishBlobFeedKey=$(dotnetfeed-storage-access-key-1)
-                  /p:DotNetPublishBlobFeedUrl=https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json
-                  /p:DotNetPublishToBlobFeed=$(_DotNetPublishToBlobFeed)
                   /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
                   /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
                   /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
