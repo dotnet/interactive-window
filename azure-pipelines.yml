@@ -1,3 +1,6 @@
+# This Yaml Document has been converted by ESAI Yaml Pipeline Conversion Tool.
+# This pipeline will be extended to the MicroBuild template
+
 # Branches that trigger builds on PR
 pr:
   branches:
@@ -25,121 +28,115 @@ schedules:
   always: true
 
 variables:
-  - template: eng/common/templates/variables/pool-providers.yml
-  - name: _TeamName
-    value: Roslyn
-  - name: _PublishUsingPipelines
-    value: true
-  - name: _DotNetArtifactsCategory
-    value: .NETCore
-  - name: VisualStudioDropName
-    value: Products/$(System.TeamProject)/$(Build.Repository.Name)/$(Build.SourceBranchName)/$(Build.BuildNumber)
+- template: /eng/common/templates-official/variables/pool-providers.yml@self
+- name: _TeamName
+  value: Roslyn
+- name: TeamName
+  value: Roslyn
+- name: _PublishUsingPipelines
+  value: true
+- name: _DotNetArtifactsCategory
+  value: .NETCore
+- name: VisualStudioDropName
+  value: Products/$(System.TeamProject)/$(Build.Repository.Name)/$(Build.SourceBranchName)/$(Build.BuildNumber)
+- name: _BuildConfig
+  value: Release
+- name: _SignType
+  value: real
+- name: _DotNetPublishToBlobFeed
+  value: true
 
-stages:
-- stage: build
-  displayName: Build
-  jobs:
-  - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-    - template: /eng/common/templates/job/onelocbuild.yml
-      parameters:
-        MirrorRepo: interactive-window
-        LclSource: lclFilesfromPackage
-        LclPackageId: 'LCL-JUNO-PROD-INTERWIN'
-  - template: /eng/common/templates/jobs/jobs.yml
-    parameters:
-      enableMicrobuild: true
-      enablePublishBuildArtifacts: true
-      enablePublishTestResults: true
-      enablePublishBuildAssets: true
-      enablePublishUsingPipelines: $(_PublishUsingPipelines)
-      enableTelemetry: true
-      enableSourceBuild: false
-      helixRepo: dotnet/interactive-window
+resources:
+  repositories:
+  - repository: MicroBuildTemplate
+    type: git
+    name: 1ESPipelineTemplates/MicroBuildTemplate
+    ref: refs/tags/release
+extends:
+  template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplate
+  parameters:
+    featureFlags:
+      autoBaseline: true
+    sdl:
+      sourceAnalysisPool:
+        name: $(DncEngInternalBuildPool)
+        image: 1es-windows-2022-pt
+        os: windows
+      sbom:
+        enabled: false
+    customBuildTags:
+    - ES365AIMigrationTooling
+    stages:
+    - stage: build
+      displayName: Build
       jobs:
-      - job: Windows
-        pool:
-          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
-            name: $(DncEngPublicBuildPool)
-            demands: ImageOverride -equals windows.vs2022.amd64.open
-          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-            name: $(DncEngInternalBuildPool)
-            demands: ImageOverride -equals windows.vs2022.amd64
-        variables:
-        # Only enable publishing in official builds
-        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-          # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
-          # DotNet-VSTS-Infra-Access provides: dn-bot-devdiv-drop-rw-code-rw
-          - group: Publish-Build-Assets
-          - group: DotNet-VSTS-Infra-Access
-          - name: _OfficialBuildArgs
-            value: /p:DotNetSignType=$(_SignType)
-                  /p:TeamName=$(_TeamName)
-                  /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
-                  /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
-                  /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
-          - name: _DevDivDropAccessToken
-            value: $(dn-bot-devdiv-drop-rw-code-rw)
-        # else
-        - ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
-          - name: _OfficialBuildArgs
-            value: ''
-          - name: _DevDivDropAccessToken
-            value: ''
-        strategy:
-          matrix:
-            ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
-              Debug:
-                _BuildConfig: Debug
-                _SignType: test
-                _DotNetPublishToBlobFeed: false
-                _BuildArgs: ''
-            Release:
-              _BuildConfig: Release
-              # PRs or external builds are not signed.
-              ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
-                _SignType: test
-                _DotNetPublishToBlobFeed: false
-                _BuildArgs: ''
-              ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-                _SignType: real
-                _DotNetPublishToBlobFeed: true
-                _BuildArgs: $(_OfficialBuildArgs)
-        steps:
-        - checkout: self
-          clean: true
+      - template: /eng/common/templates-official/job/onelocbuild.yml@self
+        parameters:
+          MirrorRepo: interactive-window
+          LclSource: lclFilesfromPackage
+          LclPackageId: 'LCL-JUNO-PROD-INTERWIN'
+      - template: /eng/common/templates-official/jobs/jobs.yml@self
+        parameters:
+          enableMicrobuild: true
+          enablePublishBuildArtifacts: true
+          enablePublishTestResults: true
+          enablePublishBuildAssets: true
+          enablePublishUsingPipelines: $(_PublishUsingPipelines)
+          enableTelemetry: true
+          enableSourceBuild: false
+          helixRepo: dotnet/interactive-window
+          jobs:
+          - job: Windows
+            pool:
+              name: $(DncEngInternalBuildPool)
+              image: 1es-windows-2022-pt
+              os: windows
+            variables:
+            # Enable publishing in official builds
+            # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
+            # DotNet-VSTS-Infra-Access provides: dn-bot-devdiv-drop-rw-code-rw
+            - group: Publish-Build-Assets
+            - group: DotNet-VSTS-Infra-Access
+            - name: _OfficialBuildArgs
+              value: /p:DotNetSignType=$(_SignType)
+                    /p:TeamName=$(_TeamName)
+                    /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
+                    /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
+                    /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+            - name: _DevDivDropAccessToken
+              value: $(dn-bot-devdiv-drop-rw-code-rw)
+            steps:
+            - checkout: self
+              clean: true
 
-        # Authenticate with service connections to be able to publish packages to external nuget feeds.
-        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-          - task: NuGetAuthenticate@0
-            inputs:
-              nuGetServiceConnections: azure-public/vssdk
+            # Authenticate with service connections to be able to publish packages to external nuget feeds.
+            - task: NuGetAuthenticate@0
+              inputs:
+                nuGetServiceConnections: azure-public/vssdk
 
-        - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_BuildArgs)
-          displayName: Build and Test
+            - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_OfficialBuildArgs)
+              displayName: Build and Test
 
-        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-          - task: PowerShell@2
-            displayName: Publish Assets
-            inputs:
-              filePath: 'eng\publish-assets.ps1'
-              arguments: '-configuration $(_BuildConfig) -branchName "$(Build.SourceBranchName)"'
+            - task: PowerShell@2
+              displayName: Publish Assets
+              inputs:
+                filePath: 'eng\publish-assets.ps1'
+                arguments: '-configuration $(_BuildConfig) -branchName "$(Build.SourceBranchName)"'
+                condition: succeeded()
+
+            # Publishes setup VSIXes to a drop.
+            # Note: The insertion tool looks for the display name of this task in the logs.
+            - task: 1ES.MicroBuildVstsDrop@1
+              displayName: Upload VSTS Drop
+              inputs:
+                dropName: $(VisualStudioDropName)
+                dropFolder: 'artifacts\VSSetup\$(_BuildConfig)\Insertion'
+                accessToken: $(_DevDivDropAccessToken)
               condition: succeeded()
 
-        # Publishes setup VSIXes to a drop.
-        # Note: The insertion tool looks for the display name of this task in the logs.
-        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-          - task: ms-vseng.MicroBuildTasks.4305a8de-ba66-4d8b-b2d1-0dc4ecbbf5e8.MicroBuildUploadVstsDropFolder@1
-            displayName: Upload VSTS Drop
-            inputs:
-              DropName: $(VisualStudioDropName)
-              DropFolder: 'artifacts\VSSetup\$(_BuildConfig)\Insertion'
-              AccessToken: $(_DevDivDropAccessToken)
-            condition: succeeded()
-
-- ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-  - template: eng\common\templates\post-build\post-build.yml
-    parameters:
-      publishingInfraVersion: 3
-      # Symbol validation isn't being very reliable lately. This should be enabled back
-      # once this issue is resolved: https://github.com/dotnet/arcade/issues/2871
-      enableSymbolValidation: false
+    - template: /eng/common/templates-official/post-build/post-build.yml@self
+      parameters:
+        publishingInfraVersion: 3
+        # Symbol validation isn't being very reliable lately. This should be enabled back
+        # once this issue is resolved: https://github.com/dotnet/arcade/issues/2871
+        enableSymbolValidation: false
