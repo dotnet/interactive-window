@@ -1,0 +1,15 @@
+{
+    "codebaseName": "Interactive-Window-GitHub",
+    "notificationAliases": [
+        "mlinfraswat@microsoft.com"
+    ],
+    "codebaseAdmins": [
+        "REDMOND\\tmat",
+        "REDMOND\\phillipa"
+    ],
+    "instanceUrl": "https://devdiv.visualstudio.com",
+    "projectName": "DevDiv",
+    "areaPath": "DevDiv\\NET Developer Experience\\Debugger and Interactive",
+    "iterationPath": "DevDiv",
+    "allTools": true
+}
