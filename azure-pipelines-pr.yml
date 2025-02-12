@@ -50,5 +50,10 @@ stages:
         - checkout: self
           clean: true
 
+        - task: UseDotNet@2
+          displayName: 'Install .NET SDK'
+          inputs:
+            useGlobalJson: true
+
         - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_BuildArgs)
           displayName: Build and Test
