@@ -13,8 +13,7 @@
       "nugetKind": "Shipping",
       "version": "4.0.*",
       "packageFeeds": "default",
-      "vsBranch": "feature/d17initial",
-      "vsMajorVersion": 17
+      "vsBranch": "feature/d17initial"
     }
   }
 }
