@@ -12,7 +12,9 @@
     <VisualStudioEditorPackagesVersion>17.10.191</VisualStudioEditorPackagesVersion>
     <VisualStudioShellPackagesVersion>17.10.40170</VisualStudioShellPackagesVersion>
     <!-- Dependencies -->
+    <MessagePackVersion>2.5.187</MessagePackVersion>
     <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
+    <MicrosoftIORedistVersion>6.0.1</MicrosoftIORedistVersion>
     <MicrosoftVisualStudioComponentModelHostVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioComponentModelHostVersion>
     <MicrosoftVisualStudioCoreUtilityVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioCoreUtilityVersion>
     <MicrosoftVisualStudioEditorVersion>$(VisualStudioEditorPackagesVersion)</MicrosoftVisualStudioEditorVersion>
@@ -36,6 +38,7 @@
     <MicrosoftVSSDKBuildToolsVersion>17.5.4074</MicrosoftVSSDKBuildToolsVersion>
     <MicroBuildPluginsSwixBuildVersion>1.1.87</MicroBuildPluginsSwixBuildVersion>
     <SystemCollectionsImmutableVersion>8.0.0</SystemCollectionsImmutableVersion>
+    <SystemTextJsonVersion>8.0.4</SystemTextJsonVersion>
     <!-- Test dependencies -->
     <MoqVersion>4.7.99</MoqVersion>
     <BasicUndoVersion>0.9.3</BasicUndoVersion>
