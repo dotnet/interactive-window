@@ -38,7 +38,7 @@
     <MicrosoftVSSDKBuildToolsVersion>17.5.4074</MicrosoftVSSDKBuildToolsVersion>
     <MicroBuildPluginsSwixBuildVersion>1.1.87</MicroBuildPluginsSwixBuildVersion>
     <SystemCollectionsImmutableVersion>8.0.0</SystemCollectionsImmutableVersion>
-    <SystemTextJsonVersion>8.0.4</SystemTextJsonVersion>
+    <SystemTextJsonVersion>8.0.5</SystemTextJsonVersion>
     <!-- Test dependencies -->
     <MoqVersion>4.7.99</MoqVersion>
     <BasicUndoVersion>0.9.3</BasicUndoVersion>
