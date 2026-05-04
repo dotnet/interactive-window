@@ -132,12 +132,22 @@ extends:
 
             # Publishes setup VSIXes to a drop.
             # Note: The insertion tool looks for the display name of this task in the logs.
+            - task: AzureCLI@2
+              displayName: Get DevDiv Drop Access Token
+              inputs:
+                azureSubscription: 'dnceng-devdiv-drop-rw-code-rw-wif'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |
+                  $token = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query accessToken -o tsv
+                  Write-Host "##vso[task.setvariable variable=DevDivDropAccessToken;issecret=true]$token"
+              condition: succeeded()
             - task: 1ES.MicroBuildVstsDrop@1
               displayName: Upload VSTS Drop
               inputs:
                 dropName: $(VisualStudioDropName)
                 dropFolder: 'artifacts\VSSetup\$(_BuildConfig)\Insertion'
-                accessToken: $(_DevDivDropAccessToken)
+                accessToken: $(DevDivDropAccessToken)
               condition: succeeded()
 
     - template: /eng/common/templates-official/post-build/post-build.yml@self
@@ -146,3 +156,4 @@ extends:
         # Symbol validation isn't being very reliable lately. This should be enabled back
         # once this issue is resolved: https://github.com/dotnet/arcade/issues/2871
         enableSymbolValidation: false
+
