@@ -100,17 +100,13 @@ extends:
             variables:
             # Enable publishing in official builds
             # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
-            # DotNet-VSTS-Infra-Access provides: dn-bot-devdiv-drop-rw-code-rw
             - group: Publish-Build-Assets
-            - group: DotNet-VSTS-Infra-Access
             - name: _OfficialBuildArgs
               value: /p:DotNetSignType=$(_SignType)
                     /p:TeamName=$(_TeamName)
                     /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
                     /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
                     /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
-            - name: _DevDivDropAccessToken
-              value: $(dn-bot-devdiv-drop-rw-code-rw)
             steps:
             - checkout: self
               clean: true
