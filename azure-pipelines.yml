@@ -115,6 +115,11 @@ extends:
             - checkout: self
               clean: true
 
+            # Authenticate with service connections to be able to publish packages to external nuget feeds.
+            - task: NuGetAuthenticate@1
+              inputs:
+                nuGetServiceConnections: azure-public/vssdk
+
             - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_OfficialBuildArgs)
               displayName: Build and Test
 
