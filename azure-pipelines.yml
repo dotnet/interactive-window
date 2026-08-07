@@ -99,8 +99,6 @@ extends:
               os: windows
             variables:
             # Enable publishing in official builds
-            # Publish-Build-Assets provides: MaestroAccessToken, BotAccount-dotnet-maestro-bot-PAT
-            - group: Publish-Build-Assets
             - name: _OfficialBuildArgs
               value: /p:DotNetSignType=$(_SignType)
                     /p:TeamName=$(_TeamName)
